@@ -10,6 +10,6 @@ To begin with React:
 To begin with Django:
 - Create virtualenv
 - Activate virtualenv
-- Enter backend folder
 - Install all requirements
+- Enter backend folder
 - python manage.py runserver
