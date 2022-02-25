@@ -1,6 +1,11 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
-from .models import Internship
+from .models import Internship, User
+from djoser.serializers import UserCreateSerializer as BaseUserRegistrationSerializer
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['email', 'password', 'is_student', 'is_company']
 
 class InternshipSerializer(serializers.ModelSerializer):
     class Meta:
