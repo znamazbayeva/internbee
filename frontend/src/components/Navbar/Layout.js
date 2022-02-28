@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
 import classes from "./Layout.module.css";
 import LoginForm from "../LoginForm";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 function Layout(props) {
   const [isShowLogin, setIsShowLogin] = useState(true);
@@ -12,11 +12,11 @@ function Layout(props) {
   };
 
   return (
-    <div>
+    <Fragment>
       <Navbar handleLoginClick={handleLoginClick} />
-      <LoginForm isShowLogin={isShowLogin} />
+      {/* <LoginForm isShowLogin={isShowLogin} /> */}
       <main className={classes.main}>{props.children}</main>
-    </div>
+    </Fragment>
   );
 }
 

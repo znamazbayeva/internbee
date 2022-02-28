@@ -19,7 +19,7 @@ function NewInternshipForm(props) {
       title: enteredTitle,
       image: enteredImage,
       address: enteredAddress,
-      desciption: enteredDescription,
+      description: enteredDescription,
     };
 
     props.onAddInternship(internshipData);
