@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import InternshipList from "../components/Internships/InternshipList";
 import SearchBar from "../components/SearchBar";
 import { collection, getDocs } from "firebase/firestore";

@@ -1,10 +1,10 @@
 import { useContext, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import AuthContext from "../store/auth-context";
 import classes from "./ProfilePage.module.css";
 
 const ProfilePage = () => {
-  const navigate = useNavigate();
+  //  const navigate = useNavigate();
   const newPasswordInputRef = useRef();
   const authCtx = useContext(AuthContext);
 

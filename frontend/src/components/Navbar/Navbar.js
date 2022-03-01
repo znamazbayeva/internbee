@@ -49,7 +49,7 @@ const Navbar = () => {
           )}
           {isLoggedIn && (
             <li>
-              <button onClick={logoutHandler}>Logout</button>
+              <Button onClick={logoutHandler}>Logout</Button>
             </li>
           )}
         </ul>
@@ -57,58 +57,6 @@ const Navbar = () => {
     </header>
   );
 };
-
-// function Navbar({ handleLoginClick }) {
-//   state = { clicked: false };
-//   handleClick = () => {
-//     this.setState({ clicked: !this.state.clicked });
-//     console.log(this.state);
-//   };
-
-// const handleClick = () => {
-//   handleLoginClick();
-// };
-
-//const history = useNavigate();
-
-//   return (
-//     <nav className="NavbarItems">
-//       <h1 className="navbar-logo">Internbee</h1>
-
-//       <ul className="nav-menu">
-//         <li>
-//           <Link to="/" className="nav-links">
-//             Home
-//           </Link>
-//         </li>
-//         <li>
-//           <Link to="/reviews" className="nav-links">
-//             Reviews
-//           </Link>
-//         </li>
-//         <li>
-//           {isLoggedIn && (
-//             <Link to="/profile" className="nav-links">
-//               My Profile
-//             </Link>
-//           )}
-//         </li>
-//         <li>
-//           <Link to="/internships" className="nav-links">
-//             Internships
-//           </Link>
-//         </li>
-//         <li>
-//           <Link to="/about" className="nav-links">
-//             About Us
-//           </Link>
-//         </li>
-//       </ul>
-//       {!isLoggedIn && <Button onClick={handleClick}>Sign Up</Button>}
-//       {isLoggedIn && <Button onClick={handleClick}>Logout</Button>}
-//     </nav>
-//   );
-// }
 
 export default Navbar;
 

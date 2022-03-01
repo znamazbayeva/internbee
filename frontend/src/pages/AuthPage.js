@@ -8,6 +8,8 @@ const AuthPage = () => {
   const navigate = useNavigate();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+  const firstNameInputRef = useRef();
+  const lastNameInputRef = useRef();
 
   const authCtx = useContext(AuthContext);
   const [isLogin, setIsLogin] = useState(true);
@@ -21,6 +23,8 @@ const AuthPage = () => {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+    const enteredFirstName = firstNameInputRef.current.value;
+    const enteredLastName = lastNameInputRef.current.value;
 
     setIsLoading(true);
     let url;
@@ -59,7 +63,10 @@ const AuthPage = () => {
         }
       })
       .then((data) => {
-        authCtx.login(data.idToken);
+        const expirationTime = new Date(
+          new Date().getTime() + +data.expiresIn * 1000
+        );
+        authCtx.login(data.idToken, expirationTime.toISOString());
         navigate("/", { replace: true });
       })
       .catch((err) => {
@@ -75,6 +82,25 @@ const AuthPage = () => {
           <label htmlFor="email">Your Email</label>
           <input type="email" id="email" required ref={emailInputRef} />
         </div>
+        {!isLogin && (
+          <div className={classes.control}>
+            <label htmlFor="firstname">First Name</label>
+            <input
+              type="text"
+              id="firstname"
+              required
+              ref={firstNameInputRef}
+            />
+          </div>
+        )}
+
+        {!isLogin && (
+          <div className={classes.control}>
+            <label htmlFor="lastname">Last Name</label>
+            <input type="text" id="lastname" required ref={lastNameInputRef} />
+          </div>
+        )}
+
         <div className={classes.control}>
           <label htmlFor="password">Your Password</label>
           <input
