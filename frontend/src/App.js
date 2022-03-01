@@ -1,36 +1,33 @@
-import React from "react";
-import "./App.css";
-import { Routes, Route } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
-import ProfilePage from "./pages/ProfilePage";
-import Reviews from "./pages/Reviews";
-import About from "./pages/About";
-import Companies from "./pages/Companies";
-import Internships from "./pages/Internships";
-import Layout from "./components/Navbar/Layout";
-import NewInternshipPage from "./pages/NewInternshipPage";
-import SignUpPage from "./pages/SignUpPage";
-import LoginForm from "./components/LoginForm";
-import Navbar from "./components/Navbar/Navbar";
-import { useState } from "react";
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import HomePage from "./components/HomePage"
+import ClientSignup from "./components/ClientSignup"
+import  FreelanceSignup from "./components/FreelanceSignup"
+import Login from "./components/Login"
+import ClientDashboard from "./components/ClientDashboard"
+import FreelanceDashboard from "./components/FreelanceDashboard"
+
+import {CPrivateRoute, FPrivateRoute} from "./private/PrivateRoute"
+
+import './App.css';
+import Navbar from './components/Navbar';
+
 function App() {
   return (
-    <Layout>
-      <Routes>
-        <Route exact path="/" element={<LandingPage />}></Route>
-        <Route exact path="/reviews" element={<Reviews />}></Route>
-        <Route exact path="/profile" element={<ProfilePage />}></Route>
-        <Route exact path="/companies" element={<Companies />}></Route>
-        <Route exact path="/internships" element={<Internships />}></Route>
-        <Route
-          exact
-          path="/new-internship"
-          element={<NewInternshipPage />}
-        ></Route>
-        <Route exact path="/about" element={<About />}></Route>
-        <Route exact path="/sign-up" element={<SignUpPage />}></Route>
-      </Routes>
-    </Layout>
+      <Router>
+      <div className="App">
+        <Navbar/>
+        <Switch>
+            <Route exact path="/" component={HomePage}/>
+            <Route exact path="/client/signup" component={ClientSignup}/>
+            <Route exact path="/freelance/signup" component={FreelanceSignup}/>
+            <Route exact path="/login" component={Login}/>
+            <CPrivateRoute exact path="/client/dashboard" component={ClientDashboard} />
+            <FPrivateRoute exact path="/freelance/dashboard"  component={FreelanceDashboard} />     
+        </Switch> 
+      </div>
+      </Router>
+      
+    
   );
 }
 
