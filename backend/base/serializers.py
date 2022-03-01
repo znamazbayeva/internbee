@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Internship, User, Student, Company
-from djoser.serializers import UserCreateSerializer as BaseUserRegistrationSerializer
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
