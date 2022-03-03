@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Internship, User, Student, Company
-from djoser.serializers import UserCreateSerializer as BaseUserRegistrationSerializer
+#from djoser.serializers import UserCreateSerializer as BaseUserRegistrationSerializer
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,7 +34,7 @@ class CompanySignupSerializer(serializers.ModelSerializer):
 
 
 class StudentSignupSerializer(serializers.ModelSerializer):
-    password2=serializers.CharField(style={"input_type":"password"}, write_only=True)
+    # password2=serializers.CharField(style={"input_type":"password"}, write_only=True)
     class Meta:
         model=User
         fields=['email','password']
