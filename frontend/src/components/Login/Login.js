@@ -28,7 +28,7 @@ function Login({ login, isAuthenticated, isClient }) {
 		return <Redirect to="/freelance/dashboard" />;
 	} else {
 		return (
-			<div class="LoginMain">
+			<div className="LoginMain">
 				<div>
 					<h2 class="LoginTitle">Sign In</h2>
 					<div className="formCss">
