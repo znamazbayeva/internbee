@@ -56,7 +56,7 @@ function Login({ login, isAuthenticated, isClient }) {
 							<button className="login__btn">Login</button>
 						</form>
 						<div className="login__back">
-							Don't have an account? <Link to="/">Sign up</Link>
+							Don't have an account? <Link to="/client/signup">Sign up</Link>
 						</div>
 					</div>
 				</div>

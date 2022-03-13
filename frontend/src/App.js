@@ -1,7 +1,7 @@
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./components/HomePage";
-import ClientSignup from "./components/ClientSignup";
-import FreelanceSignup from "./components/FreelanceSignup";
+import ClientSignup from "./components/Signup/ClientSignup";
+import FreelanceSignup from "./components/Signup/FreelanceSignup";
 import Login from "./components/Login/Login";
 import ClientDashboard from "./components/ClientDashboard";
 import FreelanceDashboard from "./components/FreelanceDashboard";
@@ -21,6 +21,7 @@ function App() {
 					<Route exact path="/client/signup" component={ClientSignup} />
 					<Route exact path="/freelance/signup" component={FreelanceSignup} />
 					<Route exact path="/login" component={Login} />
+
 					<CPrivateRoute
 						exact
 						path="/client/dashboard"

@@ -14,13 +14,10 @@ function Navbar() {
 			<li>
 				<button
 					onClick={() => dispatch(logout())}
-					className="nav-link btn btn-danger"
+					className="nav-links authButton"
 				>
 					Logout
 				</button>
-			</li>
-			<li>
-				<strong>{state.user ? `welcome ${state.user.email}` : ""}</strong>
 			</li>
 		</div>
 	);
@@ -28,7 +25,7 @@ function Navbar() {
 	const publicLink = (
 		<div className="publicLink">
 			<li>
-				<Link to="/" className="nav-links authButton">
+				<Link to="/client/signup" className="nav-links authButton">
 					Register
 				</Link>
 			</li>
@@ -41,8 +38,10 @@ function Navbar() {
 	);
 	return (
 		<nav className="NavbarItems">
-			<img src={logo} alt="logo" width={28} height={28} />
-			<h1 className="navbar-logo">internbee</h1>
+			<Link to="/" className="logo__links">
+				<img src={logo} alt="logo" width={28} height={28} />
+				<h1 className="navbar-logo">internbee</h1>
+			</Link>
 
 			<ul className="nav-menu">
 				<li>
