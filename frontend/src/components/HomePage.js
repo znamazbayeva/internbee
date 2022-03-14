@@ -1,38 +1,57 @@
 import React, { useState, Component, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./HomePage.css";
 import image from "../assets/img/landing.png";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import queryString from "query-string";
+import { addInternshipList } from "../actions/internship";
 
 const HomePage = () => {
-	const [list, setList] = useState([]);
+	const dispatch = useDispatch();
+	const locat = useLocation();
+	// const [list, setList] = useState([]);
 	const [internship, setInternship] = useState({
 		name: "",
-		city: "",
+		location: "",
 		category: "",
 	});
 
-	useEffect(() => {
-		if (list.length == 0) {
-			axios
-				.get("http://127.0.0.1:8000/v1/api/internships/")
-				.then((response) => {
-					console.log(response.data);
-					setList(response.data);
-				});
-		}
-	}, []);
+	// useEffect(() => {
+	// 	if (list.length == 0) {
+	// 		axios
+	// 			.get("http://127.0.0.1:8000/v1/api/internships/", {params:{key:value, key1:value1}}).then((data)=>{}).catch((error)=>{})
+	// 			.then((response) => {
+	// 				console.log(response.data);
+	// 				setList(response.data);
+	// 			});
+	// 	}
+	// }, []);
 
-	const { name, city, category } = internship;
+	const { name, location, category } = internship;
 
 	const internshipSearchChange = (e) => {
 		setInternship({ ...internship, [e.target.name]: e.target.value });
 	};
 
 	const handleInternshipSearchSubmit = (e) => {
-		e.preventDefault();
+		axios
+			.get("http://127.0.0.1:8000/v1/api/internship/", {
+				params: {
+					name: internship.name,
+					location: internship.location,
+					category: internship.category,
+				},
+			})
+			.then((response) => {
+				console.log(response.data);
+				dispatch(addInternshipList(response.data));
+			})
+			.catch((error) => {
+				console.log(error.data);
+			});
 
-		// login({ username, password });
+		e.preventDefault();
 	};
 
 	return (
@@ -49,7 +68,7 @@ const HomePage = () => {
 					className="internship__search-form"
 					onSubmit={(e) => handleInternshipSearchSubmit(e)}
 				>
-					<h2 class="internship__title">Find Internship</h2>
+					<h2 className="internship__title">Find Internship</h2>
 					<div className="input__container">
 						<label>What job are you looking for?</label>
 						<input
@@ -67,8 +86,8 @@ const HomePage = () => {
 							type="text"
 							className="internship__input"
 							placeholder="Almaty"
-							name="city"
-							value={city}
+							name="location"
+							value={location}
 							onChange={(e) => internshipSearchChange(e)}
 						/>
 					</div>
