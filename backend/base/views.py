@@ -11,6 +11,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from .permissions import IsStudentUser, IsCompanyUser
 from rest_framework.authtoken.views import ObtainAuthToken
+
 # Create your views here.
 
 @api_view(['GET'])
@@ -18,6 +19,26 @@ def getInternships(request):
     internships = Internship.objects.all()
     serializer = InternshipSerializer(internships, many=True)
     return Response(serializer.data)
+
+class InternshipListView(generics.ListCreateAPIView):
+    model = Internship
+    serializer_class = InternshipSerializer
+
+    def get_queryset(self):
+        queryset = Internship.objects.all()
+        name = self.request.query_params.get('name')
+        location = self.request.query_params.get('location')
+        category = self.request.query_params.get('category')
+        if name != None:
+            queryset = queryset.filter(name__icontains=name)
+            print(queryset)
+        elif location != None:
+            queryset = queryset.filter(location__icontains=location)
+            print(queryset)
+        elif category != None:
+            queryset = queryset.filter(category__icontains=category)
+            print(queryset)
+        return queryset
 
 class UserListCreateView(ListCreateAPIView):
     queryset= User.objects.all()

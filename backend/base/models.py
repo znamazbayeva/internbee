@@ -70,6 +70,8 @@ class Internship(models.Model):
     #if company is deleted the internships are deleted too
     company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=200, null=True, blank=True)
+    location = models.CharField(max_length=200, null=True, blank=True)
+    category = models.CharField(max_length=200, null=True, blank=True)
     description = models.CharField(max_length=200, null=True, blank=True)
     requirements = models.CharField(max_length=200, null=True, blank=True)
     duration = models.CharField(max_length=200, null=True, blank=True)
