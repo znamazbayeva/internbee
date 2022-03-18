@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import {authReducer} from "./authReducer"
+import { authReducer } from "./authReducer";
+import { internshipReducer } from "./internshipReducer";
 
+const rootReducer = combineReducers({
+	auth: authReducer,
+	internship: internshipReducer,
+});
 
-const rootReducer=combineReducers({
-    auth:authReducer,
-})
-
-
-export default rootReducer
+export default rootReducer;
