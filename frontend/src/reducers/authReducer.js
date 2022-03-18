@@ -30,7 +30,7 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         ...action.payload,
         isAuthenticated: true,
-        isStudent: action.payload.user.is_client,
+        isStudent: action.payload.user.is_student,
         isLoading: false,
       };
     case CLIENT_USER_LOADED:
@@ -56,7 +56,7 @@ export const authReducer = (state = initialState, action) => {
         ...action.payload,
         isAuthenticated: true,
         isLoading: false,
-        isStudent: action.payload.is_client,
+        isStudent: action.payload.is_student,
       };
 
     case REGISTER_CUSER_FAILED:

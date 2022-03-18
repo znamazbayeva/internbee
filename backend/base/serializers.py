@@ -11,6 +11,7 @@ class InternshipSerializer(serializers.ModelSerializer):
     class Meta:
         model = Internship
         fields = '__all__'
+        depth = 1
 
 class CompanySignupSerializer(serializers.ModelSerializer):
     class Meta:

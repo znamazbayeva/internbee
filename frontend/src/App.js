@@ -24,20 +24,20 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/search/internships/" component={Internships} />
 
-          <CPrivateRoute
-            exact
-            path="/student/dashboard"
-            component={ClientDashboard}
-          />
-          <FPrivateRoute
-            exact
-            path="/company/dashboard"
-            component={FreelanceDashboard}
-          />
-        </Switch>
-      </div>
-    </Router>
-  );
+					<CPrivateRoute
+						exact
+						path="/student/dashboard"
+						component={ClientDashboard}
+					/>
+					<FPrivateRoute
+						exact
+						path="/freelance/dashboard"
+						component={FreelanceDashboard}
+					/>
+				</Switch>
+			</div>
+		</Router>
+	);
 }
 
 export default App;

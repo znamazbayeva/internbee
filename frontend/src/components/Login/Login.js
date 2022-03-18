@@ -23,47 +23,47 @@ function Login({ login, isAuthenticated, isClient }) {
     login({ username, password });
   };
 
-  if (isAuthenticated && isClient) {
-    return <Redirect to="/student/dashboard" />;
-  } else if (isAuthenticated && !isClient) {
-    return <Redirect to="/freelance/dashboard" />;
-  } else {
-    return (
-      <div className="LoginMain">
-        <div>
-          <h2 class="LoginTitle">Sign In</h2>
-          <div className="formCss">
-            <form className="LoginForm" onSubmit={(e) => handleLoginSubmit(e)}>
-              <div>
-                <input
-                  type="text"
-                  className="LoginInput"
-                  onChange={(e) => loginChange(e)}
-                  placeholder="Enter your email address"
-                  name="username"
-                  value={username}
-                />
-              </div>
-              <div>
-                <input
-                  type="password"
-                  className="LoginInput"
-                  onChange={(e) => loginChange(e)}
-                  placeholder="Enter your password"
-                  name="password"
-                  value={password}
-                />
-              </div>
-              <button className="login__btn">Login</button>
-            </form>
-            <div className="login__back">
-              Don't have an account? <Link to="/client/signup">Sign up</Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+	if (isAuthenticated && isClient) {
+		return <Redirect to="/student/dashboard" />;
+	} else if (isAuthenticated && !isClient) {
+		return <Redirect to="/freelance/dashboard" />;
+	} else {
+		return (
+			<div className="LoginMain">
+				<div>
+					<h2 class="LoginTitle">Sign In</h2>
+					<div className="formCss">
+						<form className="LoginForm" onSubmit={(e) => handleLoginSubmit(e)}>
+							<div>
+								<input
+									type="text"
+									className="LoginInput"
+									onChange={(e) => loginChange(e)}
+									placeholder="Enter your email address"
+									name="username"
+									value={username}
+								/>
+							</div>
+							<div>
+								<input
+									type="password"
+									className="LoginInput"
+									onChange={(e) => loginChange(e)}
+									placeholder="Enter your password"
+									name="password"
+									value={password}
+								/>
+							</div>
+							<button className="login__btn">Login</button>
+						</form>
+						<div className="login__back">
+							Don't have an account? <Link to="/client/signup">Sign up</Link>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
 
 Login.propTypes = {
