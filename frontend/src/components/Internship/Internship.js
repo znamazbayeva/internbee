@@ -1,17 +1,39 @@
 import React from "react";
+import styles from "./Internship.module.scss"
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import PlaceIcon from '@mui/icons-material/Place';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+function Internship({internship}) {
+	const findFromDate = (e) => {
+		var date = new Date(e); 
+		var now = new Date();
+		var Difference_In_Time = now.getTime() - date.getTime();
+		var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+		return Math.floor(Difference_In_Days).toString();
 
-function Internship() {
+	}
 	return (
-		<div className="int__container">
-			<img src="" alt="" width={12} height={12} />
-			<div className="int__info">
-				<div className="info__name"></div>
-				<div className="info__detail">
-					<div className="info__company"></div>
-					<div className="info__location"></div>
-					<div className="info__fee"></div>
-					<div className="info__type"></div>
-					<div className="info__category"></div>
+		<div className={styles.container}>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png" alt="" className={styles.imgLogo} />
+			<div className={styles.int__info}>
+				<div className={styles.first__info}>
+					<div className={styles.company_name}>{internship.company.company_name}</div>
+					<div className={styles.name}>{internship.name}</div>
+					<div className={styles.sub}>
+						<AccessTimeIcon fontSize="small" style={{color: "grey"}}/>
+						<div className={styles.created_time}>{findFromDate(internship.created_at)} days</div> 
+						<FiberManualRecordIcon fontSize="small" style={{color: "grey"}}/>
+						<div className={styles.created_time}>{internship.duration}</div> 
+						<PlaceIcon fontSize="small" style={{color: "grey"}}/>
+						<div className={styles.created_time}>{internship.location}</div>
+					</div>
+
+				</div>
+				<div className=
+				{styles.detail}>
+					<div className={styles.name}> KZT {internship.salary} / month</div>
+					<button className={styles.button}>See more <ArrowForwardIcon className="arrow" fontSize="small"/></button>
 				</div>
 			</div>
 		</div>
