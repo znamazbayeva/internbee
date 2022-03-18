@@ -15,7 +15,7 @@ const [redirect, setRedirect] = useState(false);
   return (
     <div className="LoginMain">
         <div>
-        <h2 class="LoginTitle">Verify Email</h2>
+        <h2 className="LoginTitle">Verify Email</h2>
         <div className="formCss">
             <form className="LoginForm" onSubmit={(e) => handleLoginSubmit(e)}>
                 <div>
@@ -31,7 +31,7 @@ const [redirect, setRedirect] = useState(false);
                 <button className="login__btn">Verify</button>
             </form>
         </div>
-        { redirect ? (<Redirect push to="/student/dashboard/"/>) : null }
+        { redirect ? (<Redirect push to="/search/internships/"/>) : null }
     </div>
 </div>
   )

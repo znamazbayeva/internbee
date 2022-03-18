@@ -30,7 +30,7 @@ function Login({ login, isAuthenticated, isStudent }) {
 		return (
 			<div className="LoginMain">
 				<div>
-					<h2 class="LoginTitle">Sign In</h2>
+					<h2 className="LoginTitle">Sign In</h2>
 					<div className="formCss">
 						<form className="LoginForm" onSubmit={(e) => handleLoginSubmit(e)}>
 							<div>

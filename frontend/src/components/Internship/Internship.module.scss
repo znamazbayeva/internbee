@@ -8,6 +8,7 @@
 }
 
 .container{
+    margin: 1rem;
     display: flex;
     box-shadow: #d9d7e0 0px 4px 16px,
     #d9d7e0 0px 8px 24px;
@@ -17,7 +18,9 @@
 	font-weight: bold;
     padding: 2rem 2rem;
     max-height: 10rem;
-
+    &:first-child{
+        margin-top: 0;
+    }
     .int__info {
         height: 100%;
         display: flex;
@@ -34,6 +37,14 @@
         .name {
             font-size: 1.25rem;
             font-weight: 400;
+
+            .button_hi {
+                margin-left: 6px;
+            }
+            .button_hi:hover {
+                margin-left: 6px;
+                color: red;
+            }
         }
 
         .button {

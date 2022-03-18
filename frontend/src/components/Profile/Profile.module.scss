@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+.student_hi {
+    flex-direction: column;
+    margin: 1rem;
+    display: flex;
+    box-shadow: #d9d7e0 0px 4px 16px,
+    #d9d7e0 0px 8px 24px;
+    color: #232129;
+    background-color: #fcfaff;
+    border-radius: 4px;
+    font-weight: bold;
+    padding: 2rem 2rem;
+    flex-grow: 1;
+}

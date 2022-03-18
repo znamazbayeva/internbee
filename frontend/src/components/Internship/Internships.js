@@ -8,7 +8,9 @@ function Internships() {
     console.log(state)
   return (
     <div className={styles.general}>
+
     <div style={{width: "100%"}}>
+    <h3 style={{marginLeft: "12px"}}>These are internships recommended based on your likings</h3>
     {state.internships.map((internship) => (
         <Internship 
             key = {internship._id}
@@ -16,7 +18,7 @@ function Internships() {
         />
     ))}
     </div>
-    <SearchInternship/>
+    <SearchInternship style={{marginTop: "30px"}} />
     </div>
   )
 }

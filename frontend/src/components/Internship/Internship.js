@@ -4,6 +4,8 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import PlaceIcon from '@mui/icons-material/Place';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import VideoCameraFrontIcon from '@mui/icons-material/VideoCameraFront';
 function Internship({internship}) {
 	const findFromDate = (e) => {
 		var date = new Date(e); 
@@ -15,7 +17,7 @@ function Internship({internship}) {
 	}
 	return (
 		<div className={styles.container}>
-			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png" alt="" className={styles.imgLogo} />
+			<img src={internship.company.img} alt="" className={styles.imgLogo} />
 			<div className={styles.int__info}>
 				<div className={styles.first__info}>
 					<div className={styles.company_name}>{internship.company.company_name}</div>
@@ -32,7 +34,10 @@ function Internship({internship}) {
 				</div>
 				<div className=
 				{styles.detail}>
-					<div className={styles.name}> KZT {internship.salary} / month</div>
+					<div className={styles.name}> KZT {internship.salary} / month       
+						<button ><FavoriteBorderIcon fontSize="small" className={styles.button_hi}/></button>
+					 {internship.video ? <button> <VideoCameraFrontIcon  fontSize="small" className={styles.button_hi}/></button> : null}	
+					</div>
 					<button className={styles.button}>See more <ArrowForwardIcon className="arrow" fontSize="small"/></button>
 				</div>
 			</div>
