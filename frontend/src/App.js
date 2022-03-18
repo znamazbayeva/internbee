@@ -10,6 +10,7 @@ import { CPrivateRoute, FPrivateRoute } from "./private/PrivateRoute";
 
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
+import Internships from "./components/Internship/Internships";
 
 function App() {
 	return (
@@ -21,6 +22,7 @@ function App() {
 					<Route exact path="/client/signup" component={ClientSignup} />
 					<Route exact path="/freelance/signup" component={FreelanceSignup} />
 					<Route exact path="/login" component={Login} />
+					<Route exact path="/search/internships/" component={Internships} />
 
 					<CPrivateRoute
 						exact
