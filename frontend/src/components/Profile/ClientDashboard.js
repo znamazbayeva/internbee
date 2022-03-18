@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getStudentUser } from "../actions/auth";
+import { getStudentUser } from "../../actions/auth";
 import { useDispatch } from "react-redux";
 
 function ClientDashboard() {
