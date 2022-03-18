@@ -1,10 +1,9 @@
 import React, { useState, Component, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Redirect, useLocation } from "react-router-dom";
 import "./HomePage.css";
 import image from "../assets/img/landing.png";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import queryString from "query-string";
 import { addInternshipList } from "../actions/internship";
 
 const HomePage = () => {
@@ -16,6 +15,8 @@ const HomePage = () => {
 		location: "",
 		category: "",
 	});
+
+	const [redirect, setRedirect] = useState(false);
 
 	// useEffect(() => {
 	// 	if (list.length == 0) {
@@ -34,7 +35,7 @@ const HomePage = () => {
 		setInternship({ ...internship, [e.target.name]: e.target.value });
 	};
 
-	const handleInternshipSearchSubmit = (e) => {
+	const sendInternshipData = (e) => {
 		axios
 			.get("http://127.0.0.1:8000/v1/api/internship/", {
 				params: {
@@ -50,8 +51,12 @@ const HomePage = () => {
 			.catch((error) => {
 				console.log(error.data);
 			});
+	}
 
-		e.preventDefault();
+	const handleInternshipSearchSubmit = (e) => {
+			sendInternshipData();
+			e.preventDefault();
+			setRedirect(true);
 	};
 
 	return (
@@ -106,6 +111,7 @@ const HomePage = () => {
 					<div>Make more advanced search</div>
 				</form>
 			</div>
+			{ redirect ? (<Redirect push to="/search/internships/"/>) : null }
 		</div>
 	);
 };
