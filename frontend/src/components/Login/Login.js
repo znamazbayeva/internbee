@@ -5,8 +5,7 @@ import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./Login.css";
-function Login({ login, isAuthenticated, isClient }) {
-  console.log(isClient);
+function Login({ login, isAuthenticated, isStudent }) {
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -23,9 +22,9 @@ function Login({ login, isAuthenticated, isClient }) {
     login({ username, password });
   };
 
-	if (isAuthenticated && isClient) {
+	if (isAuthenticated && isStudent) {
 		return <Redirect to="/student/dashboard" />;
-	} else if (isAuthenticated && !isClient) {
+	} else if (isAuthenticated && !isStudent) {
 		return <Redirect to="/freelance/dashboard" />;
 	} else {
 		return (
@@ -69,12 +68,12 @@ function Login({ login, isAuthenticated, isClient }) {
 Login.propTypes = {
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
-  isClient: PropTypes.bool,
+  isStudents: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  isClient: state.auth.isClient,
+  isStudent: state.auth.isStudent,
 });
 
 export default connect(mapStateToProps, { login })(Login);
