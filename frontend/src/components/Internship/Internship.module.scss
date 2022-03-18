@@ -1,0 +1,101 @@
+.general {
+    background-color: #f0f0f2;
+    padding: 2rem 6rem;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.container{
+    display: flex;
+    box-shadow: #d9d7e0 0px 4px 16px,
+    #d9d7e0 0px 8px 24px;
+    color: #232129;
+	background-color: #fcfaff;
+	border-radius: 4px;
+	font-weight: bold;
+    padding: 2rem 2rem;
+    max-height: 10rem;
+
+    .int__info {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .detail {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-right: 1rem;
+        }
+
+        .name {
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+
+        .button {
+            color: white;
+            background-color: #663399;
+            border-radius: 4px;
+            font-weight: bold;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        
+        .button:hover {
+            background-color: #452475;
+            .arrow {
+                margin-left: 10px;
+            }
+        }
+    }
+    .imgLogo {
+        
+        height: 95px;
+        width: 100px;
+        margin-right: 2rem;
+        background-color:#d9bae8 ;
+        padding: 0.75rem;
+        border-radius: 0.75rem;
+
+    }
+
+
+
+    .first__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+        height: 100%;
+    
+
+        .company_name{
+            font-size: 1.5rem;
+        
+        }
+        .name {
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+        .created_time {
+            font-size: 1rem;
+            font-weight: 400;
+
+        }
+
+        .sub {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 0.25rem;
+        }
+
+        .sub > div {
+            margin-right: 1rem;
+        }
+    }
+}
