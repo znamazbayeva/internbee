@@ -23,7 +23,7 @@ function Login({ login, isAuthenticated, isStudent }) {
   };
 
 	if (isAuthenticated && isStudent) {
-		return <Redirect to="/student/dashboard" />;
+		return <Redirect to="/verify/" />;
 	} else if (isAuthenticated && !isStudent) {
 		return <Redirect to="/freelance/dashboard" />;
 	} else {

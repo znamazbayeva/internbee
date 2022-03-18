@@ -18,16 +18,6 @@ const HomePage = () => {
 
 	const [redirect, setRedirect] = useState(false);
 
-	// useEffect(() => {
-	// 	if (list.length == 0) {
-	// 		axios
-	// 			.get("http://127.0.0.1:8000/v1/api/internships/", {params:{key:value, key1:value1}}).then((data)=>{}).catch((error)=>{})
-	// 			.then((response) => {
-	// 				console.log(response.data);
-	// 				setList(response.data);
-	// 			});
-	// 	}
-	// }, []);
 
 	const { name, location, category } = internship;
 
