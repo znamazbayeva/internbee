@@ -13,6 +13,10 @@ class InternshipSerializer(serializers.ModelSerializer):
         fields = '__all__'
         depth = 1
 
+class StudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Student
+        fields = '__all__'
 class CompanySignupSerializer(serializers.ModelSerializer):
     class Meta:
         model=User

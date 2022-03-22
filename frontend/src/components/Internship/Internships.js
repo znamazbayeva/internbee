@@ -1,26 +1,54 @@
-import React from 'react'
-import {useSelector} from "react-redux"
-import Internship from './Internship';
-import SearchInternship from "./SearchInternship"
-import styles from "./Internship.module.scss"
-function Internships() {
-    const state = useSelector((state) => state.internship);
-    console.log(state)
-  return (
-    <div className={styles.general}>
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import Internship from "./Internship";
+import axios from "axios";
+import SearchInternship from "./SearchInternship";
+import styles from "./Internship.module.scss";
+import { addInternshipList } from "../../actions/internship";
 
-    <div style={{width: "100%"}}>
-    <h3 style={{marginLeft: "12px"}}>These are internships recommended based on your likings</h3>
-    {state.internships.map((internship) => (
-        <Internship 
-            key = {internship._id}
-            internship = {internship}
-        />
-    ))}
-    </div>
-    <SearchInternship style={{marginTop: "30px"}} />
-    </div>
-  )
+function Internships() {
+	const dispatch = useDispatch();
+	const state = useSelector((state) => state.internship);
+
+	useEffect(() => {
+		axios
+			.get("http://127.0.0.1:8000/v1/api/internships/")
+			.then((res) => {
+				dispatch(addInternshipList(res.data));
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
+
+	return (
+		<div className={styles.general}>
+			<div style={{ flexGrow: 1.2 }}>
+				<SearchInternship style={{ marginTop: "30px" }} />
+			</div>
+
+			<div style={{ flexGrow: 2 }}>
+				<div
+					style={{
+						margin: "1rem",
+						display: "flex",
+						justifyContent: "space-between",
+						alignItems: "center",
+					}}
+				>
+					{
+						// make sort by component
+					}
+					<h3>All internships</h3>
+					<div>Sort by</div>
+				</div>
+
+				{state.internships.map((internship) => (
+					<Internship key={internship._id} internship={internship} />
+				))}
+			</div>
+		</div>
+	);
 }
 
-export default Internships
+export default Internships;

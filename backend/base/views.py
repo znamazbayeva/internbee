@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Internship, User
+from .models import Internship, User, Student
 from rest_framework import generics, permissions, status
-from .serializers import InternshipSerializer, UserSerializer, CompanySignupSerializer, StudentSignupSerializer
+from .serializers import InternshipSerializer, UserSerializer, CompanySignupSerializer, StudentSignupSerializer, StudentSerializer
 from rest_framework.generics import (ListCreateAPIView,RetrieveUpdateDestroyAPIView, GenericAPIView) 
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .permissions import IsOwnerProfileOrReadOnly
@@ -11,6 +11,8 @@ from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from .permissions import IsStudentUser, IsCompanyUser
 from rest_framework.authtoken.views import ObtainAuthToken
+from django.core.mail import EmailMessage
+import random
 
 # Create your views here.
 
@@ -20,6 +22,12 @@ def getInternships(request):
     serializer = InternshipSerializer(internships, many=True)
     return Response(serializer.data)
 
+
+@api_view(['GET'])
+def getStudent(request, pk):
+    student = Student.objects.get(user = pk)
+    serializer = StudentSerializer(student, many=False)
+    return Response(serializer.data)
 class InternshipListView(generics.ListCreateAPIView):
     model = Internship
     serializer_class = InternshipSerializer
@@ -67,6 +75,15 @@ class CompanySignupView(GenericAPIView):
             "token":Token.objects.get(user=user).key,
             "message":"account created successfully"
         })
+
+def send_email(request):
+    n = random.randint(100000,999999)
+    email = EmailMessage(
+        'Please verify your email',
+        'This is your verification number' + str(n),
+        to=[UserSerializer.email]
+    )
+    email.send()
 
 
 class StudentSignupView(GenericAPIView):

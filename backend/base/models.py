@@ -35,6 +35,7 @@ class Company(models.Model):
     description = models.CharField(max_length=200, null=True, blank=True)
     cityName = models.CharField(max_length=200, null=True, blank=True)
     address = models.CharField(max_length=200, null=True, blank=True)
+    img = models.CharField(max_length=1000, null=True, blank=True)
     def __str__(self):
         return self.user.email
 
@@ -48,6 +49,7 @@ class Student(models.Model):
     major = models.CharField(default="",max_length=100, null=True, blank=True)
     gender = models.CharField(max_length=200, null=True, blank=True)
     cGpa = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True)
+    img = models.CharField(max_length=1000, null=True, blank=True)
     def __str__(self):
         return self.user.email
 
@@ -80,6 +82,7 @@ class Internship(models.Model):
     salary = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
     _id = models.AutoField(primary_key=True, editable=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    video = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return str(self.name)

@@ -9,7 +9,7 @@ import { addInternshipList } from "../actions/internship";
 const HomePage = () => {
 	const dispatch = useDispatch();
 	const locat = useLocation();
-	// const [list, setList] = useState([]);
+
 	const [internship, setInternship] = useState({
 		name: "",
 		location: "",

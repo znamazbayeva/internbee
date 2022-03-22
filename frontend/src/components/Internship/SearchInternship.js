@@ -1,103 +1,166 @@
 import React, { useState, Component, useEffect } from "react";
-import { Link, Redirect, useLocation } from "react-router-dom";
-import axios from "axios";
+import { useLocation } from "react-router-dom";
+import {FormGroup } from "@mui/material";
+import { FormControlLabel } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { addInternshipList } from "../../actions/internship";
+import Checkbox from "@mui/material/Checkbox";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { styled } from "@mui/material/styles";
+
+const MyAccordion = styled(Accordion)(({ theme }) => ({
+	backgroundColor: "transparent",
+	boxShadow: "none",
+}));
 function SearchInternship() {
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const locat = useLocation();
-	// const [list, setList] = useState([]);
+
 	const [internship, setInternship] = useState({
 		name: "",
 		location: "",
 		category: "",
 	});
 
-	const [redirect, setRedirect] = useState(false);
+	const [type, setType] = useState({
+		full_time: false,
+		part_time: false,
+		remote: false,
+	});
+	const [degree, setDegree] = useState({
+		bachelor: false,
+		master: false,
+		phd: false,
+		high_school: false,
+		no_degree: false,
+	});
 
-	// useEffect(() => {
-	// 	if (list.length == 0) {
-	// 		axios
-	// 			.get("http://127.0.0.1:8000/v1/api/internships/", {params:{key:value, key1:value1}}).then((data)=>{}).catch((error)=>{})
-	// 			.then((response) => {
-	// 				console.log(response.data);
-	// 				setList(response.data);
-	// 			});
-	// 	}
-	// }, []);
+	const { full_time, part_time, remote } = type;
+	const { bachelor, master, phd, high_school, no_degree } = type;
 
 	const { name, location, category } = internship;
 
-	const internshipSearchChange = (e) => {
+	const inputChange = (e) => {
 		setInternship({ ...internship, [e.target.name]: e.target.value });
 	};
 
-	const sendInternshipData = (e) => {
-		axios
-			.get("http://127.0.0.1:8000/v1/api/internship/", {
-				params: {
-					name: internship.name,
-					location: internship.location,
-					category: internship.category,
-				},
-			})
-			.then((response) => {
-				console.log(response.data);
-				dispatch(addInternshipList(response.data));
-			})
-			.catch((error) => {
-				console.log(error.data);
-			});
-	}
-
-	const handleInternshipSearchSubmit = (e) => {
-			sendInternshipData();
-			e.preventDefault();
-			setRedirect(true);
+	const handleTypeChange = (event) => {
+		setType({ ...type, [event.target.name]: event.target.checked });
 	};
-  return (
-    <div>				<form
-    className="internship__search-form"
-    onSubmit={(e) => handleInternshipSearchSubmit(e)}
->
-    <h2 className="internship__title">Find Internship</h2>
-    <div className="input__container">
-        <label>What job are you looking for?</label>
-        <input
-            type="text"
-            className="internship__input"
-            placeholder="Software Engineer Intern"
-            name="name"
-            value={name}
-            onChange={(e) => internshipSearchChange(e)}
-        />
-    </div>
-    <div className="input__container">
-        <label>Where?</label>
-        <input
-            type="text"
-            className="internship__input"
-            placeholder="Almaty"
-            name="location"
-            value={location}
-            onChange={(e) => internshipSearchChange(e)}
-        />
-    </div>
-    <div className="input__container">
-        <label>Categories</label>
-        <input
-            type="text"
-            className="internship__input"
-            placeholder="Agrobusiness"
-            name="category"
-            value={category}
-            onChange={(e) => internshipSearchChange(e)}
-        />
-    </div>
-    <button className="login__btn">Search</button>
-    <div>Make more advanced search</div>
-</form></div>
-  )
+	const handleDegreeChange = (event) => {
+		setDegree({ ...degree, [event.target.name]: event.target.checked });
+	};
+
+	return (
+		<div>
+			<form>
+				<div>
+					<MyAccordion>
+						<AccordionSummary expandIcon={<ExpandMoreIcon />}>
+							<h5>Field of Studies</h5>
+						</AccordionSummary>
+						<AccordionDetails>
+							<FormGroup>
+								<FormControlLabel
+									control={
+										<Checkbox
+											onChange={handleDegreeChange}
+											checked={bachelor}
+											name="bachelor"
+										/>
+									}
+									label="Bachelor"
+								/>
+								<FormControlLabel
+									control={
+										<Checkbox
+											onChange={handleDegreeChange}
+											checked={master}
+											name="master"
+										/>
+									}
+									label="Master"
+								/>
+								<FormControlLabel
+									control={
+										<Checkbox
+											onChange={handleDegreeChange}
+											checked={phd}
+											name="phd"
+										/>
+									}
+									label="PhD"
+								/>
+								<FormControlLabel
+									control={
+										<Checkbox
+											onChange={handleDegreeChange}
+											checked={high_school}
+											name="high_school"
+										/>
+									}
+									label="High School"
+								/>
+								<FormControlLabel
+									control={
+										<Checkbox
+											onChange={handleDegreeChange}
+											checked={no_degree}
+											name="no_degree"
+										/>
+									}
+									label="No Education"
+								/>
+							</FormGroup>
+						</AccordionDetails>
+					</MyAccordion>
+				</div>
+				<div>
+					<MyAccordion>
+						<AccordionSummary expandIcon={<ExpandMoreIcon />}>
+							<h5>Commitment</h5>
+						</AccordionSummary>
+						<AccordionDetails>
+							<FormGroup>
+								<FormControlLabel
+									control={
+										<Checkbox
+											onChange={handleTypeChange}
+											checked={full_time}
+											name="full_time"
+										/>
+									}
+									label="Full time"
+								/>
+								<FormControlLabel
+									control={
+										<Checkbox
+											onChange={handleTypeChange}
+											checked={part_time}
+											name="part_time"
+										/>
+									}
+									label="Part time"
+								/>
+								<FormControlLabel
+									control={
+										<Checkbox
+											onChange={handleTypeChange}
+											checked={remote}
+											name="remote"
+										/>
+									}
+									label="Remote"
+								/>
+							</FormGroup>
+						</AccordionDetails>
+					</MyAccordion>
+				</div>
+			</form>
+		</div>
+	);
 }
 
-export default SearchInternship
+export default SearchInternship;
