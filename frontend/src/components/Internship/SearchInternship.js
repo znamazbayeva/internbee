@@ -1,6 +1,6 @@
 import React, { useState, Component, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import {FormGroup } from "@mui/material";
+import { FormGroup } from "@mui/material";
 import { FormControlLabel } from "@mui/material";
 import { useDispatch } from "react-redux";
 import Checkbox from "@mui/material/Checkbox";
