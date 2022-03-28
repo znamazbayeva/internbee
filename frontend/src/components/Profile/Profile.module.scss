@@ -1,19 +1,83 @@
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-
+.outer_container {
+  display: flex;
+  justify-content: flex-start;
+  width: auto;
+  margin-left: 100px;
+  margin-right: 100px;
 }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: 4px;
+  width: auto;
+  margin: 1rem;
+  background-color: #fcfaff;
+  box-shadow: #d9d7e0 0px 4px 16px, #d9d7e0 0px 8px 24px;
+  padding: 2rem 2rem;
+  flex-grow: 1;
+}
+
+.welcome_msg {
+  font-weight: bold;
+}
+
 .student_hi {
-    flex-direction: column;
-    margin: 1rem;
-    display: flex;
-    box-shadow: #d9d7e0 0px 4px 16px,
-    #d9d7e0 0px 8px 24px;
-    color: #232129;
-    background-color: #fcfaff;
-    border-radius: 4px;
-    font-weight: bold;
-    padding: 2rem 2rem;
-    flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  color: #232129;
+  flex-grow: 0;
+  //   display: flex;
+  //   flex-grow: 1;
+}
+
+.profile_settings {
+  width: auto;
+
+  margin: 1rem;
+}
+
+.profile_settings_options {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.profile_settings_options span {
+  margin: 0.1rem;
+  font-size: 0.8rem;
+}
+.student_hi img {
+  border-radius: 50%;
+  border: 1px solid blueviolet;
+}
+
+.personal_info_form {
+  display: flex;
+  flex-direction: row;
+}
+
+.column1 {
+  flex-direction: column;
+  margin-right: 4rem;
+}
+
+.column2 {
+  flex-direction: column;
+}
+
+.update_info_button {
+  background-color: blueviolet;
+  color: #fcfaff;
+  margin-top: 1rem;
+  border-radius: 4px;
+  width: 100%;
+  text-align: center;
+}
+
+.input_group label {
+  display: block;
+}
+
+.input_group input {
+  width: 18rem;
 }
