@@ -20,5 +20,5 @@ from django.contrib.auth import urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('v1/api/', include('base.urls')),
-
+    path('v1/api/internship/', include('internship.urls')),
 ]

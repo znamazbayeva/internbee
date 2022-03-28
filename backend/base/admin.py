@@ -4,6 +4,4 @@ from .models import *
 admin.site.register(User)
 admin.site.register(Company)
 admin.site.register(Student)
-admin.site.register(Internship)
-admin.site.register(InternshipLike)
 # Register your models here.
