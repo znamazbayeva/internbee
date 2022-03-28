@@ -69,12 +69,6 @@ class Student(models.Model):
     def __str__(self):
         return self.user.email
 
-class InternshipLike(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    internship = models.ForeignKey(Internship, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True)
-    def __str__(self):
-        return self.student.user.email
 
 # @receiver(post_save, sender=User)
 # def create_user_profile(sender, instance, created, **kwargs):
@@ -107,6 +101,12 @@ class Internship(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     video = models.CharField(max_length=200, null=True, blank=True)
 
+class InternshipLike(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    internship = models.ForeignKey(Internship, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.student.user.email
 
 # class Skills(models.Model):
 #     name = models.CharField(max_length=200, null=True, blank=True)
