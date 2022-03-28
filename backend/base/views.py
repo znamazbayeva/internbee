@@ -11,8 +11,6 @@ from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from .permissions import IsStudentUser, IsCompanyUser
 from rest_framework.authtoken.views import ObtainAuthToken
-from django.core.mail import EmailMessage
-import random
 from django.shortcuts import get_object_or_404
 
 # Create your views here.
