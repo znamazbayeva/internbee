@@ -25,7 +25,7 @@ function Login({ login, isAuthenticated, isStudent }) {
 	if (isAuthenticated && isStudent) {
 		return <Redirect to="/verify/" />;
 	} else if (isAuthenticated && !isStudent) {
-		return <Redirect to="/freelance/dashboard" />;
+		return <Redirect to="/company/dashboard" />;
 	} else {
 		return (
 			<div className="LoginMain">
@@ -68,7 +68,7 @@ function Login({ login, isAuthenticated, isStudent }) {
 Login.propTypes = {
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
-  isStudents: PropTypes.bool,
+  isStudent: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({

@@ -33,7 +33,7 @@ function App() {
 					/>
 					<FPrivateRoute
 						exact
-						path="/freelance/dashboard"
+						path="/company/dashboard"
 						component={FreelanceDashboard}
 					/>
 				</Switch>

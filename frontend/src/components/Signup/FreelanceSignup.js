@@ -32,7 +32,7 @@ const FreelanceSignup = ({
 		create_freelanceuser(newUser);
 	};
 	if (isAuthenticated && !isClient) {
-		return <Redirect to="/freelance/dashboard" />;
+		return <Redirect to="/company/dashboard" />;
 	}
 	return (
 		<div className="singup container">

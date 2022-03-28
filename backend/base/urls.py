@@ -12,4 +12,7 @@ urlpatterns = [
     path('logout/', views.LogoutView.as_view(), name='logout-view'),
     path('company/dashboard/', views.CompanyOnlyView.as_view(), name='company-dashboard'),
     path('student/dashboard/', views.StudentOnlyView.as_view(), name='student-dashboard'),
+    path('student/verify/', views.send_email, name='student-verify'),
+    path('student/<int:pk>', views.getStudent, name='student-verify'),
+    path('like/<int:pk>', views.InternshipLikeAPIView.as_view(),  name='internship-like'),
 ]

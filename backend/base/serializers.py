@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from .models import Internship, User, Student, Company
-from djoser.serializers import UserCreateSerializer as BaseUserRegistrationSerializer
+from .models import Internship, User, Student, Company, InternshipLike
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -13,6 +12,11 @@ class InternshipSerializer(serializers.ModelSerializer):
         fields = '__all__'
         depth = 1
 
+class StudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Student
+        fields = '__all__'
+        depth = 1
 class CompanySignupSerializer(serializers.ModelSerializer):
     class Meta:
         model=User
@@ -54,3 +58,10 @@ class StudentSignupSerializer(serializers.ModelSerializer):
         user.save()
         Student.objects.create(user=user)
         return user
+
+class InternshipLikeSerializer(serializers.ModelSerializer):
+    student = serializers.PrimaryKeyRelatedField(read_only=True)
+
+    class Meta:
+        model = InternshipLike
+        fields = ('id', 'student', 'internship')
