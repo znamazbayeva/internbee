@@ -1,18 +1,17 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Internship, User, Student
+from .models import Internship, User, Student, InternshipLike
 from rest_framework import generics, permissions, status
-from .serializers import InternshipSerializer, UserSerializer, CompanySignupSerializer, StudentSignupSerializer, StudentSerializer
-from rest_framework.generics import (ListCreateAPIView,RetrieveUpdateDestroyAPIView, GenericAPIView) 
+from .serializers import InternshipSerializer, UserSerializer, CompanySignupSerializer, StudentSignupSerializer, StudentSerializer, InternshipLikeSerializer
+from rest_framework.generics import (ListCreateAPIView,RetrieveUpdateDestroyAPIView, GenericAPIView, CreateAPIView) 
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .permissions import IsOwnerProfileOrReadOnly
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from .permissions import IsStudentUser, IsCompanyUser
 from rest_framework.authtoken.views import ObtainAuthToken
-from django.core.mail import EmailMessage
-import random
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -21,7 +20,6 @@ def getInternships(request):
     internships = Internship.objects.all()
     serializer = InternshipSerializer(internships, many=True)
     return Response(serializer.data)
-
 
 @api_view(['GET'])
 def getStudent(request, pk):
@@ -131,3 +129,34 @@ class CompanyOnlyView(generics.RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+
+class InternshipLikeAPIView(generics.CreateAPIView):
+    """
+    Like, Dislike a recipe
+    """
+    serializer_class = InternshipLikeSerializer
+    permission_classes =[]
+
+    def post(self, request, pk):
+        print(request)
+        internship = get_object_or_404(Internship, _id=self.kwargs['pk'])
+        student = get_object_or_404(Student, user=request.user.id)
+        print(internship)
+        print(student)
+        new_like, created = InternshipLike.objects.get_or_create(
+            student=student, internship = internship)
+        if created:
+            new_like.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        internship = get_object_or_404(Internship, id=self.kwargs['pk'])
+        like = InternshipLike.objects.filter(student=request.user, internship=internship)
+        if like.exists():
+            like.delete()
+            return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
