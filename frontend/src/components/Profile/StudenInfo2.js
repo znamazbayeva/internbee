@@ -3,7 +3,11 @@ import styles from "./Profile.module.scss";
 
 function StudenInfo2({ student }) {
   return (
-    <div className={styles.container}>
+    <div className={styles.container}
+    style={{
+      marginRight: '2.5rem',
+    }}
+    >
       <div className={styles.profile_settings}>
         <h3>Profile Settings</h3>
         <div className={styles.profile_settings_options}>

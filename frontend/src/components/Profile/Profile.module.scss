@@ -13,14 +13,19 @@
   border-radius: 4px;
   width: auto;
   margin: 1rem;
-  background-color: #fcfaff;
-  box-shadow: #d9d7e0 0px 4px 16px, #d9d7e0 0px 8px 24px;
+  background-color: white;
+  box-shadow: #d9d7e0 0px 1px 2px, #d9d7e0 0px 1px 2px;
   padding: 2rem 2rem;
   flex-grow: 1;
 }
 
 .welcome_msg {
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .student_hi {
@@ -28,13 +33,10 @@
   align-items: center;
   color: #232129;
   flex-grow: 0;
-  //   display: flex;
-  //   flex-grow: 1;
 }
 
 .profile_settings {
   width: auto;
-
   margin: 1rem;
 }
 

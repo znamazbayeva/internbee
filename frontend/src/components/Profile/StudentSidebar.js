@@ -5,8 +5,31 @@ import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import styles from "./Profile.module.scss";
+import { styled } from "@mui/material/styles";
 
-function StudentSidebar() {
+const MyButton = styled(Button)(({ theme }) => ({
+	backgroundColor: "transparent",
+	boxShadow: "none",
+	color: "black",
+	textAlign: "center",
+	width: "100%",
+	margin: '0.25rem',
+	textTransform: 'none',
+	fontSize: "1rem",
+	fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'",
+	fontWeight: '300',
+	'&:hover':{
+		color: 'blueviolet',
+		backgroundColor: '#f1defa',
+		borderRadius: '4px',
+		transition: 'all 0.2s ease-out',
+	},
+	':first-of-type' :{
+		marginRight: '4px',
+	}
+}));
+function StudentSidebar({student}) {
 	return (
 		<div
 			style={{
@@ -16,27 +39,33 @@ function StudentSidebar() {
 				alignItems: "flex-start",
 				marginLeft: "6rem",
 			}}
+			className={styles.student_hi + " " + styles.container}
 		>
-			<Button>
+	
+      <div className={styles.welcome_msg}>
+				<img src={student.img} alt="" width={120} height={120} style={{marginBottom: '1rem'}} />
+        <div style={{fontSize: '1rem', marginBottom: '0.5rem'}}>Welcome, {student.firstName} {student.lastName}!</div>
+      </div>
+			<MyButton>
 				<HomeOutlinedIcon />
-				Dashboard
-			</Button>
-			<Button >
+				<div>Dashboard</div>
+			</MyButton>
+			<MyButton >
 				<ListAltOutlinedIcon />
-				My Applications
-			</Button>
-			<Button>
+				<div>My Applications</div>
+			</MyButton>
+			<MyButton>
 				<SearchOutlinedIcon />
-				Find jobs
-			</Button>
-			<Button>
+				<div>Find internships</div>
+			</MyButton>
+			<MyButton>
 				<BusinessOutlinedIcon />
-				Browse Companies
-			</Button>
-			<Button>
+				<div>Browse Companies</div>
+			</MyButton>
+			<MyButton>
 				<PersonOutlineOutlinedIcon />
-				Public Profile
-			</Button>
+				<div>Public Profile</div>
+			</MyButton>
 		</div>
 	);
 }

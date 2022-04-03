@@ -3,7 +3,7 @@ import HomePage from "./components/HomePage";
 import ClientSignup from "./components/Signup/ClientSignup";
 import FreelanceSignup from "./components/Signup/FreelanceSignup";
 import Login from "./components/Login/Login";
-import ClientDashboard from "./components/Profile/ClientDashboard";
+import StudentDashboard from "./components/Profile/StudentDashboard";
 import FreelanceDashboard from "./components/Profile/FreelanceDashboard";
 
 import { CPrivateRoute, FPrivateRoute } from "./private/PrivateRoute";
@@ -16,7 +16,7 @@ import VerifyEmail from "./components/Login/VerifyEmail";
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App" style={{backgroundColor: '#f0f0f2'}}>
         <Navbar />
         <Switch>
           <Route exact path="/" component={HomePage} />
@@ -29,7 +29,7 @@ function App() {
 					<CPrivateRoute
 						exact
 						path="/student/dashboard"
-						component={ClientDashboard}
+						component={StudentDashboard}
 					/>
 					<FPrivateRoute
 						exact
