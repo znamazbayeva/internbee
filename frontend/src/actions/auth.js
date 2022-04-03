@@ -80,7 +80,7 @@ export const create_clientuser =
     const body = JSON.stringify({ email, password });
     console.log(body);
     axios
-      .post("http://127.0.0.1:8000/v1/api/signup/student/", body, config)
+      .post("http://127.0.0.1:8000/v1/api/student/signup/", body, config)
       .then((res) => {
         dispatch({
           type: REGISTER_CUSER_SUCCESS,

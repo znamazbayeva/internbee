@@ -4,7 +4,7 @@ from .serializers import InternshipSerializer, InternshipLikeSerializer
 from rest_framework import generics, status
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from base.models import Student
+from student.models import Student
 
 class InternshipListView(generics.ListCreateAPIView):
     model = Internship
