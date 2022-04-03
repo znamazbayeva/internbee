@@ -11,7 +11,8 @@ function StudentDashboard() {
 	const [student, setStudent] = useState(null);
 
 	useEffect(() => {
-		axios
+		if(state.user_id) {
+			axios
 			.get(`http://127.0.0.1:8000/v1/api/student/${state.user_id}/`)
 			.then((res) => {
 				setStudent(res.data);
@@ -19,11 +20,13 @@ function StudentDashboard() {
 			.catch((err) => {
 				console.log(err);
 			});
+		}
 	}, []);
 	const dispatch = useDispatch();
+	
 	useEffect(() => {
 		dispatch(getStudentUser());
-	}, [dispatch]);
+	}, []);
 	return (
 		<div className={styles.containter} style={{ display: "flex", height: '100vh'}}>
 		{student != null ? 	<StudentSidebar student={student} /> : null}
