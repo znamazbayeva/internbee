@@ -1,15 +1,16 @@
 # Internbee
 Internship Platform
 
-To begin with React:
-- Enter frontend file
-- install requiremenets
-- npm start
+# Frontend (React.js)
+### Start frontend:
+- Enter frontend file (cd frontend)
+- Install requiremenets (npm install)
+- Run the application (npm run start)
 
 
-To begin with Django:
-- Create virtualenv
-- Activate virtualenv
-- Install all requirements
-- Enter backend folder
-- python manage.py runserver
+### Start backend:
+- Create virtualenv (virtualenv env)
+- Activate virtualenv (source env/bin/activate)
+- Install all requirements (pip install -r requirements.txt)
+- Enter backend folder (cd backend)
+- Start the application (python manage.py runserver)
