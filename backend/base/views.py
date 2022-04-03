@@ -24,7 +24,12 @@ class StudentDetailView(RetrieveAPIView):
     queryset=Student.objects.all()
     serializer_class=StudentSerializer
     permission_classes=[IsOwnerProfileOrReadOnly | IsAdminUser]
-
+    def get(self, request, *args, **kwargs):
+        student = get_object_or_404(Student, user=self.kwargs['pk'])
+        serializer = self.get_serializer(student, data=request.data)
+        if serializer.is_valid():
+            return Response(serializer.data)
+        return Response({"message": "serializer is not valid"})
 #Get list of users    
 class UserListCreateView(ListCreateAPIView):
     queryset= User.objects.all()
