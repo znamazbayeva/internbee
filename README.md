@@ -7,7 +7,7 @@ Internship Platform
 - Install requiremenets (npm install)
 - Run the application (npm run start)
 
-
+# Backend
 ### Start backend:
 - Create virtualenv (virtualenv env)
 - Activate virtualenv (source env/bin/activate)
