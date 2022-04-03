@@ -12,7 +12,7 @@ function Internships() {
 
 	useEffect(() => {
 		axios
-			.get("http://127.0.0.1:8000/v1/api/internships/")
+			.get("http://127.0.0.1:8000/v1/api/internship/all/")
 			.then((res) => {
 				dispatch(addInternshipList(res.data));
 			})
