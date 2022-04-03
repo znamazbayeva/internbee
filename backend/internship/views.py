@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.response import Response
 from .models import Internship, InternshipLike
 from .serializers import InternshipSerializer, InternshipLikeSerializer
