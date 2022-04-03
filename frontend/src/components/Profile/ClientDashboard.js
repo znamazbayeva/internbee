@@ -13,10 +13,10 @@ function ClientDashboard() {
 	console.log(state.user_id);
 	useEffect(() => {
 		axios
-			.get("http://127.0.0.1:8000/v1/api/student/" + state.user_id.toString())
+			.get("http://127.0.0.1:8000/v1/api/student/" + state.user_id.toString() + '/')
 			.then((res) => {
 				setStudent(res.data);
-				console.log(student);
+				console.log(res.data);
 			})
 			.catch((err) => {
 				console.log(err);
