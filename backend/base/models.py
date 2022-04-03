@@ -6,7 +6,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .managers  import UserManager
 from django.conf import settings
-
 from rest_framework.authtoken.models import Token
 
 class User(AbstractUser):
@@ -39,23 +38,7 @@ class Company(models.Model):
     def __str__(self):
         return self.user.email
 
-class Internship(models.Model):
-    #if company is deleted the internships are deleted too
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True)
-    name = models.CharField(max_length=200, null=True, blank=True)
-    location = models.CharField(max_length=200, null=True, blank=True)
-    category = models.CharField(max_length=200, null=True, blank=True)
-    description = models.CharField(max_length=200, null=True, blank=True)
-    requirements = models.CharField(max_length=200, null=True, blank=True)
-    duration = models.CharField(max_length=200, null=True, blank=True)
-    skills = models.CharField(max_length=200, null=True, blank=True)
-    responsibilities = models.CharField(max_length=200, null=True, blank=True)
-    salary = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-    _id = models.AutoField(primary_key=True, editable=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    video = models.CharField(max_length=200, null=True, blank=True)
-    def __str__(self):
-        return str(self.name)
+
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     sid = models.AutoField(unique=True, primary_key=True)
@@ -85,28 +68,6 @@ class Student(models.Model):
 #     elif instance.is_company:
 #         instance.company.save()
 
-class Internship(models.Model):
-    #if company is deleted the internships are deleted too
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True)
-    name = models.CharField(max_length=200, null=True, blank=True)
-    location = models.CharField(max_length=200, null=True, blank=True)
-    category = models.CharField(max_length=200, null=True, blank=True)
-    description = models.CharField(max_length=200, null=True, blank=True)
-    requirements = models.CharField(max_length=200, null=True, blank=True)
-    duration = models.CharField(max_length=200, null=True, blank=True)
-    skills = models.CharField(max_length=200, null=True, blank=True)
-    responsibilities = models.CharField(max_length=200, null=True, blank=True)
-    salary = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-    _id = models.AutoField(primary_key=True, editable=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    video = models.CharField(max_length=200, null=True, blank=True)
-
-class InternshipLike(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    internship = models.ForeignKey(Internship, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True)
-    def __str__(self):
-        return self.student.user.email
 
 # class Skills(models.Model):
 #     name = models.CharField(max_length=200, null=True, blank=True)

@@ -1,16 +1,10 @@
 from rest_framework import serializers
-from .models import Internship, User, Student, Company, InternshipLike
+from .models import User, Student, Company
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['email', 'password', 'is_student', 'is_company']
-
-class InternshipSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Internship
-        fields = '__all__'
-        depth = 1
 
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -37,7 +31,6 @@ class CompanySignupSerializer(serializers.ModelSerializer):
         Company.objects.create(user=user)
         return user
 
-
 class StudentSignupSerializer(serializers.ModelSerializer):
     class Meta:
         model=User
@@ -59,9 +52,3 @@ class StudentSignupSerializer(serializers.ModelSerializer):
         Student.objects.create(user=user)
         return user
 
-class InternshipLikeSerializer(serializers.ModelSerializer):
-    student = serializers.PrimaryKeyRelatedField(read_only=True)
-
-    class Meta:
-        model = InternshipLike
-        fields = ('id', 'student', 'internship')
