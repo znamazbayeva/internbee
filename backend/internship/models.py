@@ -19,6 +19,10 @@ class Internship(models.Model):
     def __str__(self):
         return str(self.name)
 
+    def get_total_number_of_likes(self):
+        return self.internshiplike_set.count()
+
+
 class InternshipLike(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     internship = models.ForeignKey(Internship, on_delete=models.CASCADE)
