@@ -1,8 +1,9 @@
 from rest_framework.response import Response
 from .models import Application
-from .serializers import *
+from .serializers import ApplicationSerializer
 from base.models import *
-from internship.models import *
+from student.models import Student
+from internship.models import Internship
 from rest_framework import generics, status
 from django.shortcuts import get_object_or_404
 

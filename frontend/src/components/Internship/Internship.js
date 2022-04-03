@@ -41,7 +41,7 @@ function Internship({ internship }) {
 		return Math.floor(Difference_In_Days).toString();
 	};
 	return (
-		<div className={styles.container}>
+		<div className={styles.container + " "}>
 			<img src={internship.company.img} alt="" className={styles.imgLogo} />
 			<div className={styles.int__info}>
 				<div className={styles.first__info}>

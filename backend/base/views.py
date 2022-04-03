@@ -1,32 +1,24 @@
-from urllib import response
-from django.shortcuts import render
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import User, Student, Company
+from .models import User, Company
 from rest_framework import generics, permissions, status
-from .serializers import UserSerializer, CompanySignupSerializer, StudentSignupSerializer, StudentSerializer, CompanySerializer
+from .serializers import UserSerializer, CompanySignupSerializer, CompanySerializer
 from rest_framework.generics import (ListCreateAPIView,RetrieveUpdateDestroyAPIView, GenericAPIView, CreateAPIView, RetrieveAPIView) 
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .permissions import IsOwnerProfileOrReadOnly
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
-from .permissions import IsStudentUser, IsCompanyUser
+from .permissions import IsCompanyUser
 from rest_framework.authtoken.views import ObtainAuthToken
 from django.shortcuts import get_object_or_404
 
-# Get list of students
-class StudentListView(generics.ListAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
-
-# Get certain student with id (pk)
-class StudentDetailView(RetrieveAPIView):
-    queryset=Student.objects.all()
-    serializer_class=StudentSerializer
+# Get certain company with user id (pk)
+class CompanyDetailView(RetrieveAPIView):
+    queryset=Company.objects.all()
+    serializer_class=CompanySerializer
     permission_classes=[IsOwnerProfileOrReadOnly | IsAdminUser]
     def get(self, request, *args, **kwargs):
-        student = get_object_or_404(Student, user=self.kwargs['pk'])
-        serializer = self.get_serializer(student, data=request.data)
+        company = get_object_or_404(Company, user=self.kwargs['pk'])
+        serializer = self.get_serializer(company, data=request.data)
         if serializer.is_valid():
             return Response(serializer.data)
         return Response({"message": "serializer is not valid"})
@@ -59,18 +51,6 @@ class CompanySignupView(GenericAPIView):
             "message":"account created successfully"
         })
 
-# Signup of student user
-class StudentSignupView(GenericAPIView):
-    serializer_class=StudentSignupSerializer
-    def post(self, request, *args, **kwargs):
-        serializer=self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user=serializer.save()
-        return Response({
-            "user":UserSerializer(user, context=self.get_serializer_context()).data,
-            "token":Token.objects.get(user=user).key,
-            "message":"account created successfully"
-        })
 
 # Authentication
 class CustomAuthToken(ObtainAuthToken):
@@ -93,13 +73,6 @@ class LogoutView(APIView):
         return Response(status=status.HTTP_200_OK)
 
 
-class StudentOnlyView(generics.RetrieveAPIView):
-    permission_classes=[permissions.IsAuthenticated&IsStudentUser]
-    serializer_class=UserSerializer
-
-    def get_object(self):
-        return self.request.user
-
 class CompanyOnlyView(generics.RetrieveAPIView):
     permission_classes=[permissions.IsAuthenticated&IsCompanyUser]
     serializer_class=UserSerializer
@@ -107,16 +80,6 @@ class CompanyOnlyView(generics.RetrieveAPIView):
     def get_object(self):
         return self.request.user
 
-class StudentProfileAPIView(generics.RetrieveUpdateAPIView):
-    """
-    Get (Get), Update (Put) student profile
-    """
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
-    permission_classes = (IsAuthenticated,)
-
-    def get_object(self):
-        return self.request.user
 
 class CompanyProfileAPIView(generics.RetrieveUpdateAPIView):
     """

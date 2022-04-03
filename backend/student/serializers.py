@@ -1,18 +1,14 @@
 from rest_framework import serializers
-from .models import User, Company
+from .models import Student
+from base.models import User
 
-class UserSerializer(serializers.ModelSerializer):
+class StudentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ['email', 'password', 'is_student', 'is_company']
-
-class CompanySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Company
+        model = Student
         fields = '__all__'
         depth = 1
 
-class CompanySignupSerializer(serializers.ModelSerializer):
+class StudentSignupSerializer(serializers.ModelSerializer):
     class Meta:
         model=User
         fields=['email','password']
@@ -26,9 +22,9 @@ class CompanySignupSerializer(serializers.ModelSerializer):
         )
         password=self.validated_data['password']
         user.set_password(password)
-        user.is_student=False
-        user.is_company=True
+        user.is_student=True
+        user.is_company=False
         user.save()
-        Company.objects.create(user=user)
+        Student.objects.create(user=user)
         return user
 

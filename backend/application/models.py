@@ -1,5 +1,5 @@
 from django.db import models
-from base.models import Student
+from student.models import Student
 from internship.models import Internship
 # Create your models here.
 

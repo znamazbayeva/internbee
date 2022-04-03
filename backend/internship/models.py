@@ -1,5 +1,6 @@
 from django.db import models
 from base.models import *
+from student.models import *
 
 class Internship(models.Model):
     #if company is deleted the internships are deleted too
