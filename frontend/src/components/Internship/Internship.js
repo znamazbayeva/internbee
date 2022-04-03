@@ -25,7 +25,7 @@ function Internship({ internship }) {
 		}
 		console.log((internship._id))
 		axios
-		.post(`http://127.0.0.1:8000/v1/api/like/${internship._id}`, null, config)
+		.post(`http://127.0.0.1:8000/v1/api/internship/like/${internship._id}/`, null, config)
 		.then((res) => {
 			console.log(res.data)
 		})
@@ -61,11 +61,29 @@ function Internship({ internship }) {
 					</div>
 				</div>
 				<div className={styles.detail}>
-					<div className={styles.name}>
-					</div>
-					<button className={styles.button}>
-						See more <ArrowForwardIcon className="arrow" fontSize="small" />
-					</button>
+ 					<div className={styles.name}>
+ 						{
+ 							//KZT {internship.salary} / month
+ 						}
+ 						<button onClick={sendLike}>
+ 							<FavoriteBorderIcon
+ 								fontSize="small"
+ 								className={styles.button_hi}
+ 							/>
+ 						</button>
+ 						{internship.video ? (
+ 							<button>
+ 								{" "}
+ 								<VideoCameraFrontIcon
+ 									fontSize="small"
+ 									className={styles.button_hi}
+ 								/>
+ 							</button>
+ 						) : null}
+ 					</div>
+ 					<button className={styles.button}>
+ 						See more <ArrowForwardIcon className="arrow" fontSize="small" />
+ 					</button>
 				</div>
 			</div>
 		</div>

@@ -11,6 +11,11 @@ class StudentSerializer(serializers.ModelSerializer):
         model = Student
         fields = '__all__'
         depth = 1
+class CompanySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Company
+        fields = '__all__'
+        depth = 1
 class CompanySignupSerializer(serializers.ModelSerializer):
     class Meta:
         model=User

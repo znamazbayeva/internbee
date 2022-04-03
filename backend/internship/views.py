@@ -35,11 +35,8 @@ class InternshipLikeAPIView(generics.CreateAPIView):
     permission_classes =[]
 
     def post(self, request, pk):
-        print(request)
         internship = get_object_or_404(Internship, _id=self.kwargs['pk'])
         student = get_object_or_404(Student, user=request.user.id)
-        print(internship)
-        print(student)
         new_like, created = InternshipLike.objects.get_or_create(
             student=student, internship = internship)
         if created:
