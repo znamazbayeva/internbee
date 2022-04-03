@@ -1,24 +1,31 @@
+from urllib import response
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import User, Student
+from .models import User, Student, Company
 from rest_framework import generics, permissions, status
-from .serializers import UserSerializer, CompanySignupSerializer, StudentSignupSerializer, StudentSerializer
-from rest_framework.generics import (ListCreateAPIView,RetrieveUpdateDestroyAPIView, GenericAPIView, CreateAPIView) 
+from .serializers import UserSerializer, CompanySignupSerializer, StudentSignupSerializer, StudentSerializer, CompanySerializer
+from rest_framework.generics import (ListCreateAPIView,RetrieveUpdateDestroyAPIView, GenericAPIView, CreateAPIView, RetrieveAPIView) 
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .permissions import IsOwnerProfileOrReadOnly
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from .permissions import IsStudentUser, IsCompanyUser
 from rest_framework.authtoken.views import ObtainAuthToken
+from django.shortcuts import get_object_or_404
 
+# Get list of students
+class StudentListView(generics.ListAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
 
-@api_view(['GET'])
-def getStudent(request, pk):
-    student = Student.objects.get(user = pk)
-    serializer = StudentSerializer(student, many=False)
-    return Response(serializer.data)
+# Get certain student with id (pk)
+class StudentDetailView(RetrieveAPIView):
+    queryset=Student.objects.all()
+    serializer_class=StudentSerializer
+    permission_classes=[IsOwnerProfileOrReadOnly | IsAdminUser]
 
+#Get list of users    
 class UserListCreateView(ListCreateAPIView):
     queryset= User.objects.all()
     serializer_class=UserSerializer
@@ -28,13 +35,13 @@ class UserListCreateView(ListCreateAPIView):
         user=self.request.user
         serializer.save(user=user)
 
-
+# Edit, get or delete the user
 class UserDetailView(RetrieveUpdateDestroyAPIView):
     queryset=User.objects.all()
     serializer_class=UserSerializer
     permission_classes=[IsOwnerProfileOrReadOnly | IsAdminUser]
 
-
+# Signup of the company
 class CompanySignupView(GenericAPIView):
     serializer_class=CompanySignupSerializer
     def post(self, request, *args, **kwargs):
@@ -47,7 +54,7 @@ class CompanySignupView(GenericAPIView):
             "message":"account created successfully"
         })
 
-
+# Signup of student user
 class StudentSignupView(GenericAPIView):
     serializer_class=StudentSignupSerializer
     def post(self, request, *args, **kwargs):
@@ -60,6 +67,7 @@ class StudentSignupView(GenericAPIView):
             "message":"account created successfully"
         })
 
+# Authentication
 class CustomAuthToken(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         serializer=self.serializer_class(data=request.data, context={'request':request})
@@ -94,3 +102,24 @@ class CompanyOnlyView(generics.RetrieveAPIView):
     def get_object(self):
         return self.request.user
 
+class StudentProfileAPIView(generics.RetrieveUpdateAPIView):
+    """
+    Get (Get), Update (Put) student profile
+    """
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_object(self):
+        return self.request.user
+
+class CompanyProfileAPIView(generics.RetrieveUpdateAPIView):
+    """
+    Get, Update Company profile
+    """
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_object(self):
+        return self.request.user
