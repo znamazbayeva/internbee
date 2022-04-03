@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { getStudentUser } from "../../actions/auth";
-import { useDispatch, useSelector } from "react-redux";
-import StudentInfo from "./StudentInfo";
+import { useDispatch, useSelector } from "react-redux"
 import StudentInfo2 from "./StudenInfo2";
 import styles from "./Profile.module.scss";
 import axios from "axios";
 import StudentSidebar from "./StudentSidebar";
 
-function ClientDashboard() {
+function StudentDashboard() {
 	const state = useSelector((state) => state.auth);
 	const [student, setStudent] = useState(null);
-	console.log(state.user_id);
+
 	useEffect(() => {
 		axios
-			.get("http://127.0.0.1:8000/v1/api/student/" + state.user_id.toString() + '/')
+			.get(`http://127.0.0.1:8000/v1/api/student/${state.user_id}/`)
 			.then((res) => {
 				setStudent(res.data);
-				console.log(res.data);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -27,12 +25,11 @@ function ClientDashboard() {
 		dispatch(getStudentUser());
 	}, [dispatch]);
 	return (
-		<div className={styles.containter} style={{ display: "flex" }}>
-			<StudentSidebar />
-			{student != null ? <StudentInfo student={student} /> : null}
-			{student != null ? <StudentInfo2 student={student} /> : null}
+		<div className={styles.containter} style={{ display: "flex", height: '100vh'}}>
+		{student != null ? 	<StudentSidebar student={student} /> : null}
+		{student != null ? <StudentInfo2 student={student} /> : null}
 		</div>
 	);
 }
 
-export default ClientDashboard;
+export default StudentDashboard;
