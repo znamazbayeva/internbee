@@ -1,12 +1,9 @@
-from email.errors import NonPrintableDefect
-from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .managers  import UserManager
 from django.conf import settings
-
 from rest_framework.authtoken.models import Token
 
 class User(AbstractUser):
@@ -35,21 +32,13 @@ class Company(models.Model):
     description = models.CharField(max_length=200, null=True, blank=True)
     cityName = models.CharField(max_length=200, null=True, blank=True)
     address = models.CharField(max_length=200, null=True, blank=True)
+    img = models.CharField(max_length=1000, null=True, blank=True)
     def __str__(self):
         return self.user.email
 
 
-class Student(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    sid = models.AutoField(unique=True, primary_key=True)
-    firstName = models.CharField(max_length=200, null=True, blank=True)
-    lastName = models.CharField(max_length=200, null=True, blank=True)
-    universityName = models.CharField(default="",max_length=100, null=True, blank=True)
-    major = models.CharField(default="",max_length=100, null=True, blank=True)
-    gender = models.CharField(max_length=200, null=True, blank=True)
-    cGpa = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True)
-    def __str__(self):
-        return self.user.email
+
+
 
 # @receiver(post_save, sender=User)
 # def create_user_profile(sender, instance, created, **kwargs):
@@ -66,20 +55,6 @@ class Student(models.Model):
 #     elif instance.is_company:
 #         instance.company.save()
 
-class Internship(models.Model):
-    #if company is deleted the internships are deleted too
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True)
-    name = models.CharField(max_length=200, null=True, blank=True)
-    description = models.CharField(max_length=200, null=True, blank=True)
-    requirements = models.CharField(max_length=200, null=True, blank=True)
-    duration = models.CharField(max_length=200, null=True, blank=True)
-    skills = models.CharField(max_length=200, null=True, blank=True)
-    responsibilities = models.CharField(max_length=200, null=True, blank=True)
-    salary = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-    _id = models.AutoField(primary_key=True, editable=False)
-
-    def __str__(self):
-        return str(self.name)
 
 # class Skills(models.Model):
 #     name = models.CharField(max_length=200, null=True, blank=True)

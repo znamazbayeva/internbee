@@ -1,0 +1,135 @@
+.outer_container {
+  display: flex;
+  justify-content: flex-start;
+  width: auto;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: 4px;
+  width: auto;
+  margin: 1rem;
+  background-color: white;
+  box-shadow: #d9d7e0 0px 1px 2px, #d9d7e0 0px 1px 2px;
+  padding: 2rem 2rem;
+  flex-grow: 1;
+  margin-left: 200px;
+}
+
+.welcome_msg {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.student_hi {
+  flex-direction: column;
+  align-items: center;
+  color: #232129;
+  flex-grow: 0;
+}
+
+.profile_settings {
+  width: auto;
+  margin: 1rem;
+}
+
+.company_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+// .sidenav {
+//   position: fixed;
+//   top: 0px;
+//   left: 0px;
+//   height: 100vh;
+//   width: 260px;
+//   box-shadow: rgb(0 0 0 / 6%) 0px 5px 5px -3px, rgb(0 0 0 / 4%) 0px 8px 10px 1px,
+//     rgb(0 0 0 / 4%) 0px 3px 14px 2px;
+//   background-repeat: no-repeat;
+//   background-position: center top;
+//   background-size: cover;
+//   z-index: 111;
+//   overflow: hidden;
+//   color: rgb(255, 255, 255);
+//   transition: all 250ms ease-in-out 0s;
+// }
+.company_table img {
+  position: relative;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  user-select: none;
+  width: 48px;
+  height: 48px;
+}
+
+.profile_settings_options {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.profile_settings_options span {
+  margin: 0.1rem;
+  font-size: 0.8rem;
+}
+.student_hi img {
+  border-radius: 50%;
+  border: 1px solid blueviolet;
+}
+
+.personal_info_form {
+  display: flex;
+  flex-direction: row;
+}
+
+.column1 {
+  flex-direction: column;
+  margin-right: 4rem;
+}
+
+.column2 {
+  flex-direction: column;
+}
+
+.update_info_button {
+  background-color: blueviolet;
+  color: #fcfaff;
+  margin-top: 1rem;
+  border-radius: 4px;
+  width: 100%;
+  text-align: center;
+}
+
+.post_job_button {
+  background-color: blueviolet;
+  color: #fcfaff;
+  border-radius: 4px;
+  padding-left: 2px;
+  padding-right: 3px;
+  text-align: center;
+  display: flex;
+}
+
+.input_group label {
+  display: block;
+}
+
+.input_group input {
+  width: 18rem;
+}

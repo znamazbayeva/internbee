@@ -1,36 +1,46 @@
-import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import ClientSignup from "./components/Signup/ClientSignup";
+import FreelanceSignup from "./components/Signup/FreelanceSignup";
+import Login from "./components/Login/Login";
+import StudentDashboard from "./components/Profile/StudentDashboard";
+import CompanyDashboard from "./components/Profile/CompanyDashboard";
+
+import { CPrivateRoute, FPrivateRoute } from "./private/PrivateRoute";
+
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
-import ProfilePage from "./pages/ProfilePage";
-import Reviews from "./pages/Reviews";
-import About from "./pages/About";
-import Companies from "./pages/Companies";
-import Internships from "./pages/Internships";
-import Layout from "./components/Navbar/Layout";
-import NewInternshipPage from "./pages/NewInternshipPage";
-import SignUpPage from "./pages/SignUpPage";
-import LoginForm from "./components/LoginForm";
 import Navbar from "./components/Navbar/Navbar";
-import { useState } from "react";
+import Internships from "./components/Internship/Internships";
+import VerifyEmail from "./components/Login/VerifyEmail";
+import DataTable from "./components/Profile/DataTable";
+
 function App() {
   return (
-    <Layout>
-      <Routes>
-        <Route exact path="/" element={<LandingPage />}></Route>
-        <Route exact path="/reviews" element={<Reviews />}></Route>
-        <Route exact path="/profile" element={<ProfilePage />}></Route>
-        <Route exact path="/companies" element={<Companies />}></Route>
-        <Route exact path="/internships" element={<Internships />}></Route>
-        <Route
-          exact
-          path="/new-internship"
-          element={<NewInternshipPage />}
-        ></Route>
-        <Route exact path="/about" element={<About />}></Route>
-        <Route exact path="/sign-up" element={<SignUpPage />}></Route>
-      </Routes>
-    </Layout>
+    <Router>
+      <div className="App" style={{ backgroundColor: "#f0f0f2" }}>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/client/signup" component={ClientSignup} />
+          <Route exact path="/freelance/signup" component={FreelanceSignup} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/search/internships/" component={Internships} />
+          <Route exact path="/verify/" component={VerifyEmail} />
+          <Route exact path="/company/applicants" component={DataTable} />
+
+          <CPrivateRoute
+            exact
+            path="/student/dashboard"
+            component={StudentDashboard}
+          />
+          <FPrivateRoute
+            exact
+            path="/company/dashboard"
+            component={CompanyDashboard}
+          />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

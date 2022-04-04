@@ -1,0 +1,104 @@
+.container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 10%;
+}
+.signup__form {
+	box-shadow: rgba(46, 41, 51, 0.08) 0px 4px 16px,
+		rgba(71, 63, 79, 0.16) 0px 8px 24px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	background-color: var(--theme-ui-colors-white, #ffffff);
+	padding: 2rem 2.5rem;
+}
+
+.form__container {
+	/* box-sizing: border-box; */
+	width: 100%;
+	display: grid;
+	row-gap: 0.75rem;
+	max-width: 100%;
+}
+
+.login-box {
+	display: flex;
+	flex-direction: column;
+}
+.box__label {
+	color: var(--theme-ui-colors-grey-90, #232129);
+	line-height: 1.25;
+	align-self: baseline;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	-webkit-hyphens: auto;
+	font-size: 1rem;
+	margin-bottom: 0.25rem;
+	display: block;
+}
+
+.box__input {
+	color: var(--theme-ui-colors-grey-90, #232129);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-size: 1rem;
+	height: 2.25rem;
+	padding-top: 0px;
+	padding-right: 0.5rem;
+	position: relative;
+	z-index: 1;
+	padding-left: 0.5rem;
+}
+
+.signup__btn {
+	box-sizing: border-box;
+	color: white;
+	background-color: #663399;
+	border-radius: 4px;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
+	padding: 0.25rem 0.5rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+.signup__btn:hover {
+	background-color: #452475;
+}
+
+.signup__choice {
+	padding: 0;
+	width: 100%;
+	list-style: none;
+	display: flex;
+	justify-content: center;
+}
+.li {
+	width: 100%;
+}
+
+.link__btn {
+	display: block;
+	text-align: center;
+	width: 100%;
+	text-decoration: none;
+	color: #232129;
+	background-color: #f1defa;
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
+	font-weight: bold;
+}
+
+.link__btn:hover {
+	color: #232129;
+	border-radius: 4px;
+	transition: all 0.2s ease-out;
+}
+
+.btn-active {
+	color: white;
+	background-color: #663399;
+}
