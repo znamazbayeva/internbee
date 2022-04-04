@@ -1,7 +1,7 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import styles from "./Profile.module.scss";
-import SideBar from "./SideBar";
+import styles from "../Profile/Profile.module.scss";
+import SideBar from "../Profile/Company/SideBar";
 import { margin } from "@mui/system";
 import ArrowCircleRightSharpIcon from "@mui/icons-material/ArrowCircleRightSharp";
 import { Link } from "react-router-dom";
@@ -36,7 +36,7 @@ const columns = [
     field: "viewApplicant",
     headerName: "View",
     renderCell: (params) => (
-      <Link to="/company/applicants/1" style={{ color: "blueviolet" }}>
+      <Link to="/company/applicants/1" style={{ color: "#663399" }}>
         <ArrowCircleRightSharpIcon />
       </Link>
     ),
@@ -110,7 +110,7 @@ const rows = [
   },
 ];
 
-export default function DataTable() {
+export default function AllApplicants() {
   return (
     <>
       <SideBar />

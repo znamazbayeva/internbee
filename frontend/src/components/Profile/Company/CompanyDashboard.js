@@ -1,12 +1,12 @@
 import CompanySidebar from "./CompanySidebar";
 import React, { useEffect, useState } from "react";
-import { getCompany } from "../../actions/auth";
+import { getCompany } from "../../../actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import CompanyInfo from "./CompanyInfo";
-import MatxSidenav from "./DataTable";
-import styles from "./Profile.module.scss";
-import DataTable from "./DataTable";
+
+import styles from "../Profile.module.scss";
+
 import SideBar from "./SideBar";
 function CompanyDashboard() {
   const state = useSelector((state) => state.auth);
