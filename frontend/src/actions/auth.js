@@ -41,7 +41,7 @@ export const getStudentUser = () => (dispatch, getState) => {
 };
 
 // check token and load freelance user
-export const getFreelanceUser = () => (dispatch, getState) => {
+export const getCompany = () => (dispatch, getState) => {
   const token = getState().auth.token;
   const isStudent = getState().auth.isStudent;
   const config = {
