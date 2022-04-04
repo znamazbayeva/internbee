@@ -20,7 +20,7 @@ export const SidebarData = [
   },
   {
     title: "Internship Listings",
-    path: "/company/internships",
+    path: "/company/internship-listings",
     icon: <ListAltOutlinedIcon />,
     cName: "nav-text",
   },

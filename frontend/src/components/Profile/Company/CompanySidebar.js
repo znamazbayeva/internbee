@@ -6,7 +6,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import BadgeIcon from "@mui/icons-material/Badge";
 import VideoCameraFrontIcon from "@mui/icons-material/VideoCameraFront";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import styles from "./Profile.module.scss";
+import styles from "../Profile.module.scss";
 import { styled } from "@mui/material/styles";
 import { Avatar } from "@mui/material";
 import Identicon from "identicon.js";
@@ -86,7 +86,7 @@ function CompanySidebar({ company }) {
       </MyButton>
       <MyButton>
         <ListAltOutlinedIcon />
-        <div>Internship Listings</div>
+        <Link to="/company/internship-listings">Internship Listings</Link>
       </MyButton>
       <MyButton>
         <VideoCameraFrontIcon />
