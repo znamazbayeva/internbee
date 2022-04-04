@@ -15,13 +15,13 @@ class ApplicationAPIView(generics.CreateAPIView):
     """
     Students can apply or delete their applications
     """
+  
     serializer_class = ApplicationSerializer
     permission_classes =[]
 
     def post(self, request):
         internship = get_object_or_404(Internship, _id=self.request.data['internship'])
         student = get_object_or_404(Student, user=request.user.id)
-        print(internship, student)
         application = Application.objects.filter(student=student, internship=internship)
         if application.exists():
           return Response({"message": "You have already applied to this internship"}, status=status.HTTP_302_FOUND)
@@ -33,7 +33,7 @@ class ApplicationAPIView(generics.CreateAPIView):
           return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request):
-        internship = get_object_or_404(Internship, _id=self.request.data['internsip'])
+        internship = get_object_or_404(Internship, _id=self.request.data['internship'])
         application = Application.objects.filter(student=request.user, internship=internship)
         if application.exists():
             application.delete()

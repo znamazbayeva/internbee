@@ -8,36 +8,35 @@ import SideBar from "./Student/SideBar";
 import { data } from "./student_data.js";
 
 function StudentDashboard() {
-  const state = useSelector((state) => state.auth);
-  console.log(state);
-  const [student, setStudent] = useState(null);
+	const state = useSelector((state) => state.auth);
+	const [student, setStudent] = useState(null);
+	const sidebarValues = {
+		current: "dashboard"
+	}
 
-  useEffect(() => {
-    axios
-      .get(`http://127.0.0.1:8000/v1/api/student/${state.user_id}/`)
-      .then((res) => {
-        setStudent(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getStudentUser());
-  }, [dispatch]);
-  return (
-    <div
-      className={styles.containter}
-      style={{ display: "flex", height: "100vh" }}
-    >
-      {/* {student != null ? <StudentSidebar student={student} /> : null} */}
-      <div style={{ marginRight: "3rem" }}>
-        {student != null ? <SideBar data={data} /> : null}
-      </div>
-      <div>{student != null ? <StudentInfo2 student={student} /> : null}</div>
-    </div>
-  );
+	const SidebarContext = React.createContext(sidebarValues);
+	useEffect(() => {
+		axios
+			.get(`http://127.0.0.1:8000/v1/api/student/${state.user_id}/`)
+			.then((res) => {
+				setStudent(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getStudentUser());
+	}, [dispatch]);
+	return (
+		<div className={styles.containter} style={{ display: "flex", height: '100vh'}}>
+		<SidebarContext.Provider value={sidebarValues} >
+		{student != null ? 	<StudentSidebar student={student} /> : null}
+		{student != null ? <StudentInfo2 student={student} /> : null}
+		</SidebarContext.Provider>
+		</div>
+	);
 }
 
 export default StudentDashboard;
