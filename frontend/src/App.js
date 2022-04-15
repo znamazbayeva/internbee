@@ -11,11 +11,13 @@ import InternshipListings from "./components/Profile/Company/InternshipListings"
 
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import Internships from "./components/Internship/Internships";
+
 import VerifyEmail from "./components/Login/VerifyEmail";
 
 import AllApplicants from "./components/Applicants/AllApplicants";
 import Applicant from "./components/Applicants/Applicant";
+import Reviews from "./components/Reviews/Reviews";
+import InternshipsPage from "./pages/InternshipsPage";
 
 function App() {
   return (
@@ -27,7 +29,10 @@ function App() {
           <Route exact path="/client/signup" component={ClientSignup} />
           <Route exact path="/freelance/signup" component={FreelanceSignup} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/search/internships/" component={Internships} />
+
+          <Route exact path="/internships" component={InternshipsPage} />
+          {/* <Route exact path="/internships/:id" children={<SingleInternship />} /> */}
+
           <Route exact path="/verify/" component={VerifyEmail} />
           <Route exact path="/company/applicants" component={AllApplicants} />
           <Route exact path="/company/applicants/1" component={Applicant} />
@@ -51,6 +56,7 @@ function App() {
             path="/company/dashboard"
             component={CompanyDashboard}
           />
+          <Route exact path="/reviews" component={Reviews} />
         </Switch>
       </div>
     </Router>

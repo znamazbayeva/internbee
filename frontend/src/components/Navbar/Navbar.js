@@ -56,7 +56,7 @@ function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to="/search/internships/" className="nav-links">
+          <Link to="/internships/" className="nav-links">
             Internships
           </Link>
         </li>
