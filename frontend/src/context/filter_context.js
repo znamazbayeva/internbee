@@ -18,7 +18,7 @@ const initialState = {
   filters: {
     text: "",
     company: "all",
-    location: null,
+    location: "all",
     category: "all",
     duration: null,
     min_salary: 0,
@@ -52,10 +52,11 @@ export const FilterProvider = ({ children }) => {
   const updateFilters = (e) => {
     let name = e.target.name;
     let value = e.target.value;
-
-    if (name === "category") {
-      value = e.target.textContent;
-    }
+    // console.log(name, value);
+    // if (name === "category") {
+    //   value = e.target.textContent;
+    //   console.log(value);
+    // }
     if (name === "salary") {
       value = Number(value);
     }

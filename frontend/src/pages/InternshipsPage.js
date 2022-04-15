@@ -7,13 +7,8 @@ const InternshipsPage = () => {
   return (
     <main>
       <div className="section-center products">
-        {/* <Filters />
-          <div>
-            <Sort />
-            <InternshipsList />
-          </div> */}
         <InternshipsList />
-        <FeaturedInternships />
+        {/* <FeaturedInternships /> */}
       </div>
     </main>
   );
