@@ -32,6 +32,7 @@ function CompanyDashboard() {
 
       <SideBar />
       <CompanyInfo company={company} />
+      
     </div>
   );
 }
