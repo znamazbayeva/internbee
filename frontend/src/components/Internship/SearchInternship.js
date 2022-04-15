@@ -87,7 +87,7 @@ function SearchInternship() {
   const categories = getUniqueValues(all_internships, "category");
 
   const locations = getUniqueValues(all_internships, "location");
-  console.log(locations);
+  console.log(categories);
 
   return (
     <div>
@@ -109,10 +109,10 @@ function SearchInternship() {
             <h5>Category</h5>
 
             <select name="category" value={category} onChange={updateFilters}>
-              {locations.map((l, index) => {
+              {categories.map((c, index) => {
                 return (
-                  <option key={index} value={l}>
-                    {l}
+                  <option key={index} value={c}>
+                    {c}
                   </option>
                 );
               })}
@@ -122,10 +122,10 @@ function SearchInternship() {
             <h5>Location</h5>
 
             <select name="location" value={location} onChange={updateFilters}>
-              {locations.map((c, index) => {
+              {locations.map((l, index) => {
                 return (
-                  <option key={index} value={c}>
-                    {c}
+                  <option key={index} value={l}>
+                    {l}
                   </option>
                 );
               })}
