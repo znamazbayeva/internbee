@@ -20,6 +20,13 @@ const getUniqueValues = (data, type) => {
   return ["all", ...new Set(unique)];
 };
 
+export const formatPrice = (number) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(number / 100);
+};
+
 const MyAccordion = styled(Accordion)(({ theme }) => ({
   backgroundColor: "transparent",
   boxShadow: "none",
@@ -63,23 +70,32 @@ function SearchInternship() {
   // 	setDegree({ ...degree, [event.target.name]: event.target.checked });
   // };
   const {
-    filters: { text, category, company, min_salary, max_salary, salary },
+    filters: {
+      text,
+      category,
+      company,
+      min_salary,
+      max_salary,
+      salary,
+      location,
+    },
     updateFilters,
     clearFilters,
     all_internships,
   } = useFilterContext();
 
   const categories = getUniqueValues(all_internships, "category");
-  const companies = getUniqueValues(all_internships, "company");
+
+  const locations = getUniqueValues(all_internships, "location");
+  console.log(locations);
 
   return (
     <div>
       <form onSubmit={(e) => e.preventDefault()}>
         <div>
-          {/* <div className="form-control"> */}
           <TextField
             id="standard-basic"
-            label="Standard"
+            label="Search here"
             variant="standard"
             type="text"
             name="text"
@@ -88,75 +104,46 @@ function SearchInternship() {
             value={text}
             onChange={updateFilters}
           />
-          {/* <input
-            type="text"
-            name="text"
-            placeholder="search"
-            className="search-input"
-            value={text}
-            onChange={updateFilters}
-          /> */}
-          {/* </div> */}
-          {/* <MyAccordion>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <h5>Field of Studies</h5>
-            </AccordionSummary>
-            <AccordionDetails>
-              <FormGroup>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={handleDegreeChange}
-                      checked={bachelor}
-                      name="bachelor"
-                    />
-                  }
-                  label="Bachelor"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={handleDegreeChange}
-                      checked={master}
-                      name="master"
-                    />
-                  }
-                  label="Master"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={handleDegreeChange}
-                      checked={phd}
-                      name="phd"
-                    />
-                  }
-                  label="PhD"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={handleDegreeChange}
-                      checked={high_school}
-                      name="high_school"
-                    />
-                  }
-                  label="High School"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={handleDegreeChange}
-                      checked={no_degree}
-                      name="no_degree"
-                    />
-                  }
-                  label="No Education"
-                />
-              </FormGroup>
-            </AccordionDetails>
-          </MyAccordion>
-        </div>
+
+          <div>
+            <h5>Category</h5>
+
+            <select name="category" value={category} onChange={updateFilters}>
+              {locations.map((l, index) => {
+                return (
+                  <option key={index} value={l}>
+                    {l}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div>
+            <h5>Location</h5>
+
+            <select name="location" value={location} onChange={updateFilters}>
+              {locations.map((c, index) => {
+                return (
+                  <option key={index} value={c}>
+                    {c}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div>
+            <h5>Salary</h5>
+            <p className="salary">{formatPrice(salary)}</p>
+            <input
+              type="range"
+              name="salary"
+              onChange={updateFilters}
+              min={min_salary}
+              max={max_salary}
+              value={salary}
+            />
+          </div>
+          {/* </div>
         <div>
           <MyAccordion>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -195,7 +182,7 @@ function SearchInternship() {
                   label="Remote"
                 />
               </FormGroup>
-            </AccordionDetails>
+            </AccordionDetails> 
           </MyAccordion> */}
         </div>
       </form>

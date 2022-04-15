@@ -51,7 +51,7 @@ const filter_reducer = (state, action) => {
   }
   if (action.type === FILTER_INTERNSHIPS) {
     const { all_internships } = state;
-    const { text, category, company, salary } = state.filters;
+    const { text, category, company, location, salary } = state.filters;
     let tempInternships = [...all_internships];
 
     if (text) {
@@ -67,6 +67,12 @@ const filter_reducer = (state, action) => {
     if (company !== "all") {
       tempInternships = tempInternships.filter(
         (internship) => internship.company === company
+      );
+    }
+
+    if (location !== "all") {
+      tempInternships = tempInternships.filter(
+        (internship) => internship.location === location
       );
     }
 

@@ -25,7 +25,7 @@ const FeaturedInternships = () => {
       </div>
       <div className="section-center featured">
         {internships.slice(0, 3).map((internship) => {
-          return <Internship internship={internship} />;
+          return <Internship key={internship._id} internship={internship} />;
         })}
       </div>
     </div>
