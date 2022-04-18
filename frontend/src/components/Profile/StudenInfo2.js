@@ -1,12 +1,13 @@
 import React from "react";
-import styles from "./Profile.module.scss";
+import styles from "../Profile/Profile.css";
 
 function StudenInfo2({ student }) {
   return (
-    <div className={styles.container}
-    style={{
-      marginRight: '2.5rem',
-    }}
+    <div
+      className={styles.container}
+      style={{
+        marginRight: "2.5rem",
+      }}
     >
       <div className={styles.profile_settings}>
         <h3>Profile Settings</h3>

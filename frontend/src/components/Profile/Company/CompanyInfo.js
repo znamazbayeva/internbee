@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Profile.module.scss";
+import styles from "../Profile.css";
 import { Avatar } from "@mui/material";
 import Identicon from "identicon.js";
 import { Button } from "@mui/material";

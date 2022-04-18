@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import CompanyInfo from "./CompanyInfo";
 
-import styles from "../Profile.module.scss";
+import styles from "../Profile.css";
 
 import SideBar from "./SideBar";
 function CompanyDashboard() {
@@ -32,7 +32,6 @@ function CompanyDashboard() {
 
       <SideBar />
       <CompanyInfo company={company} />
-      
     </div>
   );
 }

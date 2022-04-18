@@ -7,6 +7,7 @@ urlpatterns = [
     path('login/', views.CustomAuthToken.as_view(), name='auth-token'),
     path('logout/', views.LogoutView.as_view(), name='logout-view'),
 
+    path("companys/", views.CompanyListCreateView.as_view(), name="all-companys"),
     path('signup/company/', views.CompanySignupView.as_view()),
     path('company/dashboard/', views.CompanyOnlyView.as_view(), name='company-dashboard'),
     path('company/<int:pk>/', views.CompanyDetailView.as_view(), name='get-company-data-from-userid'),

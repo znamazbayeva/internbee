@@ -5,7 +5,7 @@ import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import styles from "./Profile.module.scss";
+import styles from "../Profile/Profile.css";
 import { styled } from "@mui/material/styles";
 import { Avatar } from "@mui/material";
 import Identicon from "identicon.js";
