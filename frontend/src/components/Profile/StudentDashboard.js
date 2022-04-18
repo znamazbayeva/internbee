@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { getStudentUser } from "../../actions/auth";
-import { useDispatch, useSelector } from "react-redux"
-import StudentInfo2 from "./StudenInfo2";
-import styles from "./Profile.module.scss";
 import axios from "axios";
-import StudentSidebar from "./StudentSidebar";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getStudentUser } from "../../actions/auth";
+import styles from "./Profile.module.scss";
+import StudentInfo2 from "./StudenInfo2";
+import SideBar from "./Student/SideBar";
+import { data } from "./student_data.js";
 
 function StudentDashboard() {
 	const state = useSelector((state) => state.auth);
@@ -31,7 +32,7 @@ function StudentDashboard() {
 	return (
 		<div className={styles.containter} style={{ display: "flex", height: '100vh'}}>
 		<SidebarContext.Provider value={sidebarValues} >
-		{student != null ? 	<StudentSidebar student={student} /> : null}
+		{student != null ? 	<S student={student} /> : null}
 		{student != null ? <StudentInfo2 student={student} /> : null}
 		</SidebarContext.Provider>
 		</div>

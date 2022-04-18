@@ -24,6 +24,14 @@ class CompanyDetailView(RetrieveAPIView):
             return Response(serializer.data)
         return Response({"message": "serializer is not valid"})
 #Get list of users    
+class CompanyListCreateView(ListCreateAPIView):
+    queryset= Company.objects.all()
+    serializer_class=CompanySerializer
+
+    def perform_create(self, serializer):
+        user=self.request.user
+        serializer.save(user=user)
+
 class UserListCreateView(ListCreateAPIView):
     queryset= User.objects.all()
     serializer_class=UserSerializer

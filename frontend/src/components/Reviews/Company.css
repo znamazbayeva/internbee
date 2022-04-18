@@ -1,0 +1,10 @@
+.outerContainer {
+  width: "100%";
+  margin: "150px";
+  max-width: "fit-content";
+  background-color: "red";
+}
+
+.hello {
+  background-color: "red";
+}

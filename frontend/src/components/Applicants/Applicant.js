@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Profile/Profile.module.scss";
+import styles from "../Profile/Profile.css";
 import SideBar from "../Profile/Company/SideBar";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";

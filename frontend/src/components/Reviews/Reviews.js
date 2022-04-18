@@ -1,17 +1,18 @@
 import React from "react";
-import TextField from "@mui/material/TextField";
+import CompanyList from "./CompanyList";
+import SearchReviews from "./SearchReviews";
+
 const Reviews = () => {
   return (
-    <div>
-      <h3 className="title">Search Company Reviews & Ratings</h3>
-      <h7>Read what employees are saying about companies.</h7>
-      <div>
-        <input
-          style={{ width: "300px" }}
-          type="text"
-          placeholder="Search by company or job position"
-        />
-      </div>
+    <div
+      style={{
+        width: "100%",
+        margin: "150px",
+        maxWidth: "fit-content",
+      }}
+    >
+      <SearchReviews />
+      <CompanyList />
     </div>
   );
 };

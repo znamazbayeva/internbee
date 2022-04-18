@@ -8,7 +8,7 @@ import CompanyDashboard from "./components/Profile/Company/CompanyDashboard";
 import InternshipListing from "./components/Profile/Company/InternshipListing";
 import { CPrivateRoute, FPrivateRoute } from "./private/PrivateRoute";
 import InternshipListings from "./components/Profile/Company/InternshipListings";
-
+import React, { Component } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 
