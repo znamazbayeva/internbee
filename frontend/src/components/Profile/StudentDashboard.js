@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getStudentUser } from "../../actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import StudentInfo2 from "./StudenInfo2";
-import styles from "../Profile/Profile.css";
+import styles from "./Profile.module.scss";
 import axios from "axios";
 import StudentSidebar from "./StudentSidebar";
 

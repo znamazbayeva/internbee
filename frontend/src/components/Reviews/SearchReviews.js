@@ -8,25 +8,20 @@ const SearchReviews = () => {
     <div
       style={{
         display: "flex",
+        marginTop: "20px",
+        marginBottom: "80px",
       }}
     >
       <div style={{ display: "block" }}>
-        <InputLabel
-          sx={{ ml: 1, fontWeight: "bold", fontSize: "large" }}
-          variant="h6"
-        >
-          Company Name
-        </InputLabel>
+        <InputLabel sx={{ fontSize: "medium" }}>Company Name</InputLabel>
         <InputBase
-          sx={{ ml: 1, flex: 1, width: 325 }}
+          sx={{ flex: 1, width: 325 }}
           placeholder="Search by Company"
         />
       </div>
 
       <div style={{ display: "block" }}>
-        <InputLabel sx={{ ml: 1, fontWeight: "bold", fontSize: "large" }}>
-          Location
-        </InputLabel>
+        <InputLabel sx={{ ml: 1, fontSize: "medium" }}>Location</InputLabel>
         <InputBase
           sx={{ ml: 1, flex: 1, width: 325 }}
           placeholder="Search by Location"
@@ -41,7 +36,7 @@ const SearchReviews = () => {
             width: 280,
             height: 35,
             position: "relative",
-            bottom: "-25px",
+            bottom: "-21px",
             right: "0",
           }}
         >

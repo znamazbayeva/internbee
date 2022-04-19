@@ -1,13 +1,26 @@
-import React from "react";
-import styles from "../Profile.css";
+import React, { useState, useReducer } from "react";
 import { Avatar } from "@mui/material";
 import Identicon from "identicon.js";
 import { Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
-
+import styles from "../Profile.module.scss";
+import reducer from "../../../reducers/company_reducer";
+import CompanyModal from "./CompanyModal";
 var data = new Identicon("d3b07384d113edec49eaa6238ad5ff00", 420).toString();
 
+const initialState = {
+  description: "Company Description",
+  address: "Company Address",
+  name: "Company Name",
+  image: `data:image/png;base64,${data}`,
+};
+
 function CompanyInfo({ company }) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const handleEdit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div style={{ display: "block", width: "100%" }}>
       <div
@@ -20,13 +33,14 @@ function CompanyInfo({ company }) {
       >
         <div className={styles.company_header}>
           <Typography gutterBottom variant="h5" component="div">
-            InternBee
+            {initialState.name}
           </Typography>
+          {/* <input type="text" /> */}
 
           <Button
             variant="contained"
             className={styles.post_job_button}
-            sx={{ backgroundColor: "blueviolet" }}
+            sx={{ backgroundColor: "#663399" }}
           >
             + Post Job
           </Button>
@@ -35,9 +49,10 @@ function CompanyInfo({ company }) {
         <div style={{ display: "flex", alignItems: "center" }}>
           <Avatar
             alt="profile image"
-            src={`data:image/png;base64,${data}`}
+            src={initialState.image}
             style={{ marginBottom: "1rem", width: "120px", height: "120px" }}
           />
+
           <div style={{ display: "block" }}>
             <Typography
               gutterBottom
@@ -45,15 +60,16 @@ function CompanyInfo({ company }) {
               component="div"
               sx={{ marginLeft: 5 }}
             >
-              Hiring Company based in Kazakhstan
+              {initialState.description}
             </Typography>
+
             <Typography
               gutterBottom
               variant="h7"
               component="div"
               sx={{ marginLeft: 5, color: "blue" }}
             >
-              https://internbee.com
+              {initialState.address}
             </Typography>
           </div>
           <div></div>
@@ -72,28 +88,21 @@ function CompanyInfo({ company }) {
             Company Profile
           </Typography>
 
-          <Button
+          {/* <Button
             variant="contained"
             className={styles.post_job_button}
-            sx={{ backgroundColor: "blueviolet" }}
+            sx={{ backgroundColor: "#663399" }}
+            onClick={handleEdit}
           >
             Edit
-          </Button>
+          </Button> */}
+          <CompanyModal />
         </div>
 
         <div style={{ display: "flex", alignItems: "center" }}>
           <div style={{ display: "block" }}>
             <Typography gutterBottom variant="h7" component="div">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+              desc
             </Typography>
           </div>
         </div>

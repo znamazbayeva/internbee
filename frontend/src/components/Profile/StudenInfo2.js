@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Profile/Profile.css";
+import styles from "./Profile.module.scss";
 
 function StudenInfo2({ student }) {
   return (
