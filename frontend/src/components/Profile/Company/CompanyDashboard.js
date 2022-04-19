@@ -1,13 +1,10 @@
-import CompanySidebar from "./CompanySidebar";
 import React, { useEffect, useState } from "react";
 import { getCompany } from "../../../actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import CompanyInfo from "./CompanyInfo";
-
-import styles from "../Profile.css";
-
 import SideBar from "./SideBar";
+
 function CompanyDashboard() {
   const state = useSelector((state) => state.auth);
   const [company, setCompany] = useState(null);
@@ -22,14 +19,14 @@ function CompanyDashboard() {
         console.log(err);
       });
   }, []);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCompany());
   }, [dispatch]);
+
   return (
     <div className="container mt-5" style={{ alignItems: "start" }}>
-      {/* <CompanySidebar company={company} /> */}
-
       <SideBar />
       <CompanyInfo company={company} />
     </div>

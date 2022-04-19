@@ -7,10 +7,14 @@ const Reviews = () => {
     <div
       style={{
         width: "100%",
-        margin: "150px",
+        marginLeft: "150px",
+        marginRight: "150px",
+        marginTop: "50px",
         maxWidth: "fit-content",
       }}
     >
+      <h3>Find a great place to work </h3>
+
       <SearchReviews />
       <CompanyList />
     </div>
