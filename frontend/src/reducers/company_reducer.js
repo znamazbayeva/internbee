@@ -1,25 +1,31 @@
 import {
-  EDIT_COMPANY_NAME,
-  EDIT_COMPANY_IMAGE,
+  GET_SINGLE_COMPANY_SUCCESS,
+  GET_SINGLE_COMPANY_ERROR,
+  GET_SINGLE_COMPANY_BEGIN,
   EDIT_COMPANY_DESC,
   EDIT_COMPANY_ADDR,
 } from "../actions/types";
 
-const company_reducer = (state, action) => {
-  if (action.type == EDIT_COMPANY_NAME) {
-    return { ...state, name: action.payload };
-  }
-  if (action.type == EDIT_COMPANY_IMAGE) {
-    return state;
-  }
-  if (action.type == EDIT_COMPANY_DESC) {
-    return state;
-  }
-  if (action.type == EDIT_COMPANY_ADDR) {
-    return state;
-  }
+const initialState = {
+  company: {},
+};
 
-  throw new Error(`No Matching "${action.type}" - action type`);
+const company_reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case GET_SINGLE_COMPANY_SUCCESS:
+      return {
+        company: action.payload,
+      };
+    case EDIT_COMPANY_ADDR:
+      return {
+        ...state,
+        company: action.payload,
+      };
+    default:
+      return {
+        ...state,
+      };
+  }
 };
 
 export default company_reducer;

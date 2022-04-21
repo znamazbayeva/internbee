@@ -6,6 +6,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 const CompanyCard = ({ company }) => {
   const name = company.user.email;
@@ -13,26 +14,36 @@ const CompanyCard = ({ company }) => {
   return (
     <Box sx={{ minWidth: 225 }}>
       <Card variant="outlined" sx={{ display: "flex" }}>
-        <CardMedia
-          component="img"
-          sx={{
-            width: 80,
-            height: 80,
-            // display: "block",
-            margin: "auto",
-            maxWidth: "100%",
-            maxHeight: "100%",
-            borderRadius: "5px",
-          }}
-          image={image}
-          alt={name}
-        />
+        <Link to={`/company/${name}`}>
+          <CardMedia
+            component="img"
+            sx={{
+              width: 80,
+              height: 80,
+              // display: "block",
+              margin: "auto",
+              maxWidth: "100%",
+              maxHeight: "100%",
+              borderRadius: "5px",
+            }}
+            image={image}
+            alt={name}
+          />
+        </Link>
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <CardContent>
-            <Typography variant="h6" component="div">
-              {name}
-            </Typography>
-
+            <Link
+              to={`/company/${name}`}
+              style={{
+                textDecoration: "none",
+                color: "#2d2d2d",
+                fontWeight: "700",
+              }}
+            >
+              <Typography variant="h6" component="div">
+                {name}
+              </Typography>
+            </Link>
             <Typography variant="body2">0 reviews</Typography>
           </CardContent>
           <CardActions>

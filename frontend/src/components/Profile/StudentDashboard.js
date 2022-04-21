@@ -5,6 +5,8 @@ import StudentInfo2 from "./StudenInfo2";
 import styles from "./Profile.module.scss";
 import axios from "axios";
 import StudentSidebar from "./StudentSidebar";
+import { showStudent } from "../../actions/student";
+import SideBar from "./Company/SideBar";
 
 function StudentDashboard() {
   const state = useSelector((state) => state.auth);
@@ -29,8 +31,11 @@ function StudentDashboard() {
       className={styles.containter}
       style={{ display: "flex", height: "100vh" }}
     >
-      {student != null ? <StudentSidebar student={student} /> : null}
-      {student != null ? <StudentInfo2 student={student} /> : null}
+      {/* {student != null ? <StudentSidebar student={student} /> : null} */}
+      <div style={{ marginRight: "3rem" }}>
+        {student != null ? <SideBar /> : null}
+      </div>
+      <div>{student != null ? <StudentInfo2 student={student} /> : null}</div>
     </div>
   );
 }

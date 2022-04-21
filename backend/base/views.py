@@ -11,6 +11,7 @@ from .permissions import IsCompanyUser
 from rest_framework.authtoken.views import ObtainAuthToken
 from django.shortcuts import get_object_or_404
 
+
 # Get certain company with user id (pk)
 class CompanyDetailView(RetrieveAPIView):
     queryset=Company.objects.all()

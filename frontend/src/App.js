@@ -17,6 +17,7 @@ import VerifyEmail from "./components/Login/VerifyEmail";
 import AllApplicants from "./components/Applicants/AllApplicants";
 import Applicant from "./components/Applicants/Applicant";
 import Reviews from "./components/Reviews/Reviews";
+import SingleCompanyReview from "./components/Reviews/SingleCompanyReview";
 import InternshipsPage from "./pages/InternshipsPage";
 
 function App() {
@@ -57,6 +58,11 @@ function App() {
             component={CompanyDashboard}
           />
           <Route exact path="/reviews" component={Reviews} />
+          <Route
+            exact
+            path="/company/:id/"
+            children={<SingleCompanyReview />}
+          />
         </Switch>
       </div>
     </Router>
