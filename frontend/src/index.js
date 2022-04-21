@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { InternshipsProvider } from "./context/internships_context";
 import { FilterProvider } from "./context/filter_context";
+// import { CompanyProvider } from "./context/company_context";
 
 ReactDOM.render(
   <InternshipsProvider>
