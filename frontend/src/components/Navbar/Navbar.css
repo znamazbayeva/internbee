@@ -1,57 +1,61 @@
 .NavbarItems {
-	background: #fcfaff;
-	height: 4rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 1rem;
+  background: #fcfaff;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  position: relative;
+  width: 100%;
+  z-index: 10;
 }
 
 .navbar-logo {
-	font-size: 1.5rem;
-	margin-bottom: 0;
-	margin-left: 0;
-	color: #232129;
-	justify-self: start;
-	margin-left: 20px;
-	cursor: pointer;
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  margin-left: 0;
+  color: #232129;
+  justify-self: start;
+  margin-left: 20px;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .nav-menu {
-	display: flex;
-	align-items: center;
-	list-style: none;
-	text-align: center;
-	width: 70vw;
-	justify-content: end;
-	margin-right: 0;
-	margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+  width: 70vw;
+  justify-content: end;
+  margin-right: 0;
+  margin-bottom: 0;
 }
 
 .nav-links {
-	color: #232129;
-	text-decoration: none;
-	padding: 0.5rem 1rem;
+  color: #232129;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
 }
 
 .nav-links:hover {
-	color: #232129;
-	background-color: #f1defa;
-	border-radius: 4px;
-	transition: all 0.2s ease-out;
+  color: #232129;
+  background-color: #f1defa;
+  border-radius: 4px;
+  transition: all 0.2s ease-out;
 }
 
 .nav-links.authButton {
-	color: white;
-	background-color: #663399;
-	border-radius: 4px;
-	font-weight: bold;
-	margin-right: 0.5rem;
-	margin-left: 0.5rem;
+  color: white;
+  background-color: #663399;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .nav-links.authButton:hover {
-	background-color: #452475;
+  background-color: #452475;
 }
 
 /* .fa-bars {
@@ -59,16 +63,17 @@
   } */
 
 .nav-links-mobile {
-	display: none;
+  display: none;
 }
 
 .publicLink {
-	display: flex;
+  display: flex;
 }
 
 .logo__links {
-	display: flex;
-	text-decoration: none;
+  z-index: 1;
+  display: flex;
+  text-decoration: none;
 }
 
 /* .menu-icon {

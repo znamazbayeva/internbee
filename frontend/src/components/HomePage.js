@@ -5,6 +5,10 @@ import image from "../assets/img/landing.png";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addInternshipList } from "../actions/internship";
+import FeaturedInternships from "./FeaturedInternships";
+import { useFilterContext } from "../context/filter_context";
+import BasicCard from "./BasicCard";
+import Grid from "@mui/material/Grid";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -47,6 +51,19 @@ const HomePage = () => {
     e.preventDefault();
     setRedirect(true);
   };
+
+  const { all_internships } = useFilterContext();
+
+  const getUniqueValues = (data, type) => {
+    let unique = data.map((item) => item[type]);
+    if (type == "colors") {
+      unique = unique.flat();
+    }
+
+    return ["all", ...new Set(unique)];
+  };
+
+  const categories = getUniqueValues(all_internships, "category");
 
   return (
     <div className="search__container">
@@ -97,10 +114,35 @@ const HomePage = () => {
             />
           </div>
           <button className="login__btn">Search</button>
-          <div>Make more advanced search</div>
+          <div
+            style={{
+              margin: "20px 0px 0px 0px",
+              textAlign: "center",
+            }}
+          >
+            <span>Need more search options?</span>
+            <span>
+              <a href="/internships">Advanced Search</a>
+            </span>
+          </div>
         </form>
       </div>
       {redirect ? <Redirect push to="/internships/" /> : null}
+
+      <div className="title">
+        <h6 style={{ textDecoration: "capitalize", letterSpacing: "2px" }}>
+          POPULAR CATEGORIES
+        </h6>
+      </div>
+      <Grid container spacing={4}>
+        {categories.map((c, index) => {
+          return (
+            <Grid item xs={12} sm={6} md={4}>
+              <BasicCard title={c} key={index} />
+            </Grid>
+          );
+        })}
+      </Grid>
     </div>
   );
 };

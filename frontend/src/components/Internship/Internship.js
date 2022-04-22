@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./Internship.module.scss";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
@@ -8,8 +8,11 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import VideoCameraFrontIcon from "@mui/icons-material/VideoCameraFront";
 import axios from "axios";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Link } from "react-router-dom";
 function Internship({ internship }) {
   const state = useSelector((state) => state.auth);
+  const [like, setLike] = useState(false);
   function sendLike() {
     const token = state.token;
     console.log(token);
@@ -32,6 +35,35 @@ function Internship({ internship }) {
       )
       .then((res) => {
         console.log(res.data);
+        setLike(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  function removeLike() {
+    const token = state.token;
+    console.log(token);
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ internship: internship._id }),
+    };
+
+    if (token) {
+      config.headers["Authorization"] = `Token ${token}`;
+    }
+    console.log(internship._id);
+    axios
+      .delete(
+        `http://127.0.0.1:8000/v1/api/internship/like/${internship._id}/`,
+        null,
+        config
+      )
+      .then((res) => {
+        console.log(res.data);
+        setLike(false);
       })
       .catch((err) => {
         console.log(err);
@@ -72,10 +104,19 @@ function Internship({ internship }) {
               //KZT {internship.salary} / month
             }
             <button onClick={sendLike}>
-              <FavoriteBorderIcon
-                fontSize="small"
-                className={styles.button_hi}
-              />
+              {like ? (
+                <FavoriteBorderIcon
+                  fontSize="small"
+                  className={styles.button_hi}
+                  onClick={sendLike}
+                />
+              ) : (
+                <FavoriteIcon
+                  fontSize="small"
+                  className={styles.button_hi}
+                  onClick={removeLike}
+                />
+              )}
             </button>
             {internship.video ? (
               <button>
@@ -87,9 +128,11 @@ function Internship({ internship }) {
               </button>
             ) : null}
           </div>
-          <button className={styles.button}>
-            See more <ArrowForwardIcon className="arrow" fontSize="small" />
-          </button>
+          <Link to={`/internships/${internship._id}`}>
+            <button className={styles.button}>
+              See more <ArrowForwardIcon className="arrow" fontSize="small" />
+            </button>
+          </Link>
         </div>
       </div>
     </div>

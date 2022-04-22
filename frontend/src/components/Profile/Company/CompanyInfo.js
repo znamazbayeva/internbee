@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import { Avatar } from "@mui/material";
 import Identicon from "identicon.js";
 import { Button } from "@mui/material";
@@ -21,6 +21,7 @@ function CompanyInfo({ company }) {
   const handleEdit = (e) => {
     e.preventDefault();
   };
+  console.log(company.user.email);
   return (
     <div style={{ display: "block", width: "100%" }}>
       <div
@@ -33,7 +34,7 @@ function CompanyInfo({ company }) {
       >
         <div className={styles.company_header}>
           <Typography gutterBottom variant="h5" component="div">
-            {initialState.name}
+            {/* {company.user.email && company.user.email} */}
           </Typography>
           {/* <input type="text" /> */}
 

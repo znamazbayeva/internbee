@@ -1,102 +1,111 @@
 .general {
-	background-color: #f0f0f2;
-	padding: 2rem 6rem;
-	display: flex;
-	justify-content: space-between;
+  background-color: #f0f0f2;
+  padding: 2rem 6rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .container {
-	margin: 1rem;
-	display: flex;
-	box-shadow: #d9d7e0 0px 1px 1px, #d9d7e0 0px 1px 1px;
-	color: #232129;
-	background-color: #fcfaff;
-	border-radius: 4px;
-	font-weight: bold;
-	padding: 2rem 2rem;
-	max-height: 10rem;
-	&:first-child {
-		margin-top: 0;
-	}
-	.int__info {
-		height: 100%;
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
+  margin: 1rem;
+  display: flex;
+  box-shadow: #d9d7e0 0px 1px 1px, #d9d7e0 0px 1px 1px;
+  color: #232129;
+  background-color: #fcfaff;
+  border-radius: 4px;
+  font-weight: bold;
+  padding: 2rem 2rem;
+  max-height: 10rem;
+  &:first-child {
+    margin-top: 0;
+  }
+  .int__info {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 
-		.detail {
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			margin-right: 1rem;
-		}
+    .detail {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-right: 1rem;
+    }
 
-		.name {
-			font-size: 1.25rem;
-			font-weight: 400;
+    .name {
+      font-size: 1.25rem;
+      font-weight: 400;
 
-			.button_hi {
-				margin-left: 6px;
-			}
-			.button_hi:hover {
-				margin-left: 6px;
-				color: red;
-			}
-		}
+      .button_hi {
+        margin-left: 6px;
+      }
+      .button_hi:hover {
+        margin-left: 6px;
+        color: red;
+      }
+    }
 
-		.button {
-			color: white;
-			background-color: #663399;
-			border-radius: 4px;
-			font-weight: bold;
-			padding: 0.5rem;
-			text-align: center;
-		}
+    .button {
+      color: white;
+      background-color: #663399;
+      border-radius: 4px;
+      font-weight: bold;
+      padding: 0.5rem;
+      text-align: center;
+    }
 
-		.button:hover {
-			background-color: #452475;
-			.arrow {
-				margin-left: 10px;
-			}
-		}
-	}
-	.imgLogo {
-		height: 95px;
-		width: 100px;
-		margin-right: 2rem;
-		background-color: #d9bae8;
-		padding: 0.75rem;
-		border-radius: 0.75rem;
-	}
+    .button:hover {
+      background-color: #452475;
+      .arrow {
+        margin-left: 10px;
+      }
+    }
+  }
+  .imgLogo {
+    height: 95px;
+    width: 100px;
+    margin-right: 2rem;
+    background-color: #d9bae8;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+  }
 
-	.first__info {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		align-items: stretch;
-		height: 100%;
+  .first__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
 
-		.company_name {
-			font-size: 1.5rem;
-		}
-		.name {
-			font-size: 1.25rem;
-			font-weight: 400;
-		}
-		.created_time {
-			font-size: 1rem;
-			font-weight: 400;
-		}
+    .company_name {
+      font-size: 1.5rem;
+    }
+    .name {
+      font-size: 1.25rem;
+      font-weight: 400;
+    }
+    .created_time {
+      font-size: 1rem;
+      font-weight: 400;
+    }
 
-		.sub {
-			display: flex;
-			align-items: center;
-			justify-content: flex-start;
-			margin-top: 0.25rem;
-		}
+    .sub {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 0.25rem;
+    }
 
-		.sub > div {
-			margin-right: 1rem;
-		}
-	}
+    .sub > div {
+      margin-right: 1rem;
+    }
+  }
+}
+
+.applybutton {
+  color: white;
+  background-color: #663399;
+  border-radius: 4px;
+  font-weight: bold;
+  padding: 0.5rem;
+  text-align: center;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { useInternshipsContext } from "../context/internships_context";
 import { Link } from "react-router-dom";
 import Internship from "./Internship/Internship";
+import FeaturedInternshipCard from "./FeaturedInternshipCard";
 
 const FeaturedInternships = () => {
   const {
@@ -20,12 +21,19 @@ const FeaturedInternships = () => {
   return (
     <div>
       <div className="title">
-        <h2>featured internships</h2>
+        <h6 style={{ textDecoration: "capitalize", letterSpacing: "2px" }}>
+          RELATED INTERNSHIPS
+        </h6>
         <div className="underline"></div>
       </div>
-      <div className="section-center featured">
+      <div className="section-center featured" style={{ display: "flex" }}>
         {internships.slice(0, 3).map((internship) => {
-          return <Internship key={internship._id} internship={internship} />;
+          return (
+            <FeaturedInternshipCard
+              key={internship._id}
+              internship={internship}
+            />
+          );
         })}
       </div>
     </div>

@@ -19,11 +19,13 @@ const ListView = ({ internships }) => {
   }
   return (
     <div className={styles.general}>
-      <div style={{ flexGrow: 1.2 }}>
+      {/* <div style={{ flexGrow: 1.2 }}> */}
+      <div>
         <SearchInternship style={{ marginTop: "30px" }} />
       </div>
 
-      <div style={{ flexGrow: 2 }}>
+      {/* <div style={{ flexGrow: 2 }}> */}
+      <div>
         <div
           style={{
             margin: "1rem",
