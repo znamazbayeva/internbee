@@ -19,6 +19,10 @@ import Applicant from "./components/Applicants/Applicant";
 import Reviews from "./components/Reviews/Reviews";
 import SingleCompanyReview from "./components/Reviews/SingleCompanyReview";
 import InternshipsPage from "./pages/InternshipsPage";
+import SingleInternshipPage from "./components/Internship/SingleInternshipPage";
+import ApplicationPage from "./components/Applications/ApplicationPage";
+import MyResume from "./components/Profile/Student/MyResume";
+import ProfileSettings from "./components/Profile/Student/ProfileSettings";
 
 function App() {
   return (
@@ -31,8 +35,15 @@ function App() {
           <Route exact path="/freelance/signup" component={FreelanceSignup} />
           <Route exact path="/login" component={Login} />
 
+          <Route exact path="/profile-settings" component={ProfileSettings} />
+          <Route exact path="/student/my-resume" component={MyResume} />
+          <Route exact path="/application/apply" component={ApplicationPage} />
           <Route exact path="/internships" component={InternshipsPage} />
-          {/* <Route exact path="/internships/:id" children={<SingleInternship />} /> */}
+          <Route
+            exact
+            path="/internships/:id"
+            children={<SingleInternshipPage />}
+          />
 
           <Route exact path="/verify/" component={VerifyEmail} />
           <Route exact path="/company/applicants" component={AllApplicants} />

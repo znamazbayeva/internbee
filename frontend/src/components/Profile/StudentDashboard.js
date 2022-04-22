@@ -6,10 +6,11 @@ import styles from "./Profile.module.scss";
 import axios from "axios";
 import StudentSidebar from "./StudentSidebar";
 import { showStudent } from "../../actions/student";
-import SideBar from "./Company/SideBar";
+import SideBar from "./Student/SideBar";
 
 function StudentDashboard() {
   const state = useSelector((state) => state.auth);
+  console.log(state);
   const [student, setStudent] = useState(null);
 
   useEffect(() => {

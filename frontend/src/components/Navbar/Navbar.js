@@ -8,7 +8,7 @@ import logo from "../../assets/img/Bee-Logo.png";
 
 function Navbar() {
   const state = useSelector((state) => state.auth);
-  console.log(state);
+  // console.log(state);
   const dispatch = useDispatch();
   const authLink = (
     <div>

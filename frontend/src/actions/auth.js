@@ -86,7 +86,7 @@ export const create_clientuser =
           type: REGISTER_CUSER_SUCCESS,
           payload: res.data,
         });
-        console.log(res.data);
+        console.log("SUCCESS ON CUSER REGISTRATION");
       })
       .catch((err) => {
         dispatch({
@@ -140,6 +140,7 @@ export const login =
           type: LOGIN_SUCCESS,
           payload: response.data,
         });
+        console.log("SUCCESS ON LOGIN");
       })
       .catch((err) => {
         dispatch({
