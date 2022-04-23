@@ -42,6 +42,7 @@ function Internship({ internship }) {
       });
   }
   function removeLike() {
+    console.log("TRYING TO REMOVE");
     const token = state.token;
     console.log(token);
     const config = {
@@ -52,6 +53,7 @@ function Internship({ internship }) {
     };
 
     if (token) {
+      console.log(token);
       config.headers["Authorization"] = `Token ${token}`;
     }
     console.log(internship._id);

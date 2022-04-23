@@ -1,17 +1,16 @@
-import React, { useEffect, useContext, useReducer } from "react";
-import reducer from "../reducers/company_reducer";
-import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-
+import React, { useContext, useEffect, useReducer } from "react";
+import { useSelector } from "react-redux";
 import {
   // EDIT_COMPANY_ADDR,
   // EDIT_COMPANY_IMAGE,
   // EDIT_COMPANY_NAME,
   // EDIT_COMPANY_DESC,
   GET_SINGLE_COMPANY_BEGIN,
-  GET_SINGLE_COMPANY_SUCCESS,
   GET_SINGLE_COMPANY_ERROR,
+  GET_SINGLE_COMPANY_SUCCESS,
 } from "../actions/types";
+import reducer from "../reducers/company_reducer";
 
 const initialState = {
   address: "",

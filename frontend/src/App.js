@@ -1,28 +1,27 @@
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import HomePage from "./components/HomePage";
-import ClientSignup from "./components/Signup/ClientSignup";
-import FreelanceSignup from "./components/Signup/FreelanceSignup";
-import Login from "./components/Login/Login";
-import StudentDashboard from "./components/Profile/StudentDashboard";
-import CompanyDashboard from "./components/Profile/Company/CompanyDashboard";
-import InternshipListing from "./components/Profile/Company/InternshipListing";
-import { CPrivateRoute, FPrivateRoute } from "./private/PrivateRoute";
-import InternshipListings from "./components/Profile/Company/InternshipListings";
-import React, { Component } from "react";
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
-
-import VerifyEmail from "./components/Login/VerifyEmail";
-
 import AllApplicants from "./components/Applicants/AllApplicants";
 import Applicant from "./components/Applicants/Applicant";
-import Reviews from "./components/Reviews/Reviews";
-import SingleCompanyReview from "./components/Reviews/SingleCompanyReview";
-import InternshipsPage from "./pages/InternshipsPage";
-import SingleInternshipPage from "./components/Internship/SingleInternshipPage";
 import ApplicationPage from "./components/Applications/ApplicationPage";
+import HomePage from "./components/HomePage";
+import SingleInternshipPage from "./components/Internship/SingleInternshipPage";
+import Login from "./components/Login/Login";
+import VerifyEmail from "./components/Login/VerifyEmail";
+import Navbar from "./components/Navbar/Navbar";
+import CompanyDashboard from "./components/Profile/Company/CompanyDashboard";
+import InternshipListing from "./components/Profile/Company/InternshipListing";
+import InternshipListings from "./components/Profile/Company/InternshipListings";
 import MyResume from "./components/Profile/Student/MyResume";
 import ProfileSettings from "./components/Profile/Student/ProfileSettings";
+import StudentDashboard from "./components/Profile/StudentDashboard";
+import Reviews from "./components/Reviews/Reviews";
+import SingleCompanyReview from "./components/Reviews/SingleCompanyReview";
+import ClientSignup from "./components/Signup/ClientSignup";
+import FreelanceSignup from "./components/Signup/FreelanceSignup";
+import About from "./pages/About";
+import InternshipsPage from "./pages/InternshipsPage";
+import { CPrivateRoute, FPrivateRoute } from "./private/PrivateRoute";
 
 function App() {
   return (
@@ -31,6 +30,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={HomePage} />
+          <Route exact path="/about" component={About} />
           <Route exact path="/client/signup" component={ClientSignup} />
           <Route exact path="/freelance/signup" component={FreelanceSignup} />
           <Route exact path="/login" component={Login} />

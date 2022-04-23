@@ -1,6 +1,6 @@
-import { Route, Redirect } from "react-router-dom";
+import React from "react";
 import { useSelector } from "react-redux";
-import React, { Component } from "react";
+import { Redirect, Route } from "react-router-dom";
 
 export const CPrivateRoute = ({ component: Component, path, ...rest }) => {
   const state = useSelector((state) => state.auth);

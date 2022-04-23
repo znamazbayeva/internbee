@@ -5,7 +5,7 @@ import { create_clientuser } from "../../actions/auth";
 import { Redirect, Link } from "react-router-dom";
 import hey from "../../assets/img/signup.png";
 import "./Signup.css";
-import { signInWithGoogle } from "../../Firebase";
+
 const ClientSignup = ({ create_clientuser, isAuthenticated, isStudent }) => {
   const [client, setClient] = useState({
     email: "",
@@ -27,23 +27,6 @@ const ClientSignup = ({ create_clientuser, isAuthenticated, isStudent }) => {
       password,
     };
     console.log(newClient);
-    create_clientuser(newClient);
-  };
-
-  const signUpWithGoogle = () => {
-    signInWithGoogle();
-    const newEmail = localStorage.getItem("email");
-    const newPassword = localStorage.getItem("email");
-    setClient({
-      ...client,
-      email: newEmail,
-      password: newPassword,
-    });
-    const newClient = {
-      email,
-      password,
-    };
-
     create_clientuser(newClient);
   };
 
@@ -95,7 +78,6 @@ const ClientSignup = ({ create_clientuser, isAuthenticated, isStudent }) => {
             <button type="submit" value="Sign Up" className="signup__btn">
               Sign Up
             </button>
-            <button onClick={signUpWithGoogle}>Sign In With Google</button>
           </form>
         </div>
       </div>

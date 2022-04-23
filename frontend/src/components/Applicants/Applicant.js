@@ -1,19 +1,19 @@
-import React from "react";
-import styles from "../Profile/Profile.module.scss";
-import SideBar from "../Profile/Company/SideBar";
+import MessageIcon from "@mui/icons-material/Message";
+import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-
-import { styled } from "@mui/material/styles";
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
-import MessageIcon from "@mui/icons-material/Message";
+import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import React from "react";
+import SideBar from "../Profile/Company/SideBar";
+import styles from "../Profile/Profile.module.scss";
 import ApplicantContact from "./ApplicantContact";
+
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 15,
   width: 30,

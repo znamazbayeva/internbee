@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { Grid } from "@mui/material";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import CompanyCard from "./CompanyCard";
-import { Box, Paper, Grid } from "@mui/material";
-import { experimentalStyled as styled } from "@mui/material/styles";
 // import styles from "./Company.css";
 // import { makeStyles } from "@mui/styles";
 

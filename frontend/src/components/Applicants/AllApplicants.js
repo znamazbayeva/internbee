@@ -1,10 +1,9 @@
-import * as React from "react";
-import { DataGrid } from "@mui/x-data-grid";
-import styles from "../Profile/Profile.module.scss";
-import SideBar from "../Profile/Company/SideBar";
-import { margin } from "@mui/system";
 import ArrowCircleRightSharpIcon from "@mui/icons-material/ArrowCircleRightSharp";
+import { DataGrid } from "@mui/x-data-grid";
+import * as React from "react";
 import { Link } from "react-router-dom";
+import SideBar from "../Profile/Company/SideBar";
+import styles from "../Profile/Profile.module.scss";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },

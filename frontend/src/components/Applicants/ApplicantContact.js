@@ -1,17 +1,13 @@
-import React from "react";
-
-import Card from "@mui/material/Card";
-
-import CardContent from "@mui/material/CardContent";
-
-import Typography from "@mui/material/Typography";
 import EmailIcon from "@mui/icons-material/Email";
-import { styled } from "@mui/material/styles";
+import PhoneIcon from "@mui/icons-material/Phone";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
-import MessageIcon from "@mui/icons-material/Message";
-import PhoneIcon from "@mui/icons-material/Phone";
+import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import React from "react";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 15,

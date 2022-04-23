@@ -3,10 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudentUser } from "../../actions/auth";
 import styles from "./Profile.module.scss";
-
-import StudentSidebar from "./StudentSidebar";
-import { showStudent } from "../../actions/student";
+import StudentInfo2 from "./StudenInfo2";
 import SideBar from "./Student/SideBar";
+import { data } from "./student_data.js";
 
 function StudentDashboard() {
   const state = useSelector((state) => state.auth);
@@ -34,7 +33,7 @@ function StudentDashboard() {
     >
       {/* {student != null ? <StudentSidebar student={student} /> : null} */}
       <div style={{ marginRight: "3rem" }}>
-        {student != null ? <SideBar /> : null}
+        {student != null ? <SideBar data={data} /> : null}
       </div>
       <div>{student != null ? <StudentInfo2 student={student} /> : null}</div>
     </div>

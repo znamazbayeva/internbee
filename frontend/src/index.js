@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
 import { Provider } from "react-redux";
-import store from "./store";
-import { InternshipsProvider } from "./context/internships_context";
+import App from "./App";
 import { FilterProvider } from "./context/filter_context";
+import { InternshipsProvider } from "./context/internships_context";
+import "./index.css";
+import store from "./store";
 // import { CompanyProvider } from "./context/company_context";
 
 ReactDOM.render(
