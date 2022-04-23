@@ -1,21 +1,21 @@
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import PlaceIcon from "@mui/icons-material/Place";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import Card from "@mui/material/Card";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import CardActions from "@mui/material/CardActions";
-import Typography from "@mui/material/Typography";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import PlaceIcon from "@mui/icons-material/Place";
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import { Link } from "react-router-dom";
-import styles from "./Internship.module.scss";
+import { Link, useParams } from "react-router-dom";
 import FeaturedInternships from "../FeaturedInternships";
+import Disqus from "disqus-react";
 
 const SingleInternshipPage = () => {
   const { id } = useParams();
+  const disqusShortname = "internbee";
+  const disqusConfig = {
+    url: "http://localhost:3000",
+    identifier: id,
+    title: `internship${id}`,
+  };
   const url = "http://127.0.0.1:8000/v1/api/internship/all/";
   const [internship, setInternship] = useState(null);
 
@@ -179,6 +179,10 @@ const SingleInternshipPage = () => {
         <div>
           <FeaturedInternships />
         </div>
+        <Disqus.DiscussionEmbed
+          shortname={disqusShortname}
+          config={disqusConfig}
+        />
       </div>
     );
   }

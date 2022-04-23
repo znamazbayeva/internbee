@@ -1,11 +1,11 @@
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import { Link, Redirect } from "react-router-dom";
 import { create_freelanceuser } from "../../actions/auth";
-import { Redirect, Link } from "react-router-dom";
 import hey from "../../assets/img/signup.png";
+
 import "./Signup.css";
-import { signInWithGoogle } from "../../Firebase";
 
 const FreelanceSignup = ({
   create_freelanceuser,
@@ -34,25 +34,6 @@ const FreelanceSignup = ({
     create_freelanceuser(newUser);
   };
 
-  const signUpWithGoogle = () => {
-    signInWithGoogle();
-    const newEmail = localStorage.getItem("email");
-    const newPassword = localStorage.getItem("email");
-    setFreelancer({
-      ...freelancer,
-      email: newEmail,
-      password: newPassword,
-    });
-    const newClient = {
-      email,
-      password,
-    };
-
-    create_freelanceuser(newClient);
-
-    console.log(isAuthenticated);
-    console.log("isAuthenticated?");
-  };
   if (isAuthenticated && !isClient) {
     return <Redirect to="/company/dashboard" />;
   }
@@ -101,7 +82,6 @@ const FreelanceSignup = ({
             <button type="submit" value="Sign Up" className="signup__btn">
               Sign Up
             </button>
-            <button onClick={signUpWithGoogle}>Sign In With Google</button>
           </form>
         </div>
       </div>

@@ -1,11 +1,7 @@
 import axios from "axios";
-
 import {
-  GET_SINGLE_STUDENT_SUCCESS,
-  GET_SINGLE_STUDENT_ERROR,
-  GET_SINGLE_STUDENT_BEGIN,
-  EDIT_STUDENT_DESC,
   EDIT_STUDENT_ADDR,
+  GET_SINGLE_STUDENT_SUCCESS,
 } from "../actions/types";
 
 export const showStudent = (url) => (dispatch) => {

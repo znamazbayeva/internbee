@@ -1,29 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { SidebarData } from "./SidebarData";
-import "./SideBar.css";
 import { IconContext } from "react-icons";
+import "./SideBar.css";
 
-function SideBar() {
+function SideBar({ data }) {
   const [sidebar, setSidebar] = useState(true);
-
   const showSidebar = () => setSidebar(!sidebar);
 
   return (
     <IconContext.Provider value={{ color: "#fff" }}>
-      {/* <div className="sidebar">
-          <Link to="#" className="menu-bars">
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
-        </div> */}
       <nav className={sidebar ? "side-menu active" : "side-menu"}>
         <ul className="side-menu-items" onClick={showSidebar}>
-          {/* <li className="sidebar-toggle">
-              <Link to="#" className="menu-bars">
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li> */}
-          {SidebarData.map((item, index) => {
+          {data.map((item, index) => {
             return (
               <li key={index} className={item.cName}>
                 <Link to={item.path}>

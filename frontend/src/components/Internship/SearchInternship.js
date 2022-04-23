@@ -1,23 +1,13 @@
-import React, { useState, Component, useEffect } from "react";
 import { FormGroup } from "@mui/material";
-import { FormControlLabel } from "@mui/material";
-// import { useDispatch } from "react-redux";
-import Checkbox from "@mui/material/Checkbox";
 import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import FormLabel from "@mui/material/FormLabel";
-import { styled } from "@mui/material/styles";
-import { useFilterContext } from "../../context/filter_context";
 import FormControl from "@mui/material/FormControl";
-import Box from "@mui/material/Box";
-import Select from "@mui/material/Select";
-import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
-import Slider from "@mui/material/Slider";
-import InputLabel from "@mui/material/InputLabel";
 import Input from "@mui/material/Input";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import { styled } from "@mui/material/styles";
+import React from "react";
+import { useFilterContext } from "../../context/filter_context";
 
 const getUniqueValues = (data, type) => {
   let unique = data.map((item) => item[type]);

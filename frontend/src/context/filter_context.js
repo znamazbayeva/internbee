@@ -1,14 +1,13 @@
-import React, { useEffect, useContext, useReducer } from "react";
-import reducer from "../reducers/filter_reducer";
+import React, { useContext, useEffect, useReducer } from "react";
 import {
+  CLEAR_FILTERS,
+  FILTER_INTERNSHIPS,
   LOAD_INTERNSHIPS,
-  UPDATE_SORT,
   SORT_INTERNSHIPS,
   UPDATE_FILTERS,
-  FILTER_INTERNSHIPS,
-  CLEAR_FILTERS,
+  UPDATE_SORT,
 } from "../actions/types";
-
+import reducer from "../reducers/filter_reducer";
 import { useInternshipsContext } from "./internships_context";
 
 const initialState = {

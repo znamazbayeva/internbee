@@ -1,6 +1,5 @@
 import React from "react";
 import { useFilterContext } from "../context/filter_context";
-import { useInternshipsContext } from "../context/internships_context";
 import ListView from "./ListView";
 
 const InternshipsList = () => {

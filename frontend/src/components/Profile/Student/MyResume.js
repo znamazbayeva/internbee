@@ -1,16 +1,10 @@
-import styles from "../Profile.module.scss";
-import React from "react";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import CssBaseline from "@mui/material/CssBaseline";
-import Container from "@mui/material/Container";
-import Paper from "@mui/material/Paper";
-import InputLabel from "@mui/material/InputLabel";
-import axios from "axios";
+import React from "react";
+import ResumeTable from "../../Applications/ResumeTable";
+import styles from "../Profile.module.scss";
+import { data } from "../student_data";
 import SideBar from "./SideBar";
+import Button from "@mui/material/Button";
 
 function MyResume() {
   return (
@@ -18,22 +12,17 @@ function MyResume() {
       className={styles.containter}
       style={{ display: "flex", height: "100vh" }}
     >
+      <CssBaseline />
       <div style={{ marginRight: "3rem" }}>
-        <SideBar />
+        <SideBar data={data} />
       </div>
-      <div
-        style={{
-          marginRight: "2.5rem",
-        }}
-        className={styles.container}
-      >
-        <CssBaseline />
-        <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
+      <div className={styles.container_plain}>
+        {/* <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
           <Typography component="h1" variant="h4" align="center">
             My Resume
-          </Typography>
+          </Typography> 
 
-          <React.Fragment>
+         <React.Fragment>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
                 <InputLabel htmlFor="my-input">Full Name</InputLabel>
@@ -129,8 +118,36 @@ function MyResume() {
                 />
               </Grid>
             </Grid>
-          </React.Fragment>
-        </Container>
+          </React.Fragment> 
+         </Container>  */}
+        <div
+          style={{
+            display: "block",
+            marginBottom: "2rem",
+          }}
+        >
+          <h3>My Resumes</h3>
+        </div>
+        <div
+          style={{
+            backgroundColor: "#B8C9E0",
+            display: "inline-block",
+            padding: "1.2rem",
+            borderRadius: "5px",
+            marginBottom: "2rem",
+            color: "#663399",
+          }}
+        >
+          You can keep track of your resumes, update or delete them below
+        </div>
+        <ResumeTable />
+        <Button
+          variant="contained"
+          color="secondary"
+          style={{ marginTop: "2rem" }}
+        >
+          Add Resume
+        </Button>
       </div>
     </div>
   );

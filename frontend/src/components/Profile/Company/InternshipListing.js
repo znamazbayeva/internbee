@@ -1,9 +1,6 @@
 import React from "react";
-import SideBar from "./SideBar";
-import { DataGrid } from "@mui/x-data-grid";
 import styles from "../Profile.module.scss";
-import ArrowCircleRightSharpIcon from "@mui/icons-material/ArrowCircleRightSharp";
-import { Link } from "react-router-dom";
+import SideBar from "./SideBar";
 
 const InternshipListing = () => {
   return (

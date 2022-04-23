@@ -1,11 +1,7 @@
 import axios from "axios";
-
 import {
-  GET_SINGLE_COMPANY_SUCCESS,
-  GET_SINGLE_COMPANY_ERROR,
-  GET_SINGLE_COMPANY_BEGIN,
-  EDIT_COMPANY_DESC,
   EDIT_COMPANY_ADDR,
+  GET_SINGLE_COMPANY_SUCCESS,
 } from "../actions/types";
 
 export const showCompany = (url) => (dispatch, getState) => {
