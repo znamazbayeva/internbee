@@ -3,8 +3,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import ResumeForm from "./ResumeForm";
-import { Button } from "@progress/kendo-react-buttons";
+// import { Button } from "@progress/kendo-react-buttons";
 import { useRef } from "react";
 import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
 import ResumeTable from "./ResumeTable";
@@ -30,8 +31,14 @@ const ApplicationPage = () => {
 
             <ResumeForm />
 
-            <Button primary={true} onClick={handleExportWithComponent}>
-              Primary Button
+            <Button
+              style={{ float: "right" }}
+              variant="outlined"
+              color="secondary"
+              primary={true}
+              onClick={handleExportWithComponent}
+            >
+              Save as PDF
             </Button>
           </Paper>
         </Container>

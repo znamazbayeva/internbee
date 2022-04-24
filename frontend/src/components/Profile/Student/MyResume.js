@@ -5,6 +5,7 @@ import styles from "../Profile.module.scss";
 import { data } from "../student_data";
 import SideBar from "./SideBar";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 function MyResume() {
   return (
@@ -141,13 +142,15 @@ function MyResume() {
           You can keep track of your resumes, update or delete them below
         </div>
         <ResumeTable />
-        <Button
-          variant="contained"
-          color="secondary"
-          style={{ marginTop: "2rem" }}
-        >
-          Add Resume
-        </Button>
+        <Link to="/student/submit-resume">
+          <Button
+            variant="contained"
+            color="secondary"
+            style={{ marginTop: "2rem" }}
+          >
+            Add Resume
+          </Button>
+        </Link>
       </div>
     </div>
   );
