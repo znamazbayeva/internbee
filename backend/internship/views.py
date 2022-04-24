@@ -44,7 +44,7 @@ class InternshipLikeAPIView(generics.CreateAPIView):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
-        internship = get_object_or_404(Internship, id=self.kwargs['pk'])
+        internship = get_object_or_404(Internship, _id=self.kwargs['pk'])
         like = InternshipLike.objects.filter(student=request.user, internship=internship)
         if like.exists():
             like.delete()
