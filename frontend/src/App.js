@@ -5,7 +5,6 @@ import AllApplicants from "./components/Applicants/AllApplicants";
 import Applicant from "./components/Applicants/Applicant";
 import ApplicationPage from "./components/Applications/ApplicationPage";
 import PostInternshipPage from "./components/Applications/PostInternshipPage";
-import PostJobPage from "./components/Applications/PostInternshipPage";
 import HomePage from "./components/HomePage";
 import SingleInternshipPage from "./components/Internship/SingleInternshipPage";
 import Login from "./components/Login/Login";
@@ -48,7 +47,11 @@ function App() {
             path="/internships/:id"
             children={<SingleInternshipPage />}
           />
-          <Route exact path="/post-job/" component={PostInternshipPage} />
+          <Route
+            exact
+            path="/post-internship/"
+            component={PostInternshipPage}
+          />
           <Route exact path="/verify/" component={VerifyEmail} />
           <Route exact path="/company/applicants" component={AllApplicants} />
           <Route exact path="/company/applicants/1" component={Applicant} />

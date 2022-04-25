@@ -1,115 +1,192 @@
-import ArrowCircleRightSharpIcon from "@mui/icons-material/ArrowCircleRightSharp";
-import { DataGrid } from "@mui/x-data-grid";
-import React from "react";
-import { Link } from "react-router-dom";
-import styles from "../Profile.module.scss";
+// import ArrowCircleRightSharpIcon from "@mui/icons-material/ArrowCircleRightSharp";
 import SideBar from "./SideBar";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
+import styles from "../Profile.module.scss";
+import React, { useContext, useEffect, useState } from "react";
+import Paper from "@mui/material/Paper";
+import BaseLayout from "../../Applications/BaseLayout";
+import { Link } from "react-router-dom";
+import moment from "moment";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import { ArrowCircleRight } from "@mui/icons-material";
 
-const columns = [
-  { field: "id", headerName: "ID", width: 70 },
-
-  { field: "title", headerName: "Title", width: 130 },
-
-  { field: "position", headerName: "Job Position", width: 130 },
-  {
-    field: "description",
-    headerName: "Job Description",
-    type: "number",
-    width: 90,
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
   },
-  {
-    field: "number",
-    headerName: "Number",
-    type: "number",
-    width: 90,
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
   },
-  //   {
-  //     field: "number",
-  //     headerName: "Number of Vacancies",
-  //     description: "This column has a value getter and is not sortable.",
-  //     sortable: false,
-  //     width: 160,
-  //     valueGetter: (params) =>
-  //       `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-  //   },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  "&:last-child td, &:last-child th": {
+    border: 0,
+  },
+}));
+
+const applicants_arr = [
   {
-    field: "viewApplicant",
-    headerName: "View Listing",
-    renderCell: (params) => (
-      <Link to="/company/internship-listings/1" style={{ color: "#663399" }}>
-        <ArrowCircleRightSharpIcon />
-      </Link>
-    ),
+    id: 0,
+
+    first_name: "Web",
+    last_name: "Dev",
+
+    status: "10",
+    created_at: new Date(),
+    job: {
+      id: 1,
+      title: "Tech",
+      location: "London",
+    },
   },
 ];
 
-const rows = [
-  {
-    id: 1,
-    title: "Analyst/Intern (Emerging Markets Analyst Program)",
-    position:
-      "The Emerging Markets (EM) Analyst Program begins in July with a 3-week training program in Dubai. Formal training begins...",
-    description:
-      "Track market developments across the region and share geopolitical, economic and banking industry trends that may affect the business with...",
-    number: 2,
-  },
-  {
-    id: 2,
-    title: "Project management intern",
-    position:
-      "Administration support to Operations Department. Tasks related to the project management.",
-    description:
-      "Work experience is not required. Knowledge and skills required: Higher education preferably with major in finance, accounting or economics.",
-    number: 2,
-  },
-  {
-    id: 3,
-    title: "Стажер BI-аналитик / Разработчик Power BI / Data Engineer",
-    position:
-      "Track market developments across the region and share geopolitical, economic and banking industry trends that may affect the business with...",
-    description:
-      "The Emerging Markets (EM) Analyst Program begins in July with a 3-week training program in Dubai. Formal training begins...",
-    number: 1,
-  },
-  {
-    id: 4,
-    title: "Стажер в отдел по закупкам",
-    position:
-      "Сортировка и распределение документов. Помощь в работе с поставщиками.",
-    description:
-      "Знание английского языка на уровне intermediate желательно. Уверенное пользование MS Office. Внимательность и аккуратность к деталям и скорость исполнения задач.",
-    number: 3,
-  },
-  {
-    id: 5,
-    title: "Стажер в Департамент повышения операционной эффективности",
-    position:
-      "Повышения операционной эффективности. Роботизация процессов компании. Активное участие во внедрении и развитии IT инноваций. Участие в разработке роботов.",
-    description:
-      "Образование: Техническое образование. Знания и навыки: Аналитическое мышление. Знание .NET Framework будет преимуществом, но не принципиальным. Иметь большое желание заниматься...",
-    number: 3,
-  },
-];
+const AllApplicants = () => {
+  const [applicants, setApplicants] = useState(applicants_arr);
+  const [loading, setLoading] = useState(false);
+  // const authContext = useContext(AuthContext);
+  // const { token, isAuthenticated } = authContext.state;
 
-const InternshipListings = () => {
+  // useEffect(() => {
+  //   const config = {
+  //     headers: { Authorization: `Bearer ${token}` },
+  //   };
+
+  //   const fetchApplicants = async () => {
+  //     try {
+  //       const res = await axios.get("/employer/applicants/", config);
+  //       setApplicants(res.data);
+  //       setLoading(false);
+  //     } catch (e) {
+  //       setLoading(false);
+  //       console.log(e);
+  //     }
+  //   };
+
+  //   fetchApplicants().then();
+  // }, []);
+
+  const getFullname = (user) => `${user.first_name} ${user.last_name}`;
+
+  const onUpdateApplicant = () => {};
+  // const onUpdateApplicant = (applicant, type) => (event) => {
+
+  // }
+
   return (
-    <>
+    <BaseLayout title={"Applicants"}>
       <SideBar />
+      {/* {loading && (
+        <div className="col-lg-9 col-md-9 col-xs-12">
+          <div className="row">
+            <div className="col-md-6 mx-auto">
+              LOADER
+              <Loader
+                                        type="Grid"
+                                        color="#00BFFF"
+                                        // style={{textAlign: 'center'}}
+                                        height={100}
+                                        width={100}
+                                    /> 
+            </div>
+          </div>
+        </div>
+      )} */}
+
+      {/* {!loading && ( */}
       <div
-        style={{ height: 400, width: "81%", marginLeft: "220px" }}
-        className={styles.company_table}
+        className={styles.containter}
+        style={{ display: "flex", height: "100vh" }}
       >
-        <h3 style={{ padding: "1rem" }}>All Internship Listings</h3>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[7]}
-          checkboxSelection
-        />
+        <div style={{ marginRight: "3rem" }}>
+          <SideBar />
+        </div>
+        <div className={styles.container_plain}>
+          <div
+            style={{
+              display: "block",
+              marginBottom: "2rem",
+            }}
+          >
+            <h3>Manage Internship Listings</h3>
+          </div>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>Name</StyledTableCell>
+                  <StyledTableCell align="left">Type</StyledTableCell>
+                  <StyledTableCell align="left">Tags</StyledTableCell>
+                  <StyledTableCell align="left">
+                    Total Candidates
+                  </StyledTableCell>
+                  <StyledTableCell align="left">Created at</StyledTableCell>
+                  <StyledTableCell align="left">View Listing</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {applicants.map((applicant) => {
+                  return (
+                    <StyledTableRow key={applicant.id}>
+                      <StyledTableCell component="th" scope="row">
+                        <Link to={`/jobs/${applicant.job.id}`}>
+                          {/* {getFullname(applicant.applied_user)} */}
+                          {`${applicant.first_name} ${applicant.last_name}`}
+                        </Link>
+                      </StyledTableCell>
+                      <StyledTableCell align="left">
+                        <Link to={`/jobs/${applicant.job.id}`}>
+                          {applicant.job.title}
+                        </Link>
+                      </StyledTableCell>
+                      <StyledTableCell align="left">
+                        {applicant.job.location}
+                      </StyledTableCell>
+                      <StyledTableCell align="left">
+                        {applicant.status}
+                      </StyledTableCell>
+                      <StyledTableCell align="left">
+                        {moment(applicant.created_at).format(
+                          "DD-MM-YYYY hh:mm:ss A"
+                        )}
+                      </StyledTableCell>
+                      <StyledTableCell align="left">
+                        {applicant.status === "pending" && (
+                          <>
+                            <Button
+                              variant="contained"
+                              color="secondary"
+                              size="small"
+                              style={{ marginRight: "0.7rem" }}
+                            >
+                              <ArrowCircleRight />
+                            </Button>
+                          </>
+                        )}
+                      </StyledTableCell>
+                    </StyledTableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
       </div>
-    </>
+      {/* )} */}
+    </BaseLayout>
   );
 };
 
-export default InternshipListings;
+export default AllApplicants;
