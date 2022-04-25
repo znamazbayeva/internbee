@@ -19,24 +19,19 @@ const ListView = ({ internships }) => {
   }
   return (
     <div className={styles.general}>
-      {/* <div style={{ flexGrow: 1.2 }}> */}
-      <div>
+      <div style={{ flex: "0 0 10em" }}>
         <SearchInternship style={{ marginTop: "30px" }} />
       </div>
-
-      {/* <div style={{ flexGrow: 2 }}> */}
-      <div>
+      <div style={{ flex: "0 0 55em" }}>
         <div
           style={{
             margin: "1rem",
             display: "flex",
+            position: "sticky",
             justifyContent: "space-between",
             alignItems: "center",
           }}
         >
-          {
-            // make sort by component
-          }
           <h3>All internships</h3>
           <Sort />
         </div>

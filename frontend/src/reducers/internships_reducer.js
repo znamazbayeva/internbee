@@ -4,7 +4,7 @@ import {
   GET_INTERNSHIPS_SUCCESS,
   GET_SINGLE_INTERNSHIP_BEGIN,
   GET_SINGLE_INTERNSHIP_ERROR,
-  GET_SINGLE_INTERNSHIP_SUCCESS,
+  GET_SINGLE_INTERNSHIP_SUCCESS
 } from "../actions/types";
 
 const internships_reducer = (state, action) => {
