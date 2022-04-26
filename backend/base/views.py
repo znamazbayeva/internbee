@@ -10,6 +10,7 @@ from rest_framework.views import APIView
 from .permissions import IsCompanyUser
 from rest_framework.authtoken.views import ObtainAuthToken
 from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 
 # Get certain company with user id (pk)
 class CompanyDetailView(RetrieveAPIView):
@@ -33,10 +34,18 @@ class UserListCreateView(ListCreateAPIView):
         serializer.save(user=user)
 
 # Edit, get or delete the user
+
 class UserDetailView(RetrieveUpdateDestroyAPIView):
     queryset=User.objects.all()
     serializer_class=UserSerializer
-    permission_classes=[IsOwnerProfileOrReadOnly | IsAdminUser]
+    permission_classes=[]
+
+    def delete(self, request, pk):
+        user = get_object_or_404(User, id=self.kwargs['pk'])
+        if user:
+            user.delete()
+            return Response({"message": "User is uccessfully deleted"}, status=status.HTTP_200_OK)
+        return Response({"message": "Something went wrong"}, status=status.HTTP_400_BAD_REQUEST)
 
 # Signup of the company
 class CompanySignupView(GenericAPIView):
@@ -48,7 +57,8 @@ class CompanySignupView(GenericAPIView):
         return Response({
             "user":UserSerializer(user, context=self.get_serializer_context()).data,
             "token":Token.objects.get(user=user).key,
-            "message":"account created successfully"
+            "message":"account created successfully",
+            "company": CompanySerializer(Company.objects.get(user=user)).data
         })
 
 
@@ -90,4 +100,8 @@ class CompanyProfileAPIView(generics.RetrieveUpdateAPIView):
     permission_classes = (IsAuthenticated,)
 
     def get_object(self):
-        return self.request.user
+        cid = self.kwargs["pk"]
+        return get_object_or_404(Company, cid=cid)
+    
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
