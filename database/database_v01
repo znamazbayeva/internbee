@@ -1,0 +1,923 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.0
+-- Dumped by pg_dump version 14.0
+
+-- Started on 2022-04-10 15:58:47 +06
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3806 (class 1262 OID 18187)
+-- Name: internbee_db; Type: DATABASE; Schema: -; Owner: internbee
+--
+
+CREATE DATABASE internbee_db WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.UTF-8';
+
+
+ALTER DATABASE internbee_db OWNER TO internbee;
+
+\connect internbee_db
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3800 (class 0 OID 18517)
+-- Dependencies: 242
+-- Data for Name: application_application; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+
+
+--
+-- TOC entry 3774 (class 0 OID 18279)
+-- Dependencies: 216
+-- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+
+
+--
+-- TOC entry 3776 (class 0 OID 18288)
+-- Dependencies: 218
+-- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+
+
+--
+-- TOC entry 3772 (class 0 OID 18272)
+-- Dependencies: 214
+-- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (45, 'Can add log entry', 12, 'add_logentry');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (46, 'Can change log entry', 12, 'change_logentry');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (47, 'Can delete log entry', 12, 'delete_logentry');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (48, 'Can view log entry', 12, 'view_logentry');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (49, 'Can add permission', 13, 'add_permission');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (50, 'Can change permission', 13, 'change_permission');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (51, 'Can delete permission', 13, 'delete_permission');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (52, 'Can view permission', 13, 'view_permission');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (53, 'Can add group', 14, 'add_group');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (54, 'Can change group', 14, 'change_group');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (55, 'Can delete group', 14, 'delete_group');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (56, 'Can view group', 14, 'view_group');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (57, 'Can add content type', 15, 'add_contenttype');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (58, 'Can change content type', 15, 'change_contenttype');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (59, 'Can delete content type', 15, 'delete_contenttype');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (60, 'Can view content type', 15, 'view_contenttype');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (61, 'Can add session', 16, 'add_session');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (62, 'Can change session', 16, 'change_session');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (63, 'Can delete session', 16, 'delete_session');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (64, 'Can view session', 16, 'view_session');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (65, 'Can add Token', 17, 'add_token');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (66, 'Can change Token', 17, 'change_token');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (67, 'Can delete Token', 17, 'delete_token');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (68, 'Can view Token', 17, 'view_token');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (69, 'Can add token', 18, 'add_tokenproxy');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (70, 'Can change token', 18, 'change_tokenproxy');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (71, 'Can delete token', 18, 'delete_tokenproxy');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (72, 'Can view token', 18, 'view_tokenproxy');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (73, 'Can add user', 19, 'add_user');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (74, 'Can change user', 19, 'change_user');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (75, 'Can delete user', 19, 'delete_user');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (76, 'Can view user', 19, 'view_user');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (77, 'Can add company', 20, 'add_company');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (78, 'Can change company', 20, 'change_company');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (79, 'Can delete company', 20, 'delete_company');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (80, 'Can view company', 20, 'view_company');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (81, 'Can add student', 21, 'add_student');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (82, 'Can change student', 21, 'change_student');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (83, 'Can delete student', 21, 'delete_student');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (84, 'Can view student', 21, 'view_student');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (85, 'Can add internship', 22, 'add_internship');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (86, 'Can change internship', 22, 'change_internship');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (87, 'Can delete internship', 22, 'delete_internship');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (88, 'Can view internship', 22, 'view_internship');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (89, 'Can add internship', 23, 'add_internship');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (90, 'Can change internship', 23, 'change_internship');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (91, 'Can delete internship', 23, 'delete_internship');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (92, 'Can view internship', 23, 'view_internship');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (93, 'Can add internship like', 24, 'add_internshiplike');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (94, 'Can change internship like', 24, 'change_internshiplike');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (95, 'Can delete internship like', 24, 'delete_internshiplike');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (96, 'Can view internship like', 24, 'view_internshiplike');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (97, 'Can add application', 25, 'add_application');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (98, 'Can change application', 25, 'change_application');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (99, 'Can delete application', 25, 'delete_application');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (100, 'Can view application', 25, 'view_application');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (101, 'Can add student', 26, 'add_student');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (102, 'Can change student', 26, 'change_student');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (103, 'Can delete student', 26, 'delete_student');
+INSERT INTO public.auth_permission (id, name, content_type_id, codename) VALUES (104, 'Can view student', 26, 'view_student');
+
+
+--
+-- TOC entry 3791 (class 0 OID 18443)
+-- Dependencies: 233
+-- Data for Name: authtoken_token; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+INSERT INTO public.authtoken_token (key, created, user_id) VALUES ('c6090225b051bf86b1c81717576829ce74a77166', '2022-04-04 19:40:20.884427+06', 1);
+
+
+--
+-- TOC entry 3784 (class 0 OID 18346)
+-- Dependencies: 226
+-- Data for Name: base_company; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (95, 1, 'AIR ASTANA, АО', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (96, 2, 'Bank RBK, АО', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (97, 3, 'Beeline, ТМ', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (98, 4, 'BI GROUP, ТМ (ТОО BI Support)', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (99, 5, 'Company', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (100, 6, 'Deloitte, Caspian Region', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (101, 7, 'Galanz Bottlers, АО', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (102, 8, 'METRO Cash&Carry (Kazakhstan)', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (103, 9, 'PricewaterhouseCoopers', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (104, 10, 'ProductFit', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (105, 11, 'Sulpak', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (106, 12, 'АДВОКАТ АРУТЮНЯН ЭДУАРД АЛЕКСАНДРОВИЧ', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (107, 13, 'Аквелон', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (108, 14, 'АО Aitas KZ', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (109, 15, 'АО Altyn Bank', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (110, 16, 'АО Народный банк Казахстана', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (111, 17, 'АО Ситибанк Казахстан', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (112, 18, 'ИП International British House', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (113, 19, 'ИП IT Service', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (114, 20, 'ИП RENAUTO', NULL, 'Алматы,', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (115, 21, 'ИП tMarketinn', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (116, 22, 'ИП АльфаКонсалт', NULL, 'Алматы,', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (117, 23, 'ИП Блисбекова А.Б ALS Dreamchild', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (118, 24, 'ИП Болтышев А.В.', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (119, 25, 'ИП Ойл Центр', NULL, 'Алматы,', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (120, 26, 'Кселл, АО', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (121, 27, 'Новые технологии', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (122, 28, 'ПРЕДСТАВИТЕЛЬСТВО ОПЕЛЛА ХЭЛСКЕА ИНТЕРНЭШНЛ САС В РК', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (123, 29, 'Публичная Компания «Freedom Finance Global PLC»', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (124, 30, 'ТОО «Vendor Trans Logistics» (Вендор Транс Логистикс)', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (125, 31, 'ТОО A-Consult', NULL, 'Шымкент', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (126, 32, 'ТОО AB Restaurants', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (127, 33, 'ТОО AETS / Атырауэнерготехсервис', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (128, 34, 'ТОО Alem Agro Holding (АлемАгро Холдинг)', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (129, 35, 'ТОО ASPEX', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (130, 36, 'ТОО BAKER TILLY QAZAQSTAN AUDIT', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (131, 37, 'ТОО Bravo Commodities', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (132, 38, 'ТОО Bureau for Continuing Professional Development Ltd.', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (133, 39, 'ТОО CASPIAN SNAB GROUP', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (134, 40, 'ТОО Chimbulak Development', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (135, 41, 'ТОО Crystal Spring', NULL, 'Алматы,  и еще 1', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (136, 42, 'ТОО Euphoria Hit', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (137, 43, 'ТОО ExpertFinance', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (138, 44, 'ТОО EY (Ernst & Young)', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (139, 45, 'ТОО FIT Service Astana', NULL, 'Шымкент', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (140, 46, 'ТОО GT oil service', NULL, 'Алматы,', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (141, 47, 'ТОО Henkel Central Asia & Caucasus', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (142, 48, 'ТОО Home decor', NULL, 'Шымкент', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (143, 49, 'ТОО Invictus Astana', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (144, 50, 'ТОО JTI Kazakhstan', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (145, 51, 'ТОО Max V', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (146, 52, 'ТОО NEKA TRADE', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (147, 53, 'ТОО oilbt.kz', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (148, 54, 'ТОО Omega System Ltd', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (149, 55, 'ТОО PepsiCo Kazakhstan', NULL, 'Караганда', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (150, 56, 'ТОО Personal Lawyer', NULL, 'Караганда', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (151, 57, 'ТОО PRO ASSISTANCE', NULL, 'Усть-Каменогорск', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (152, 58, 'ТОО Prof Advisor', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (153, 59, 'ТОО REDlab.kz', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (154, 60, 'ТОО RG Brands', NULL, 'Алматы,', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (155, 61, 'ТОО SAN Partners', NULL, 'Алматы,', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (156, 62, 'ТОО Sary-Arka Coppers Processing', NULL, 'Усть-Каменогорск', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (157, 63, 'ТОО Service Press', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (158, 64, 'ТОО SOGLASIE LTD', NULL, 'Туркестан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (159, 65, 'ТОО TALER CORP', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (160, 66, 'ТОО ZERDE', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (161, 67, 'ТОО Zibroo-shcool', NULL, 'Алматы,', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (162, 68, 'ТОО АПРО', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (163, 69, 'ТОО ЕВРОЛЮКС Строй', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (164, 70, 'ТОО Жедел Кузет', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (165, 71, 'ТОО КазТрейдЛогистика', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (166, 72, 'ТОО Камерир', NULL, 'Усть-Каменогорск', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (167, 73, 'ТОО Легион-М', NULL, 'Караганда', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (168, 74, 'ТОО МАРЛЕНТУР.КЗ', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (169, 75, 'ТОО Навион', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (170, 76, 'ТОО НПК (научно-производственная компания) Сапа KZ', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (171, 77, 'ТОО Окна-Плюс Ltd', NULL, 'Павлодар', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (172, 78, 'ТОО Охранное агентство Аlmaty System Security', NULL, 'Актобе', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (173, 79, 'ТОО РегионСтройПроект', NULL, 'Актобе', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (174, 80, 'ТОО Ремстрой XXI', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (175, 81, 'ТОО ТЕХКОЛОР АЗИЯ', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (176, 82, 'ТОО Торговый Дом SHEGEN', NULL, 'Актау', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (177, 83, 'ТОО ТРАНСТУРС Казахстан', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (178, 84, 'ТОО Учет ONline', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (179, 85, 'ТОО Халык Проект', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (180, 86, 'ТОО Эпирок Центральная Азия', NULL, 'Нур-Султан', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (181, 87, 'ТОО Этажи, ТМ (ТОО Etagi Almaty)', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (182, 88, 'Частная Компания «Qosil Limited»', NULL, 'Уральск', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (183, 89, 'Частное учреждение «Корпоративный университет «Самрук-Казына»', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (184, 90, 'Частное учреждение CILT Kazakhstan', NULL, 'Алматы', NULL);
+INSERT INTO public.base_company (user_id, cid, company_name, description, "cityName", address) VALUES (185, 91, 'ЧК Parakozm LTD', NULL, 'Нур-Султан', NULL);
+
+
+--
+-- TOC entry 3788 (class 0 OID 18368)
+-- Dependencies: 230
+-- Data for Name: base_internship; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (1, 'AIR ASTANA, АО', 'Сортировка и распределение документов. Помощь в работе с поставщиками.', 'Знание английского языка на уровне intermediate желательно. Уверенное пользование MS Office. Внимательность и аккуратность к деталям и скорость исполнения задач.', NULL, NULL, NULL, 0, 232);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (2, 'Bank RBK, АО', '1. Операционная деятельность (обработка запросов партнеров). 2. Подготовка отчетности для партнера, менеджмента компании. 3. Коммуникация с другими подразделениями при внедрении...', 'Cо знаниями SQL и Excel. 1. Высокий уровень коммуникаций (необходимо уметь вести диалог и договариваться как с партнером, так и...', NULL, NULL, NULL, 0, 233);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (3, 'Beeline, ТМ', 'The Emerging Markets (EM) Analyst Program begins in July with a 3-week training program in Dubai. Formal training begins...', 'Track market developments across the region and share geopolitical, economic and banking industry trends that may affect the business with...', NULL, NULL, NULL, 0, 234);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (4, 'BI GROUP, ТМ (ТОО BI Support)', 'Проводить и обрабатывать записи в журнале для гарантии регистрации всех бизнес-транзакций. Обновлять дебиторскую задолженность и выставляйте счета-фактуры / Обновлять...', 'Уверенные знания в области бухгалтерского учета, финансов и экономики. Английский на уровне Intermediate. Сильные аналитические способности. Трудолюбие и большое внимание...', NULL, NULL, NULL, 0, 235);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (5, 'Company', 'Получить сертификацию Microsoft. Участвовать в реализации крупных аналитических проектов (сбор, подготовка, анализ данных, генерация идей и представление результатов).', 'Получили(-аете) высшее образование в области анализа данных, математики, статистики, финансов и т.п.. Умеете структурировано подходить к решению проблем.', NULL, NULL, NULL, 0, 236);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (6, 'Deloitte, Caspian Region', 'Administration support to Operations Department. Tasks related to the project management.', 'Work experience is not required. Knowledge and skills required: Higher education preferably with major in finance, accounting or economics.', NULL, NULL, NULL, 0, 237);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (7, 'Galanz Bottlers, АО', 'Повышения операционной эффективности. Роботизация процессов компании. Активное участие во внедрении и развитии IT инноваций. Участие в разработке роботов.', 'Образование: Техническое образование. Знания и навыки: Аналитическое мышление. Знание .NET Framework будет преимуществом, но не принципиальным. Иметь большое желание заниматься...', NULL, NULL, NULL, 0, 238);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (8, 'METRO Cash&Carry (Kazakhstan)', 'The Emerging Markets (EM) Analyst Program begins in July with a 3-week training program in Dubai. Formal training begins...', 'Track market developments across the region and share geopolitical, economic and banking industry trends that may affect the business with...', NULL, NULL, NULL, 0, 239);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (9, 'PricewaterhouseCoopers', 'Заниматься целенаправленным поиском кандидатов для закрытия вакансий. Организовывать собеседования. Проводить телефонные интервью. Анализировать источники привлечения соискателей и искать новые.', 'Рассматриваются активные, только закончившие ВУЗ/колледж/техникум, желающие развиваться в сфере HR менеджмента. Уверенное владение ПК. Активность, самостоятельность, обучаемость.', NULL, NULL, NULL, 0, 240);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (10, 'ProductFit', 'Создание контента вместе с командой профессионалов. Взаимодействие с медиа пространством под руководством ментора. Поддерживать PR-стратегию компании и реализовывать ее...', 'Знание английского языка. Казахский будет преимуществом. Ответственность и целеустремленность. Применимые знания в области копирайтинга и редактирования. Страсть к PR-индустрии...', NULL, NULL, NULL, 0, 241);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (11, 'Sulpak', 'Помощь в ведении социальных сетей (Facebook, LinkedIn, Instagram, Tiktok). Составление контент-плана для социальных сетей.', 'Умение создавать презентации на основе потребностей организации (Canva, Power Point). Требования: - Отличное знание Facebook, LinkedIn, Instagram, Tiktok и другие социальные...', NULL, NULL, NULL, 0, 242);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (12, 'АДВОКАТ АРУТЮНЯН ЭДУАРД АЛЕКСАНДРОВИЧ', 'Screen resumes and application forms. Schedule and confirm interviews with candidates. Support year-round talent management processes including performance and...', 'Experience with MS Office. Good understanding of full-cycle recruiting. Basic knowledge of labor legislation. Organizational skills. Acquires and applies...', NULL, NULL, NULL, 0, 243);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (13, 'Аквелон', 'To participate in various types of projects focusing on feasibility studies, business plan development, financial analysis and modeling and operational...', 'Свободное владение английским языком. Наличие высшего профессионального образования в казахстанских и зарубежных топ ВУЗах.', NULL, NULL, NULL, 200000, 244);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (14, 'АО Aitas KZ', 'To participate in various types of projects focusing on feasibility studies, business plan development, financial analysis and modeling and operational...', 'Выпускники 2021-2022 года. GPA не менее 3.0. Личные качества: Ответственность. Коммуникабельность. Способность быстро обучаться. Про-активность. Целеустремленность.', NULL, NULL, NULL, 200000, 245);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (15, 'АО Altyn Bank', 'To participate in various types of projects focusing on feasibility studies, business plan development, financial analysis and modeling and operational...', 'BA/BS in Economics/Finance/Engineering/Mathematics from a reputable university. Strong analytical, problem solving, and reporting skills.', NULL, NULL, NULL, 200000, 246);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (16, 'АО Народный банк Казахстана', 'Участие в маркетинговых исследованиях внутреннего и зарубежных рынков (кабинетные методы) для различных бизнес-направлений. Участие в подготовке предложений для новых...', 'Аналитические навыки по поиску и систематизации информации в различных тематических областях. Владение различными стратегиями поиска информации в интернете.', NULL, NULL, NULL, 200000, 247);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (17, 'АО Ситибанк Казахстан', 'Сборка и установка алюминиевых конструкции! Сборка и установка систем остекления (из алюминиевых профилей)! Ответственность! Качественное выполнение своей работы!', 'Легкообучаемый! Умение работать в коллективе! Умение работать в подчинении! Пунктуальный, адекватный, стрессоустойчивый!', NULL, NULL, NULL, 200000, 248);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (18, 'ИП International British House', 'Разработка веб-приложений на современном стеке. — Верстка web интерфейсов.', 'Хорошее знание верстки: HTML5, CSS3, БЭМ. — Знание Javascript (ES6). — Как преимущество знание React, Redux / Vue, Vuex / Next...', NULL, NULL, NULL, 0, 249);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (19, 'ИП IT Service', 'Invictus Astana в поисках стажера на позицию графического дизайнера.', 'Самое главное – хороший вкус, умение разбираться в трендах и находить наиболее интересные решения на рынке. — Внимательность к деталям. —', NULL, NULL, NULL, 80000, 250);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (20, 'ИП RENAUTO', 'Контактную информацию.', 'Практический опыт. Получение опыта на реальных проектах. Знания JAVA. Знания принципов работы и применения ООП. Понимание принципов работы реляционных СУБД.', NULL, NULL, NULL, 150000, 251);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (21, 'ИП tMarketinn', 'Работа с договорами, олх, создание сайтов, таргет реклама, разные офисные задачи, 3.', 'Огромное желание расти в молодой компании. Желание учиться и работать очень много!', NULL, NULL, NULL, 80000, 252);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (22, 'ИП АльфаКонсалт', 'Развитие и поддержка мобильных приложений компании на платформах iOS. Разработка новых приложений под ключ. Проведение командного code review.', 'Знание ООП, Design Patterns, архитектурных паттернов в iOS. Знание клиент-серверной разработки (HTTPS). Знание git. Умение и желание разбираться в...', NULL, NULL, NULL, 50000, 253);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (23, 'ИП Блисбекова А.Б ALS Dreamchild', 'ASPEX– это собственный RnD- центр с разработкой SaaS решений и аналитическими исследованиями в партнерстве с Gullup и IDC.', 'Не боитесь проводить интервью с заказчиком. Понимаете базовые принципы разработки ПО. Умеете определять границы систем и зоны их ответственности — для...', NULL, NULL, NULL, 0, 254);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (24, 'ИП Болтышев А.В.', 'Работа с откликами через Head Hunter. Проведение телефонных интервью. Проведение первичных собеседований. Работа над внутренним HR проектом.', 'Желание развиваться в сфере HR. Коммуникабельность, быстрая обучаемость. Целеустремленность, самостоятельность.', NULL, NULL, NULL, 0, 255);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (25, 'ИП Ойл Центр', 'Разработка и поддержка логики серверной части (back-end) с использованием Java, Spring Boot, Play, MySql, Gradle. Разработка архитектуры БД, написание...', 'Высшее образование в области технических наук и технологий (компьютерная инженерия/ информационные системы/ вычислительная техника и программное обеспечение/ прикладная математика).', NULL, NULL, NULL, 0, 256);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (26, 'Кселл, АО', 'Изучите банковские системы при сборе документов.', 'Узнаете порядок сбора и работы с досье клиентов. Начинающие специалисты, уже имеющие диплом о высшем образовании. Начинающие специалисты, имеющие опыт...', NULL, NULL, NULL, 0, 257);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (27, 'Новые технологии', 'Разработка отчетов и поиск инструментов исследования для каждой бизнес-задачи. Анализ и обработка данных по объему продаж клиентам и товарным...', 'Неоконченное высшее / высшее образование в области маркетинга или экономики. Уверенный пользователь MS Excel. Английский язык - upper intermediate. Возможность работать полный...', NULL, NULL, NULL, 80000, 258);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (28, 'ПРЕДСТАВИТЕЛЬСТВО ОПЕЛЛА ХЭЛСКЕА ИНТЕРНЭШНЛ САС В РК', 'Помогать штатным специалистам выполнять план по ликвидации проблем, выявленных в IT аудите. Помогать и учиться новому, генерировать идеи.', 'Хотеть пройти реальную производственную практику.', NULL, NULL, NULL, 80000, 259);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (29, 'Публичная Компания «Freedom Finance Global PLC»', 'Marketing. HR. Etc. Event (1), Marketing (2).', 'Fresh graduates or middle\senior students. Possibility to work 20 hours per week. Responsibility, goal-orientation, good English and MS...', NULL, NULL, NULL, 0, 260);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (30, 'ТОО «Vendor Trans Logistics» (Вендор Транс Логистикс)', '1. Готов обучаться.', '2. С опытом / без опыта работы. 3. Уважать детей и подростков. 4. Желание или умение работать в команде.', NULL, NULL, NULL, 150000, 261);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (10, 'ProductFit', 'Выполнение поручений руководителя. Быть котовым к командировкам. Быть готовым к езде по полевым дорогам.', NULL, NULL, NULL, NULL, 150000, 262);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (11, 'Sulpak', 'Работа в 1C и программе по приемке товаров. Проверка и сверка данных в разных системах. Вносить изменения, делать коррекции...', 'Высшее образование(незаконченное). Знание MS Office. Аккуратность. Внимательность.', NULL, NULL, NULL, 0, 263);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (12, 'АДВОКАТ АРУТЮНЯН ЭДУАРД АЛЕКСАНДРОВИЧ', 'Участие в реальных рабочих кейсах крупнейшего банка страны. - тех поддержка (SQL, Oracle). - Python, C#, PL/SQL (роботизация, разработка автотестов). -', 'Halyk Start – стажировка для выпускников и в т.ч.студентов старших курсов IT специальностей. Опыт работы с современным стеком технологий. -', NULL, NULL, NULL, 0, 264);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (13, 'Аквелон', 'Работа по наполнению карточек товара на сайте и маркетплейсах. Распределение и загрузка контента. Создание контента для карточек товаров.', 'Уверенный пользователь ПК и офисных программ Microsoft/Google. Желательно знание английского языка.', NULL, NULL, NULL, 0, 265);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (14, 'АО Aitas KZ', 'Работа с первичными документами. Работа с поставщиками и заказчиками. Помощь отделу бухгалтерии. Подготовка документов к архивации.', 'Экономическое образование. Пунктуальность, ответственность, аккуратность.', NULL, NULL, NULL, 0, 266);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (15, 'АО Altyn Bank', 'Know the cycle of software development.', 'If you are so eager and: You are an undergraduate or graduating student (6 months in software engineering experience is...', NULL, NULL, NULL, 0, 267);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (16, 'АО Народный банк Казахстана', 'Подготовка драфтов документов по корпоративным вопросам (решение единственного участника, протокол общего собрания, внесение изменений в устав и т.д.).', 'Уверенный пользователь ПК (word, excel). Знание Гражданского кодекса РК (общая и особенная части). Высокие показатели в учебе. Сверх-ответственность. Трудолюбие.', NULL, NULL, NULL, 0, 268);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (17, 'АО Ситибанк Казахстан', 'Поиск и привлечение потенциальных клиентов. Консультация клиентов. Организация и сопровождение международных выставок. Проектная работа. Работа по заявкам иностранных и...', 'Умение организовывать работу, планировать, принимать решения. Внимание к различным нюансам и деталям. Способность анализировать проблемы, эффективно искать пути их разрешения.', NULL, NULL, NULL, 80000, 269);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (39, 'ТОО CASPIAN SNAB GROUP', 'Встреча клиентов в отделении Банка. Организация приема посетителей. Направление и регулирование клиентского потока. Предоставление качественного сервиса.', 'Клиентоориентированность, вежливость, ответственность, стрессоустойчивость.', NULL, NULL, NULL, 150000, 270);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (40, 'ТОО Chimbulak Development', 'Классификация документов – счета фактуры, акты, импортные таможенные декларации, акты на списание, ведомости. Распределение оригиналов перечисленных выше документов в папки.', 'Знания основ бухгалтерского учёта и первичной бухгалтерской документации. Аккуратность и внимание к деталям. Умение работать в Excel, Word.', NULL, NULL, NULL, 0, 271);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (41, 'ТОО Crystal Spring', 'Обработка, консолидация документации и частичное содействие в деловой переписке с поставщиками. Выполнение личных поручении сотрудников отдела маркетинга (договоры, счета на...', 'Желание работать, развиваться и получать практические навыки в области маркетинга и рекламы. Пользователь ПК. Пунктуальность и внимательность к работе.', NULL, NULL, NULL, 0, 272);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (42, 'ТОО Euphoria Hit', 'Наша компания существует более 20лет. Мы изготавливаем книги, футляры для книг, каталоги и др виды типографской продукции на заказ.', 'Свободное владение компьютером (MS Word, MS Excel). Высшее образование. Можно без опыта. Коммуникабельность, ответственность, активность, целеустремленность.', NULL, NULL, NULL, 165000, 273);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (43, 'ТОО ExpertFinance', 'Process and analyse various types of data. Build dashboards in Tableau and Power BI. Prepare infographics, presentations and technical assignments.', 'Readiness to participate on various types of advisory projects (non data analytics). Knowledge and skills. Higher education in Finance /Data...', NULL, NULL, NULL, 100000, 274);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (44, 'ТОО EY (Ernst & Young)', 'Регистрация входящих/исходящих документов, служебных записок, направление их по адресатам, отслеживание их выполнения. Сортировка и распределение документов. Обеспечение жизнедеятельности офиса.', 'Высокий уровень ответственности, организованность, стрессоустойчивость, грамотность. Умение четко и структурировано излагать мысли, аккуратность и внимание к деталям. Опытный пользователь ПК...', NULL, NULL, NULL, 140000, 275);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (45, 'ТОО FIT Service Astana', 'Консультации по техническим вопросам. Консультации по вопросам стоимости, сроков поставки, способам заказа. Поиск, выбор и актуализация поставщиков товара, ведение переговоров...', 'Рассматриваются кандидаты с техническим складом ума и/или опытом продаж / закупок оборудования. Внимательность: большие суммы и много деталей.', NULL, NULL, NULL, 0, 276);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (46, 'ТОО GT oil service', 'Практическая работа по отдельным участкам: - архивирование документов. - работа с контрагентами. - взаимодействие с налоговыми органами. - работа с кабинетом налогоплательщика. -', 'высшее образование в области бухгалтерского учета. - знание 1С 8.3 приветствуется. - внимательность, ответственность, обучаемость.', NULL, NULL, NULL, 60000, 277);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (47, 'ТОО Henkel Central Asia & Caucasus', 'Подготовка документов к сдаче в архив.', 'Исполнительные, внимательные!', NULL, NULL, NULL, 100000, 278);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (48, 'ТОО Home decor', NULL, 'Хорошие навыки работы с ПК. Высокая работоспособность, быстрая обучаемость, коммуникативные навыки, стрессоустойчивость.', NULL, NULL, NULL, 100000, 279);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (49, 'ТОО Invictus Astana', 'Salary Survey 2022. HR Business process analysis. Presentation preparation. Data analysis. Daily support in projects. Work under direct the supervision...', 'Higher Education (HR/Management/Economics) with experience in HR. Fluent English. Excellent knowledge of MS Office (Word, Excel). Organizational skills.', NULL, NULL, NULL, 0, 280);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (50, 'ТОО JTI Kazakhstan', 'Помощь в ведении бухгалтерского учета. Работа с первичными документами.', 'Опыт работы с первичными документами. Продвинутый пользователь ПК. Аналитический склад ума. Одновременное выполнение нескольких задач (multitasking). Вежливое взаимодействие с клиентами.', NULL, NULL, NULL, 70000, 281);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (51, 'ТОО Max V', NULL, 'Высшее юридическое образование. Желание пройти стажировку с возможностью трудоустройства. Знание ПК. Коммуникабельность. Желание учиться, выполнять больше чем требуется.', NULL, NULL, NULL, 70000, 282);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (52, 'ТОО NEKA TRADE', 'Диагностика и профилактический осмотр автотранспортных средств. Разборка‚ ремонт и сборка узлов и механизмов автомобиля. Выполнение всех видов тех. обслуживания автомобилей.', 'Образование не ниже средне-специального технического. Опыт работы в сфере ремонта и обслуживания легковых автомобилей не менее 3-х лет.', NULL, NULL, NULL, 240000, 283);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (53, 'ТОО oilbt.kz', 'Настройка оборудования. Качественное и своевременное проведение рабпо ремонту оборудования. Помощь механику в обеспечении технически правильной эксплуатации и бесперебойной работы...', 'Образование среднее профессиональное/техническое. Опыт работы по ремонту швейных машин. Настройка оборудования. Качественное и своевременное проведение рабпо ремонту оборудования.', NULL, NULL, NULL, 100000, 284);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (54, 'ТОО Omega System Ltd', 'Осуществление активного поиска клиентов, 100% посещение торговых точек на закрепленной территорий, для достижения поставленных целей ! Выполнение плана продаж, анализ динамики...', 'Образование: средне - специальное/ высшее. Высокие коммуникативные и аналитические навыки, хорошо поставленная речь, нацеленность на результат ! Умение самостоятельно расставлять приоритеты в...', NULL, NULL, NULL, 60000, 285);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (55, 'ТОО PepsiCo Kazakhstan', 'Работа с первичной документацией. Заполнение отчетов в формате Excel. Оказание помощи экономистам при составлении отчётов и статистики. Формирование заказов поставщиков...', 'Высшее экономическое образование. Опыт работы по профильному образованию экономиста не требуется. Знание Microsoft Office (продвинутый пользователь Excel). Знание основ логистики.', NULL, NULL, NULL, 50000, 286);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (56, 'ТОО Personal Lawyer', 'Знать техническую базу автомобилей по ремонту и запасным частям.', 'Знать технологию технического обслуживания. Знать складской учет. Знать принцип работы СТО.', NULL, NULL, NULL, 120000, 287);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (57, 'ТОО PRO ASSISTANCE', '1 Установка/изменения цен на SKU (KZ/KGZ/RU). Своевременная установка цен в разных прайсах (KZ/KGZ/RU).', 'Не оконченное высшее техническое/финансовое (бухгалтерское)/ИТ. Желательно специальные знания и навыки 1С, базы данных, Excel, CRM, составление технического...', NULL, NULL, NULL, 100000, 288);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (58, 'ТОО Prof Advisor', '3D Вижн Всех объектов (нет необходимости лишний раз ехать на показ). - Оформление задатков онлайн, юристы, нотариусы.', 'Рассматриваем кандидатов без опыта, есть опыт? Место руководителя теплое и крайне хорошо оплачиваемое.', NULL, NULL, NULL, 70000, 289);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (59, 'ТОО REDlab.kz', 'Организация мероприятий по защите сельскохозяйственных культур. Осуществление рабпо борьбе с вредителями, болезнями растений. Семеноводство хозяйства. Контроль полевых работ.', 'Высшее образование специальности Агрономия. Опыт работы по профильному образованию не требуется. Знание основ растениеводства. Опытный пользователь ПК.', NULL, NULL, NULL, 70000, 290);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (60, 'ТОО RG Brands', 'ProductFit - стартап студия (заказная разработка для стартапов с нуля под ключ, технический и продуктовый консалтинг, создание MVP или MLP).', 'Полон энергии, желания работать и улучшать себя ? - знания , которым не обучают в университете. - опыт технической и бизнесовой экспертизы основателей компании.', NULL, NULL, NULL, 200000, 291);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (61, 'ТОО SAN Partners', 'Еженедельный мониторинг цен и ассортимента сетевых партнеров по продаже девайсов и аксессуаров и подготовка анализа в день посещения точки.', 'Умение работать в команде и индивидуально. Грамотная устная и письменная русская речь, знание казахского и английского языков приветствуется.', NULL, NULL, NULL, 250000, 292);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (62, 'ТОО Sary-Arka Coppers Processing', 'Content of the program: Individual support from mentor, feedback by the results of internship.', 'We will be glad to see students, including final year students or graduates. Finance. Economics. Analytical. Responsibility, goal-orientation, good...', NULL, NULL, NULL, 220000, 293);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (63, 'ТОО Service Press', 'Любые программы для создания дизайнерских проектов интерьера. Изучать программы. Изучать стили. Изучать материалы для отделки. Изучать мебель и предметы декора.', 'Знать AutoCAD. Знать Photoshop.', NULL, NULL, NULL, 0, 294);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (52, 'ТОО NEKA TRADE', 'Работа с социальными сетями IBH (посты по заданиям в Instagram, VK, Facebook, YouTube, Telegram). Помощь преподавателям и администрации (проверка тестов...', NULL, NULL, NULL, NULL, 300000, 295);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (53, 'ТОО oilbt.kz', 'Анализу рынка и принятию решений по стратегическому развитию продуктов. Мониторинг и принятие мер. Аналитике продуктов с позиции бизнеса, пользователя, управленца...', NULL, NULL, NULL, NULL, 0, 296);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (54, 'ТОО Omega System Ltd', '1. To learn how to communicate with Sales team via preparing Sales promo presentations, Brand presentors update, Master plans update...', NULL, NULL, NULL, NULL, 400000, 297);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (55, 'ТОО PepsiCo Kazakhstan', 'Устанавливать и поддерживать работу различных версий ОС Windows и серверного программного обеспечения. Осуществлять поддержку работы сети Интернет, почты.', 'Наличие диплома о высшем, либо средне-специальном образовании по IT специальности (техник-программист, системный администратор). С момента получения диплома (аттестата...', NULL, NULL, NULL, 100000, 298);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (56, 'ТОО Personal Lawyer', 'Ведение кадрового делопроизводства. Учет личных дел сотрудников.', 'Желание обучиться на практике кадровой работе. Дисциплинированность. Элементарное знание ПК.', NULL, NULL, NULL, 150000, 299);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (69, 'ТОО ЕВРОЛЮКС Строй', NULL, 'В связи с расширением производим набор начинающих специалистов, желающих реализовать свой потенциал, при этом получить профессиональные знания и опыт в...', NULL, NULL, NULL, 120000, 300);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (70, 'ТОО Жедел Кузет', 'Вести непрерывный план горных рабс разбивкой на суточный, недельный и 3-месячный план. Отслеживать, проверять и составлять отчеты по...', 'Понимание процессов горных работ. Понимание ТБ на производстве. Знание системы отработки карьера. Опытный пользователь MS Excel, Word, Power Point.', NULL, NULL, NULL, 150000, 301);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (71, 'ТОО КазТрейдЛогистика', 'Консультация клиентов по работе в программах 1С. Поддержка программ 1С (обновление, тестирование, архивирование). Программирование, разработка, исправление, написание новых...', 'Можно без опыта в сфере 1С, но и опытным будем рады. Бухгалтерское, экономическое или it образование. Целеустремлённость, легко-обучаемость...', NULL, NULL, NULL, 150000, 302);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (72, 'ТОО Камерир', 'Соблюдение всех режимных моментов, проведение занятий по сетке, коммуникации с родителями, проведение утренников и открытых занятий.', 'Просьба читать полностью и внимательно. Исполнительная(ый), дисциплинированная(ый), обучаемая(ый) и любящая(ий) работать и учиться. СТРЕССОУСТОЙЧИВАЯ(ЫЙ), амбициозная...', NULL, NULL, NULL, 120000, 303);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (73, 'ТОО Легион-М', 'Замена масел и жидкостей в автомобильном транспорте. Замена фильтров (масляный, воздушный, салонный).', 'Умение быстро обучаться. Достигать поставленных целей. Умение брать на себя ответственность. Бережное отношение к имуществу компании. Чистота на рабочем месте.', NULL, NULL, NULL, 100000, 304);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (74, 'ТОО МАРЛЕНТУР.КЗ', NULL, 'Умение быстро обучаться. Достигать поставленных целей. Умение брать на себя ответственность. Бережное отношение к имуществу компании. Чистота на рабочем месте.', NULL, NULL, NULL, 150000, 305);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (75, 'ТОО Навион', 'Выполнение внутренних инструкций. Пунктуальность. Соблюдение трудовой дисциплины.', 'Желание работать и зарабатывать деньги.', NULL, NULL, NULL, 130000, 306);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (76, 'ТОО НПК (научно-производственная компания) Сапа KZ', 'Изучение SQL, PL/SQL, Oracle Forms, Oracle Reports на рабочем месте по предоставленным материалам (литература, компьютер) с назначенным куратором (программист).', 'Образование по специальности. Знание основ программирования. Опыт написания собственных программ. Логическое мышление. Желание программировать.', NULL, NULL, NULL, 100000, 307);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (91, 'ЧК Parakozm LTD', 'Знать техническую базу автомобилей по ремонту и запасным частям.', 'Знать технологию технического обслуживания. Знать складской учёт. Знать принцип работы СТО.', NULL, NULL, NULL, 120000, 322);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (77, 'ТОО Окна-Плюс Ltd', 'Выполнение поручений главного бухгалтера и руководства. Обработка первичной документации и ввод данных в БД 1С. Взаимодействие с контрагентами, налоговыми...', 'Образование в области бухгалтерского учета. Внимательность, ответственность, высокая обучаемость. Уверенный пользователь ПК. Возможность получить большой опыт в ведении бухгалтерского учета.', NULL, NULL, NULL, 110000, 308);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (78, 'ТОО Охранное агентство Аlmaty System Security', 'Работа с первичными документами. Работа с поставщиками и заказчиками. Помощь отделу бухгалтерии. Подготовка документов к архивации.', 'Экономическое образование. Пунктуальность, ответственность, аккуратность.', NULL, NULL, NULL, 122520, 309);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (79, 'ТОО РегионСтройПроект', 'Помощь в составление планов материально-технического обеспечения производства. Отслеживание процессов технического обслуживания и ремонтов оборудование. Координация реализации проектов.', 'Студенты 4 курса или выпускники (предпочтительно IT, АСУТП либо физико-техническое, механико-математическое образование). Владение английским языком (на уровне Intermediate...', NULL, NULL, NULL, 0, 310);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (80, 'ТОО Ремстрой XXI', 'Поиск и привлечение клиентов. - Анализ рынка потенциальных клиентов. - Производить 30-40 эффективных звонков клиенту в течение дня. - Расширение клиентской базы.', 'Хорошая грамотная речь. Желание работать в команде. Ответственность, порядочность, хорошие коммуникативные навыки.', NULL, NULL, NULL, 0, 311);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (1, 'AIR ASTANA, АО', 'Прием и оформление заявок. Анализ рынка. Просчет и контроль логистики. Отслеживание поставок. Ведение отчетной документации.', 'Свободное владение ПК и MS Excel. Грамотная устная и письменная речь. Ответственность, внимательность и умение работать в команде.', NULL, NULL, NULL, 0, 312);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (2, 'Bank RBK, АО', 'Приобрести навыки работы в правовых базах данных, архивах, иных источниках, научиться осуществлять поиск юридической информации по тематике, указанной адвокатом.', 'Если у Вас имеется желание: Приобрести умения и навыки оказания содействия адвокату в оказании им юридической помощи. Образование высшее - юридическое.', NULL, NULL, NULL, 0, 313);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (3, 'Beeline, ТМ', 'Первичная документация. Взаимодействие с госорганами. Операции в наличной и безналичной форме. Кадровый учет.', 'Выпускники бухучета и успешно оконченные курсы 1С Бухгалтерии. Свободное владение ПК. Грамотная речь и правописание на русском, казахский - приветствуется.', NULL, NULL, NULL, 0, 314);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (4, 'BI GROUP, ТМ (ТОО BI Support)', 'Обязанности: бронирование и продажа авиабилетов по всем Авиакомпаниям.', 'Требования:без опыта работы, на обучение, с последующим трудоустройством.', NULL, NULL, NULL, 0, 315);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (5, 'Company', 'Работа по администрированию и техническому обслуживанию серверного оборудования и поддержке ПО компании и ее Заказчиков. Поддержка, обслуживание, мониторинг и безопасность...', 'Высшее техническое образование. Теоретические знания основы электротехники и радиосвязи. Знание современных телекоммуникационных технологий, знания в области телекоммуникаций, основы сети GSM.', NULL, NULL, NULL, 60000, 316);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (6, 'Deloitte, Caspian Region', 'Предварительная сборка каркаса теплиц на базе. Выезд к клиенту для монтажа теплицы.', 'Ответственность в работе. Аккуратность, пунктуальность.', NULL, NULL, NULL, 110000, 317);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (7, 'Galanz Bottlers, АО', 'Помощь в визовом сопровождении клиентов. Помощь в изготовлении печатей. Выполнение других поручений по текущей деятельности компании.', 'Оконченное высшее образование. Диплом не позднее 2020 года (!). Без опыта официального трудоустройства. Это означает, что работодатель или вы сами не...', NULL, NULL, NULL, 122520, 318);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (8, 'METRO Cash&Carry (Kazakhstan)', 'Монтаж и пусконаладка систем видеонаблюдения. Монтаж и пусконаладка пожарной и охранной сигнализации. Монтаж и пусконаладка систем контроля доступа.', 'Знание основ электродинамики. Навыки работы электроинструментом. Логическое мышление.', NULL, NULL, NULL, 100000, 319);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (9, 'PricewaterhouseCoopers', 'Участие в аудиторских процедурах. Проверка первичных документов (счетов, актов и другой финансово-хозяйственной документации) на соответствие данным бухгалтерского учета и...', 'Выпускники /в том числе студенты старших курсов по специализации бухгалтерский учет и аудит, финансы или экономика. Знание основ бухгалтерского учета...', NULL, NULL, NULL, 250000, 320);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (90, 'Частное учреждение CILT Kazakhstan', 'Provide assistance in day to day tasks. Help organize business meetings and operations. Handle day to day business operations, paperwork.', 'Good English skills (spoken  written). Punctual, values time. Energetic, willing to learn and adapt. Ability to work remotely with a...', NULL, NULL, NULL, 150000, 321);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (1, 'AIR ASTANA, АО', 'Своевременное оперативное реагирование на поступающие информации. Ведение отчетности.', 'Желателен опыт работы с ПК. Коммуникабельность. Внимательность.', NULL, NULL, NULL, 90000, 323);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (2, 'Bank RBK, АО', 'Сопровождение программных продуктов фирмы 1С. Программирование на языке 1С. Доработка типовых конфигураций 1С.', 'Высшее образование. Стрессоустойчивость, коммуникабельность. Обучаемость. Высокая рабочая производительность, нацеленность на результат.', NULL, NULL, NULL, 0, 324);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (3, 'Beeline, ТМ', 'Support to the accountants with the clients assistance. Working with primary docs. Working in 1C. Admin tasks.', 'Degree in accounting and audit. English knowledge upper-intermediate. Theoretical accounting knowledge. Proaktivity, flexibility, responsibility.', NULL, NULL, NULL, 0, 325);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (4, 'BI GROUP, ТМ (ТОО BI Support)', 'Подбор колера для покраски автомобиля. Контроль за наличием необходимых компонентов. Консультирование клиентов по ассортименту, предоставленному в магазине.', 'Рассматриваем кандидатов без опыта работы, НО с огромным желанием учиться, работать и развиваться! Мы обучаем сотрудников. Желание работать с клиентами.', NULL, NULL, NULL, 0, 326);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (5, 'Company', 'Расширение и развитие клиентской базы компании за счет активного поиска и привлечения клиентов. Заключение договоров с новыми клиентами.', 'Опыт работы и знание географии грузоперевозок в подвижном составе. ценообразование на железнодорожном траспорте. Знание специфики железнодорожных перевозок на путях общего...', NULL, NULL, NULL, 0, 327);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (6, 'Deloitte, Caspian Region', 'Телефон қоңырауларын қабылдау. - Кеңсенің керек-жарақтарын қамтамасыз ету (кеңсе тауарлары және т.б.) кеңсені ашу және жабу, тәртіпті сақтау. -', 'Сенімді компьютер қолданушысы. - Word, Excel - Бағдарламаларында жұмыс істей білу. - Сын қабылдай білетін.', NULL, NULL, NULL, 0, 328);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (7, 'Galanz Bottlers, АО', 'доставка на объект монтажников и оконные конструкции. - осуществление монтажа пластиковых окон. - контроль за тех состоянием авто.', 'готовность работать много и зарабатывать. - водительский стаж на грузовой газели более 3-х лет. - опыт в монтаже желателен (возможно обучение).', NULL, NULL, NULL, 0, 329);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (8, 'METRO Cash&Carry (Kazakhstan)', 'Соблюдение всех правил по ТБ при работе в швейных цехах.', 'Исполнительность , внимательность. Ответственность, стрессоустойчивость.', NULL, NULL, NULL, 200000, 330);
+INSERT INTO public.base_internship (company_id, name, description, requirements, duration, skills, responsibilities, salary, _id) VALUES (9, 'PricewaterhouseCoopers', 'Проводит диагностику и профилактический осмотр автотранспортных средств. Выполняет работы по разборке, ремонту и сборке узлов и механизмов автотранспортных средств в...', 'Иметь среднее специальное образование. Знать устройство автомобиля, свойства различных материалов, иметь навыки работы со специальным оборудованием, приборами и инструментами.', NULL, NULL, NULL, 80000, 331);
+
+
+--
+-- TOC entry 3786 (class 0 OID 18357)
+-- Dependencies: 228
+-- Data for Name: base_student; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (186, 1, 'Elizabeth', 'Cham', 'Al-Farabi Kazakh National University', 'Training', 'Female', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (187, 2, 'Cal', 'Pickford', 'Al-Farabi Kazakh National University', 'Training', 'Female', 2);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (188, 3, 'Madelin', 'Garbutt', 'Al-Farabi Kazakh National University', 'Support', 'Female', 2.13);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (189, 4, 'Tallie', 'Netting', 'Al-Farabi Kazakh National University', 'Engineering', 'Female', 2.23);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (190, 5, 'Laura', 'McMurtyr', 'Al-Farabi Kazakh National University', 'Sales', 'Female', 2.35);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (191, 6, 'Gabey', 'Beernaert', 'Al-Farabi Kazakh National University', 'Product Management', 'Female', 2.47);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (192, 7, 'Devan', 'Betke', 'Al-Farabi Kazakh National University', 'Product Management', 'Female', 2.58);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (193, 8, 'Odessa', 'Goodlife', 'Al-Farabi Kazakh National University', 'Business Development', 'Female', 2.7);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (194, 9, 'Starr', 'Winkell', 'Al-Farabi Kazakh National University', 'Human Resources', 'Female', 2.81);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (195, 10, 'Kati', 'Wannes', 'Nazarbayev University', 'Human Resources', 'Female', 2.93);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (196, 11, 'Alikee', 'Klaas', 'Nazarbayev University', 'Support', 'Female', 3.04);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (197, 12, 'Kakalina', 'Merrin', 'Nazarbayev University', 'Sales', 'Female', 3.16);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (198, 13, 'Sophie', 'Jarmain', 'Nazarbayev University', 'Accounting', 'Female', 3.27);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (199, 14, 'Aura', 'Rapper', 'Nazarbayev University', 'Business Development', 'Female', 3.39);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (200, 15, 'Zabrina', 'Pigot', 'Nazarbayev University', 'Business Development', 'Female', 3.5);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (201, 16, 'Violetta', 'Hele', 'Nazarbayev University', 'Marketing', 'Female', 3.62);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (202, 17, 'Babbette', 'Raggitt', 'Nazarbayev University', 'Human Resources', 'Female', 3.73);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (203, 18, 'Gabriellia', 'Orrow', 'Nazarbayev University', 'Sales', 'Female', 3.85);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (204, 19, 'Sara-ann', 'Presley', 'Nazarbayev University', 'Product Management', 'Female', 3.96);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (205, 20, 'Anjanette', 'Edworthye', 'Nazarbayev University', 'Human Resources', 'Female', 2.08);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (206, 21, 'Theresa', 'Ledger', 'Nazarbayev University', 'Engineering', 'Female', 2.19);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (207, 22, 'Cherice', 'Kohneke', 'KIMEP University', 'Business Development', 'Female', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (208, 23, 'Caroline', 'Mucklestone', 'KIMEP University', 'Business Development', 'Female', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (209, 24, 'Tammi', 'Hutcheons', 'KIMEP University', 'Training', 'Female', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (210, 25, 'Katina', 'Harsum', 'KIMEP University', 'Marketing', 'Female', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (211, 26, 'Karoline', 'Klezmski', 'KIMEP University', 'Services', 'Female', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (212, 27, 'Myrtia', 'Boaler', 'Ahmet Yesevi Üniversitesi', 'Research and Development', 'Female', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (213, 28, 'Charmain', 'Allgood', 'Ahmet Yesevi Üniversitesi', 'Legal', 'Female', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (214, 29, 'Melly', 'Roylance', 'Ahmet Yesevi Üniversitesi', 'Engineering', 'Female', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (215, 30, 'Carmina', 'McIlharga', 'Ahmet Yesevi Üniversitesi', 'Human Resources', 'Female', 2);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (216, 31, 'Johnna', 'McLeman', 'Suleyman Demirel University', 'Sales', 'Female', 2.13);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (217, 32, 'Calida', 'Yurchenko', 'Suleyman Demirel University', 'Business Development', 'Female', 2.23);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (218, 33, 'Sella', 'Slyme', 'Suleyman Demirel University', 'Research and Development', 'Female', 2.35);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (219, 34, 'Kailey', 'Timmes', 'Suleyman Demirel University', 'Training', 'Female', 2.47);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (220, 35, 'Sabina', 'Cawdery', 'Suleyman Demirel University', 'Marketing', 'Female', 2.58);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (221, 36, 'Cristy', 'Carslaw', 'Suleyman Demirel University', 'Human Resources', 'Female', 2.7);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (222, 37, 'Noel', 'Tacey', 'Suleyman Demirel University', 'Accounting', 'Female', 2.81);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (223, 38, 'Lizzy', 'St Leger', 'IT University', 'Research and Development', 'Female', 2.93);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (224, 39, 'Jaquenetta', 'Wallsam', 'IT University', 'Training', 'Female', 3.04);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (225, 40, 'Rozina', 'Gillio', 'IT University', 'Research and Development', 'Female', 3.16);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (226, 41, 'Ginnifer', 'Garforth', 'IT University', 'Support', 'Female', 3.27);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (227, 42, 'Ros', 'Wemes', 'IT University', 'Sales', 'Female', 3.39);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (228, 43, 'Irina', 'Dood', 'IT University', 'Engineering', 'Female', 3.5);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (229, 44, 'Maggee', 'Ivancevic', 'IT University', 'Services', 'Female', 3.62);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (230, 45, 'Albina', 'Lund', 'IT University', 'Research and Development', 'Female', 3.73);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (231, 46, 'Muffin', 'Baile', 'IT University', 'Engineering', 'Female', 3.85);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (232, 47, 'Honoria', 'Coysh', 'IT University', 'Accounting', 'Female', 3.96);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (233, 48, 'Kimberly', 'Boylan', 'IT University', 'Legal', 'Female', 2.08);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (234, 49, 'Rosie', 'MacAless', 'IT University', 'Engineering', 'Female', 2.19);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (235, 50, 'Reeba', 'Canfer', 'IT University', 'Human Resources', 'Female', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (236, 51, 'Alice', 'Tokell', 'Al-Farabi Kazakh National University', 'Accounting', 'Male', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (237, 52, 'Karlen', 'Arnefield', 'Al-Farabi Kazakh National University', 'Support', 'Male', 2);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (238, 53, 'Noell', 'La Rosa', 'Al-Farabi Kazakh National University', 'Accounting', 'Male', 2.13);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (239, 54, 'Aylmer', 'MacParlan', 'Al-Farabi Kazakh National University', 'Training', 'Male', 2.23);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (240, 55, 'Ann', 'Beves', 'Al-Farabi Kazakh National University', 'Training', 'Male', 2.35);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (241, 56, 'Theodore', 'Dunderdale', 'Al-Farabi Kazakh National University', 'Sales', 'Male', 2.47);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (242, 57, 'Hart', 'Yesson', 'Al-Farabi Kazakh National University', 'Research and Development', 'Male', 2.58);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (243, 58, 'Devon', 'Scheffler', 'Al-Farabi Kazakh National University', 'Sales', 'Male', 2.7);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (244, 59, 'Carmella', 'Shipperbottom', 'Al-Farabi Kazakh National University', 'Engineering', 'Male', 2.81);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (245, 60, 'Banky', 'Unwins', 'Nazarbayev University', 'Human Resources', 'Male', 2.93);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (246, 61, 'Amos', 'Ghio', 'Nazarbayev University', 'Support', 'Male', 3.04);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (247, 62, 'Selle', 'Kintzel', 'Nazarbayev University', 'Sales', 'Male', 3.16);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (248, 63, 'Kele', 'Pilfold', 'Nazarbayev University', 'Marketing', 'Male', 3.27);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (249, 64, 'Andrey', 'Boldison', 'Nazarbayev University', 'Sales', 'Male', 3.39);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (250, 65, 'Robin', 'Knowlson', 'Nazarbayev University', 'Human Resources', 'Male', 3.5);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (251, 66, 'Skipp', 'Firby', 'Nazarbayev University', 'Business Development', 'Male', 3.62);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (252, 67, 'Helaine', 'Cunah', 'Nazarbayev University', 'Legal', 'Male', 3.73);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (253, 68, 'Daniel', 'Klinck', 'Nazarbayev University', 'Legal', 'Male', 3.85);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (254, 69, 'Archibold', 'Boddice', 'Nazarbayev University', 'Human Resources', 'Male', 3.96);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (255, 70, 'Helen-elizabeth', 'Sussans', 'Nazarbayev University', 'Business Development', 'Male', 2.08);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (256, 71, 'Thedric', 'Jackalin', 'Nazarbayev University', 'Engineering', 'Male', 2.19);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (257, 72, 'Niels', 'Cheek', 'KIMEP University', 'Product Management', 'Male', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (258, 73, 'Rodi', 'Golly', 'KIMEP University', 'Sales', 'Male', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (259, 74, 'Julie', 'Dallewater', 'KIMEP University', 'Human Resources', 'Male', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (260, 75, 'Lilian', 'Crosbie', 'KIMEP University', 'Product Management', 'Male', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (261, 76, 'Wainwright', 'Trevor', 'KIMEP University', 'Business Development', 'Male', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (262, 77, 'Enrique', 'Boreland', 'Ahmet Yesevi Üniversitesi', 'Legal', 'Male', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (263, 78, 'Orel', 'Fulford', 'Ahmet Yesevi Üniversitesi', 'Accounting', 'Male', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (264, 79, 'Hayyim', 'O''Cridigan', 'Ahmet Yesevi Üniversitesi', 'Services', 'Male', 3.75);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (265, 80, 'Darsie', 'Kupec', 'Ahmet Yesevi Üniversitesi', 'Engineering', 'Male', 2);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (266, 81, 'Luca', 'Glowacz', 'Suleyman Demirel University', 'Legal', 'Male', 2.13);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (267, 82, 'Pet', 'Bagby', 'Suleyman Demirel University', 'Support', 'Male', 2.23);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (268, 83, 'Damon', 'Utting', 'Suleyman Demirel University', 'Services', 'Male', 2.35);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (269, 84, 'Konstanze', 'Rikkard', 'Suleyman Demirel University', 'Business Development', 'Male', 2.47);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (270, 85, 'Arley', 'Tureville', 'Suleyman Demirel University', 'Accounting', 'Male', 2.58);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (271, 86, 'Tommie', 'Ponten', 'Suleyman Demirel University', 'Services', 'Male', 2.7);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (272, 87, 'Pietrek', 'Mahomet', 'Suleyman Demirel University', 'Human Resources', 'Male', 2.81);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (273, 88, 'Erek', 'Aylott', 'IT University', 'Research and Development', 'Male', 2.93);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (274, 89, 'Jayme', 'Duxbarry', 'IT University', 'Business Development', 'Male', 3.04);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (275, 90, 'Dionysus', 'Sogg', 'IT University', 'Product Management', 'Male', 3.16);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (276, 91, 'Alphard', 'Stiddard', 'IT University', 'Marketing', 'Male', 3.27);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (277, 92, 'Joleen', 'Phoenix', 'IT University', 'Product Management', 'Male', 3.39);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (278, 93, 'Antoni', 'Hardesty', 'IT University', 'Business Development', 'Male', 3.5);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (279, 94, 'Janina', 'Pischel', 'IT University', 'Business Development', 'Male', 3.62);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (280, 95, 'Arlina', 'Litchfield', 'IT University', 'Human Resources', 'Male', 3.73);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (281, 96, 'Layla', 'Zupa', 'IT University', 'Services', 'Male', 3.85);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (282, 97, 'Evangelia', 'Petersen', 'IT University', 'Legal', 'Male', 3.96);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (283, 98, 'Trace', 'Towndrow', 'IT University', 'Accounting', 'Male', 2.08);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (284, 99, 'Flss', 'Stronough', 'IT University', 'Human Resources', 'Male', 2.19);
+INSERT INTO public.base_student (user_id, sid, "firstName", "lastName", "universityName", major, gender, "cGpa") VALUES (285, 100, 'Ray', 'Tingcomb', 'IT University', 'Human Resources', 'Male', 3.75);
+
+
+--
+-- TOC entry 3778 (class 0 OID 18321)
+-- Dependencies: 220
+-- Data for Name: base_user; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (1, 'pbkdf2_sha256$320000$PeRiXUrskn7wkOlpJGfpV0$wQ/XicdE2ovY+VEBk2sqFBE/lgp6o8/KHH13+T0I3BY=', '2022-04-04 19:43:02.770704+06', true, '', '', true, true, '2022-04-04 19:40:20.686308+06', 'admin@gmail.com', false, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (2, 'mkaamam', NULL, false, 'ahah', 'knjn', false, false, NULL, 'nj@gmail.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (95, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'AIR ASTANA, АО', NULL, false, false, NULL, 'air_astana@gmail.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (96, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Bank RBK, АО', NULL, false, false, NULL, 'bb@gmail.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (97, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Beeline, ТМ', NULL, false, false, NULL, 'bell@gmail.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (98, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'BI GROUP, ТМ (ТОО BI Support)', NULL, false, false, NULL, 'bi@gmail.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (99, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Company', NULL, false, false, NULL, 'mclute0@reuters.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (100, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Deloitte, Caspian Region', NULL, false, false, NULL, 'dromer1@scribd.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (101, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Galanz Bottlers, АО', NULL, false, false, NULL, 'mtoplis2@foxnews.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (102, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'METRO Cash&Carry (Kazakhstan)', NULL, false, false, NULL, 'ageach3@topsy.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (103, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'PricewaterhouseCoopers', NULL, false, false, NULL, 'rranscombe4@cornell.edu', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (104, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ProductFit', NULL, false, false, NULL, 'cdeluca5@123-reg.co.uk', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (105, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Sulpak', NULL, false, false, NULL, 'pfitzroy6@macromedia.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (106, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'АДВОКАТ АРУТЮНЯН ЭДУАРД АЛЕКСАНДРОВИЧ', NULL, false, false, NULL, 'ksteels7@zdnet.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (107, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Аквелон', NULL, false, false, NULL, 'nbolwell8@dot.gov', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (108, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'АО Aitas KZ', NULL, false, false, NULL, 'lbriston9@yahoo.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (109, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'АО Altyn Bank', NULL, false, false, NULL, 'feckforda@usda.gov', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (110, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'АО Народный банк Казахстана', NULL, false, false, NULL, 'kcraddockb@homestead.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (111, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'АО Ситибанк Казахстан', NULL, false, false, NULL, 'mpellmanc@bluehost.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (112, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ИП International British House', NULL, false, false, NULL, 'epavyerd@geocities.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (113, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ИП IT Service', NULL, false, false, NULL, 'rclemensene@telegraph.co.uk', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (114, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ИП RENAUTO', NULL, false, false, NULL, 'fmackeoghf@wisc.edu', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (115, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ИП tMarketinn', NULL, false, false, NULL, 'rbrokerg@scientificamerican.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (116, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ИП АльфаКонсалт', NULL, false, false, NULL, 'tvanyh@etsy.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (117, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ИП Блисбекова А.Б ALS Dreamchild', NULL, false, false, NULL, 'dtembeyi@cargocollective.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (118, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ИП Болтышев А.В.', NULL, false, false, NULL, 'bewersj@infoseek.co.jp', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (119, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ИП Ойл Центр', NULL, false, false, NULL, 'amuldowneyk@auda.org.au', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (120, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Кселл, АО', NULL, false, false, NULL, 'bdeavesl@sitemeter.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (121, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Новые технологии', NULL, false, false, NULL, 'rboughtonm@nationalgeographic.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (122, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ПРЕДСТАВИТЕЛЬСТВО ОПЕЛЛА ХЭЛСКЕА ИНТЕРНЭШНЛ САС В РК', NULL, false, false, NULL, 'idellabbaten@jugem.jp', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (123, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Публичная Компания «Freedom Finance Global PLC»', NULL, false, false, NULL, 'cbeidebekeo@who.int', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (124, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО «Vendor Trans Logistics» (Вендор Транс Логистикс)', NULL, false, false, NULL, 'hthowesp@seesaa.net', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (125, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО A-Consult', NULL, false, false, NULL, 'kbuckthoughtq@upenn.edu', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (126, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО AB Restaurants', NULL, false, false, NULL, 'hgreenstedr@nsw.gov.au', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (127, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО AETS / Атырауэнерготехсервис', NULL, false, false, NULL, 'uschnitters@ted.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (128, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Alem Agro Holding (АлемАгро Холдинг)', NULL, false, false, NULL, 'dgraalt@indiegogo.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (129, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО ASPEX', NULL, false, false, NULL, 'lhansberryu@webmd.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (130, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО BAKER TILLY QAZAQSTAN AUDIT', NULL, false, false, NULL, 'swoodroofev@adobe.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (131, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Bravo Commodities', NULL, false, false, NULL, 'cdillistonw@bloglovin.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (132, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Bureau for Continuing Professional Development Ltd.', NULL, false, false, NULL, 'hcaruthx@biblegateway.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (133, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО CASPIAN SNAB GROUP', NULL, false, false, NULL, 'rtilly@netvibes.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (134, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Chimbulak Development', NULL, false, false, NULL, 'cmccookez@squidoo.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (135, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Crystal Spring', NULL, false, false, NULL, 'cboal10@ca.gov', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (136, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Euphoria Hit', NULL, false, false, NULL, 'ncarlan11@t-online.de', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (137, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО ExpertFinance', NULL, false, false, NULL, 'mmacguffie12@purevolume.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (138, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО EY (Ernst & Young)', NULL, false, false, NULL, 'jlowdeane13@springer.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (139, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО FIT Service Astana', NULL, false, false, NULL, 'kdenyukhin14@reddit.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (140, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО GT oil service', NULL, false, false, NULL, 'zdoumic15@macromedia.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (141, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Henkel Central Asia & Caucasus', NULL, false, false, NULL, 'mbollands16@example.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (142, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Home decor', NULL, false, false, NULL, 'yhannabuss17@php.net', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (143, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Invictus Astana', NULL, false, false, NULL, 'roronan18@pagesperso-orange.fr', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (144, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО JTI Kazakhstan', NULL, false, false, NULL, 'tridsdell19@techcrunch.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (145, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Max V', NULL, false, false, NULL, 'glampen1a@histats.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (146, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО NEKA TRADE', NULL, false, false, NULL, 'jchater1b@shinystat.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (147, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО oilbt.kz', NULL, false, false, NULL, 'kantoniazzi1c@de.vu', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (148, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Omega System Ltd', NULL, false, false, NULL, 'cboggers1d@desdev.cn', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (149, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО PepsiCo Kazakhstan', NULL, false, false, NULL, 'rkuhnel1e@1688.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (150, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Personal Lawyer', NULL, false, false, NULL, 'ljobin1f@free.fr', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (151, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО PRO ASSISTANCE', NULL, false, false, NULL, 'fkeling1g@virginia.edu', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (152, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Prof Advisor', NULL, false, false, NULL, 'tizkoveski1h@nih.gov', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (153, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО REDlab.kz', NULL, false, false, NULL, 'ldarnell1i@prweb.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (154, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО RG Brands', NULL, false, false, NULL, 'dbodill1j@redcross.org', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (155, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО SAN Partners', NULL, false, false, NULL, 'cgrover1k@sogou.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (156, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Sary-Arka Coppers Processing', NULL, false, false, NULL, 'gclayill1l@cyberchimps.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (157, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Service Press', NULL, false, false, NULL, 'dcritzen1m@fastcompany.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (158, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО SOGLASIE LTD', NULL, false, false, NULL, 'cmorrant1n@washington.edu', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (159, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО TALER CORP', NULL, false, false, NULL, 'arobet1o@wired.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (160, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО ZERDE', NULL, false, false, NULL, 'nbraemer1p@exblog.jp', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (161, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Zibroo-shcool', NULL, false, false, NULL, 'divanuschka1q@fc2.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (162, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО АПРО', NULL, false, false, NULL, 'wilyukhov1r@narod.ru', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (163, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО ЕВРОЛЮКС Строй', NULL, false, false, NULL, 'asherebrooke1s@mapquest.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (164, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Жедел Кузет', NULL, false, false, NULL, 'cupex1t@printfriendly.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (165, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО КазТрейдЛогистика', NULL, false, false, NULL, 'pnelmes1u@tiny.cc', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (166, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Камерир', NULL, false, false, NULL, 'ktrevor1v@homestead.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (167, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Легион-М', NULL, false, false, NULL, 'goakwood1w@seattletimes.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (168, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО МАРЛЕНТУР.КЗ', NULL, false, false, NULL, 'blumsdale1x@army.mil', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (169, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Навион', NULL, false, false, NULL, 'sperry1y@exblog.jp', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (170, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО НПК (научно-производственная компания) Сапа KZ', NULL, false, false, NULL, 'wfrance1z@digg.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (171, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Окна-Плюс Ltd', NULL, false, false, NULL, 'ddruhan20@wikispaces.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (172, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Охранное агентство Аlmaty System Security', NULL, false, false, NULL, 'lrupel21@shinystat.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (173, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО РегионСтройПроект', NULL, false, false, NULL, 'cshawel22@blinklist.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (174, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Ремстрой XXI', NULL, false, false, NULL, 'treddoch23@ehow.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (175, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО ТЕХКОЛОР АЗИЯ', NULL, false, false, NULL, 'wmillwall24@live.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (176, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Торговый Дом SHEGEN', NULL, false, false, NULL, 'blownsbrough25@globo.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (177, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО ТРАНСТУРС Казахстан', NULL, false, false, NULL, 'lshailer26@stanford.edu', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (178, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Учет ONline', NULL, false, false, NULL, 'cginnane27@purevolume.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (179, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Халык Проект', NULL, false, false, NULL, 'bdipietro28@list-manage.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (180, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Эпирок Центральная Азия', NULL, false, false, NULL, 'gconti29@springer.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (181, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ТОО Этажи, ТМ (ТОО Etagi Almaty)', NULL, false, false, NULL, 'ddelacoste2a@bloglovin.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (182, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Частная Компания «Qosil Limited»', NULL, false, false, NULL, 'twhimper2b@privacy.gov.au', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (183, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Частное учреждение «Корпоративный университет «Самрук-Казына»', NULL, false, false, NULL, 'rponde2c@theglobeandmail.com', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (184, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Частное учреждение CILT Kazakhstan', NULL, false, false, NULL, 'csly2d@edublogs.org', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (185, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'ЧК Parakozm LTD', NULL, false, false, NULL, 'dgimblett2e@loc.gov', false, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (186, 'pbkdf2_sha256$320000$PeRiXUrskn7wkOlpJGfpV0$wQ/XicdE2ovY+VEBk2sqFBE/lgp6o8/KHH13+T0I3BY=', NULL, true, 'Elizabeth', 'Cham', true, true, NULL, 'echam0@virginia.edu', true, true);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (187, 'mkaamam', NULL, false, 'Cal', 'Pickford', false, false, NULL, 'cpickford1@phoca.cz', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (188, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Madelin', 'Garbutt', false, false, NULL, 'mgarbutt2@facebook.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (189, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Tallie', 'Netting', false, false, NULL, 'tnetting3@oracle.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (190, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Laura', 'McMurtyr', false, false, NULL, 'lmcmurtyr4@sciencedirect.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (191, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Gabey', 'Beernaert', false, false, NULL, 'gbeernaert5@merriam-webster.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (192, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Devan', 'Betke', false, false, NULL, 'dbetke6@illinois.edu', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (193, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Odessa', 'Goodlife', false, false, NULL, 'ogoodlife7@chicagotribune.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (194, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Starr', 'Winkell', false, false, NULL, 'swinkell8@mapy.cz', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (195, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Kati', 'Wannes', false, false, NULL, 'kwannes9@51.la', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (196, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Alikee', 'Klaas', false, false, NULL, 'aklaasa@cbc.ca', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (197, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Kakalina', 'Merrin', false, false, NULL, 'kmerrinb@odnoklassniki.ru', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (198, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Sophie', 'Jarmain', false, false, NULL, 'sjarmainc@epa.gov', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (199, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Aura', 'Rapper', false, false, NULL, 'arapperd@nature.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (200, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Zabrina', 'Pigot', false, false, NULL, 'zpigote@github.io', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (201, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Violetta', 'Hele', false, false, NULL, 'vhelef@woothemes.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (202, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Babbette', 'Raggitt', false, false, NULL, 'braggittg@cafepress.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (203, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Gabriellia', 'Orrow', false, false, NULL, 'gorrowh@who.int', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (204, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Sara-ann', 'Presley', false, false, NULL, 'spresleyi@xing.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (205, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Anjanette', 'Edworthye', false, false, NULL, 'aedworthyej@addthis.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (206, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Theresa', 'Ledger', false, false, NULL, 'tledgerk@cargocollective.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (207, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Cherice', 'Kohneke', false, false, NULL, 'ckohnekel@posterous.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (208, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Caroline', 'Mucklestone', false, false, NULL, 'cmucklestonem@wordpress.org', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (209, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Tammi', 'Hutcheons', false, false, NULL, 'thutcheonsn@pcworld.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (210, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Katina', 'Harsum', false, false, NULL, 'kharsumo@blogs.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (211, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Karoline', 'Klezmski', false, false, NULL, 'kklezmskip@statcounter.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (212, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Myrtia', 'Boaler', false, false, NULL, 'mboalerq@un.org', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (213, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Charmain', 'Allgood', false, false, NULL, 'callgoodr@github.io', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (214, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Melly', 'Roylance', false, false, NULL, 'mroylances@umn.edu', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (215, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Carmina', 'McIlharga', false, false, NULL, 'cmcilhargat@github.io', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (216, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Johnna', 'McLeman', false, false, NULL, 'jmclemanu@usnews.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (217, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Calida', 'Yurchenko', false, false, NULL, 'cyurchenkov@unesco.org', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (218, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Sella', 'Slyme', false, false, NULL, 'sslymew@blogs.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (219, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Kailey', 'Timmes', false, false, NULL, 'ktimmesx@nhs.uk', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (220, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Sabina', 'Cawdery', false, false, NULL, 'scawderyy@thetimes.co.uk', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (221, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Cristy', 'Carslaw', false, false, NULL, 'ccarslawz@desdev.cn', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (222, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Noel', 'Tacey', false, false, NULL, 'ntacey10@163.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (223, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Lizzy', 'St Leger', false, false, NULL, 'lstleger11@jiathis.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (224, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Jaquenetta', 'Wallsam', false, false, NULL, 'jwallsam12@pcworld.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (225, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Rozina', 'Gillio', false, false, NULL, 'rgillio13@amazon.co.uk', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (226, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Ginnifer', 'Garforth', false, false, NULL, 'ggarforth14@miibeian.gov.cn', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (227, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Ros', 'Wemes', false, false, NULL, 'rwemes15@japanpost.jp', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (228, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Irina', 'Dood', false, false, NULL, 'idood16@zdnet.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (229, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Maggee', 'Ivancevic', false, false, NULL, 'mivancevic17@alibaba.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (230, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Albina', 'Lund', false, false, NULL, 'alund18@taobao.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (231, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Muffin', 'Baile', false, false, NULL, 'mbaile19@cargocollective.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (232, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Honoria', 'Coysh', false, false, NULL, 'hcoysh1a@virginia.edu', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (233, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Kimberly', 'Boylan', false, false, NULL, 'kboylan1b@si.edu', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (234, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Rosie', 'MacAless', false, false, NULL, 'rmacaless1c@ow.ly', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (235, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Reeba', 'Canfer', false, false, NULL, 'rcanfer1d@creativecommons.org', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (236, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Alice', 'Tokell', false, false, NULL, 'atokell0@topsy.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (237, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Karlen', 'Arnefield', false, false, NULL, 'karnefield1@soundcloud.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (238, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Noell', 'La Rosa', false, false, NULL, 'nlarosa2@blinklist.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (239, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Aylmer', 'MacParlan', false, false, NULL, 'amacparlan3@webeden.co.uk', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (240, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Ann', 'Beves', false, false, NULL, 'abeves4@soup.io', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (241, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Theodore', 'Dunderdale', false, false, NULL, 'tdunderdale5@ifeng.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (242, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Hart', 'Yesson', false, false, NULL, 'hyesson6@illinois.edu', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (243, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Devon', 'Scheffler', false, false, NULL, 'dscheffler7@blogspot.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (244, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Carmella', 'Shipperbottom', false, false, NULL, 'cshipperbottom8@oracle.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (245, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Banky', 'Unwins', false, false, NULL, 'bunwins9@themeforest.net', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (246, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Amos', 'Ghio', false, false, NULL, 'aghioa@yale.edu', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (247, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Selle', 'Kintzel', false, false, NULL, 'skintzelb@edublogs.org', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (248, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Kele', 'Pilfold', false, false, NULL, 'kpilfoldc@forbes.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (249, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Andrey', 'Boldison', false, false, NULL, 'aboldisond@nydailynews.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (250, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Robin', 'Knowlson', false, false, NULL, 'rknowlsone@nifty.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (251, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Skipp', 'Firby', false, false, NULL, 'sfirbyf@patch.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (252, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Helaine', 'Cunah', false, false, NULL, 'hcunahg@netlog.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (253, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Daniel', 'Klinck', false, false, NULL, 'dklinckh@merriam-webster.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (254, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Archibold', 'Boddice', false, false, NULL, 'aboddicei@pbs.org', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (255, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Helen-elizabeth', 'Sussans', false, false, NULL, 'hsussansj@google.com.hk', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (256, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Thedric', 'Jackalin', false, false, NULL, 'tjackalink@umn.edu', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (257, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Niels', 'Cheek', false, false, NULL, 'ncheekl@chron.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (258, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Rodi', 'Golly', false, false, NULL, 'rgollym@1und1.de', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (259, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Julie', 'Dallewater', false, false, NULL, 'jdallewatern@time.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (260, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Lilian', 'Crosbie', false, false, NULL, 'lcrosbieo@last.fm', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (261, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Wainwright', 'Trevor', false, false, NULL, 'wtrevorp@umich.edu', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (262, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Enrique', 'Boreland', false, false, NULL, 'eborelandq@dion.ne.jp', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (263, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Orel', 'Fulford', false, false, NULL, 'ofulfordr@exblog.jp', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (264, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Hayyim', 'O''Cridigan', false, false, NULL, 'hocridigans@china.com.cn', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (265, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Darsie', 'Kupec', false, false, NULL, 'dkupect@yolasite.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (266, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Luca', 'Glowacz', false, false, NULL, 'lglowaczu@wix.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (267, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Pet', 'Bagby', false, false, NULL, 'pbagbyv@angelfire.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (268, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Damon', 'Utting', false, false, NULL, 'duttingw@army.mil', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (269, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Konstanze', 'Rikkard', false, false, NULL, 'krikkardx@theatlantic.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (270, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Arley', 'Tureville', false, false, NULL, 'aturevilley@liveinternet.ru', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (271, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Tommie', 'Ponten', false, false, NULL, 'tpontenz@usa.gov', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (272, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Pietrek', 'Mahomet', false, false, NULL, 'pmahomet10@home.pl', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (273, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Erek', 'Aylott', false, false, NULL, 'eaylott11@archive.org', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (274, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Jayme', 'Duxbarry', false, false, NULL, 'jduxbarry12@feedburner.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (275, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Dionysus', 'Sogg', false, false, NULL, 'dsogg13@tiny.cc', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (276, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Alphard', 'Stiddard', false, false, NULL, 'astiddard14@reuters.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (277, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Joleen', 'Phoenix', false, false, NULL, 'jphoenix15@kickstarter.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (278, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Antoni', 'Hardesty', false, false, NULL, 'ahardesty16@dailymail.co.uk', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (279, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Janina', 'Pischel', false, false, NULL, 'jpischel17@diigo.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (280, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Arlina', 'Litchfield', false, false, NULL, 'alitchfield18@newsvine.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (281, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Layla', 'Zupa', false, false, NULL, 'lzupa19@technorati.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (282, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Evangelia', 'Petersen', false, false, NULL, 'epetersen1a@ebay.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (283, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Trace', 'Towndrow', false, false, NULL, 'ttowndrow1b@nbcnews.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (284, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Flss', 'Stronough', false, false, NULL, 'fstronough1c@aol.com', true, false);
+INSERT INTO public.base_user (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, is_student, is_company) VALUES (285, 'jbasdcsbcdsahbcdkcchbsdcjkbscjsb', NULL, false, 'Ray', 'Tingcomb', false, false, NULL, 'rtingcomb1d@techcrunch.com', true, false);
+
+
+--
+-- TOC entry 3780 (class 0 OID 18332)
+-- Dependencies: 222
+-- Data for Name: base_user_groups; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+
+
+--
+-- TOC entry 3782 (class 0 OID 18339)
+-- Dependencies: 224
+-- Data for Name: base_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+
+
+--
+-- TOC entry 3790 (class 0 OID 18422)
+-- Dependencies: 232
+-- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+
+
+--
+-- TOC entry 3770 (class 0 OID 18263)
+-- Dependencies: 212
+-- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (12, 'admin', 'logentry');
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (13, 'auth', 'permission');
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (14, 'auth', 'group');
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (15, 'contenttypes', 'contenttype');
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (16, 'sessions', 'session');
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (17, 'authtoken', 'token');
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (18, 'authtoken', 'tokenproxy');
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (19, 'base', 'user');
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (20, 'base', 'company');
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (21, 'base', 'student');
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (22, 'base', 'internship');
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (23, 'internship', 'internship');
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (24, 'internship', 'internshiplike');
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (25, 'application', 'application');
+INSERT INTO public.django_content_type (id, app_label, model) VALUES (26, 'student', 'student');
+
+
+--
+-- TOC entry 3768 (class 0 OID 18254)
+-- Dependencies: 210
+-- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (1, 'contenttypes', '0001_initial', '2022-04-01 03:42:13.805917+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (2, 'contenttypes', '0002_remove_content_type_name', '2022-04-01 03:42:13.836219+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (3, 'auth', '0001_initial', '2022-04-01 03:42:13.88674+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (4, 'auth', '0002_alter_permission_name_max_length', '2022-04-01 03:42:13.89328+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (5, 'auth', '0003_alter_user_email_max_length', '2022-04-01 03:42:13.899541+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (6, 'auth', '0004_alter_user_username_opts', '2022-04-01 03:42:13.907469+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (7, 'auth', '0005_alter_user_last_login_null', '2022-04-01 03:42:13.914892+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (8, 'auth', '0006_require_contenttypes_0002', '2022-04-01 03:42:13.91698+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (9, 'auth', '0007_alter_validators_add_error_messages', '2022-04-01 03:42:13.925661+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (10, 'auth', '0008_alter_user_username_max_length', '2022-04-01 03:42:13.933489+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (11, 'auth', '0009_alter_user_last_name_max_length', '2022-04-01 03:42:13.942119+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (12, 'auth', '0010_alter_group_name_max_length', '2022-04-01 03:42:13.952684+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (13, 'auth', '0011_update_proxy_permissions', '2022-04-01 03:42:13.965622+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (14, 'auth', '0012_alter_user_first_name_max_length', '2022-04-01 03:42:13.972907+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (15, 'admin', '0001_initial', '2022-04-01 03:42:37.528664+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (16, 'admin', '0002_logentry_remove_auto_add', '2022-04-01 03:42:37.535512+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (17, 'admin', '0003_logentry_add_action_flag_choices', '2022-04-01 03:42:37.54202+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (18, 'authtoken', '0001_initial', '2022-04-01 03:42:37.562803+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (19, 'authtoken', '0002_auto_20160226_1747', '2022-04-01 03:42:37.591415+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (20, 'authtoken', '0003_tokenproxy', '2022-04-01 03:42:37.596164+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (21, 'sessions', '0001_initial', '2022-04-01 03:42:37.606903+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (22, 'student', '0001_initial', '2022-04-04 13:10:27.951116+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (23, 'internship', '0001_initial', '2022-04-04 13:10:27.988494+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (24, 'application', '0001_initial', '2022-04-04 13:10:28.003894+06');
+INSERT INTO public.django_migrations (id, app, name, applied) VALUES (25, 'application', '0002_initial', '2022-04-04 13:10:28.034974+06');
+
+
+--
+-- TOC entry 3792 (class 0 OID 18456)
+-- Dependencies: 234
+-- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+INSERT INTO public.django_session (session_key, session_data, expire_date) VALUES ('u61h1rrar0lkwanjmbj1nd4tw62sba0t', '.eJxVjEEOwiAQRe_C2pABClKX7nsGMsOMUjU0Ke3KeHfbpAvdvvf-f6uE61LS2mROI6uLMur0ywjzU-ou-IH1Puk81WUeSe-JPmzTw8Tyuh7t30HBVra1E8sOwMeOfBAmCCFY7OQcGSIaxzfsXQiAPbq8YQIHnI0lQ2K9QfX5AtMFN6s:1nbMz0:9N2kjSQgOaB5mVED9topr0G2r6IieSeK85xT61W7GdM', '2022-04-18 19:43:02.784053+06');
+
+
+--
+-- TOC entry 3796 (class 0 OID 18483)
+-- Dependencies: 238
+-- Data for Name: internship_internship; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+
+
+--
+-- TOC entry 3798 (class 0 OID 18492)
+-- Dependencies: 240
+-- Data for Name: internship_internshiplike; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+
+
+--
+-- TOC entry 3794 (class 0 OID 18467)
+-- Dependencies: 236
+-- Data for Name: student_student; Type: TABLE DATA; Schema: public; Owner: internbee
+--
+
+
+
+--
+-- TOC entry 3824 (class 0 OID 0)
+-- Dependencies: 241
+-- Name: application_application_id_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.application_application_id_seq', 1, false);
+
+
+--
+-- TOC entry 3825 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.auth_group_id_seq', 1, false);
+
+
+--
+-- TOC entry 3826 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 1, false);
+
+
+--
+-- TOC entry 3827 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 104, true);
+
+
+--
+-- TOC entry 3828 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: base_company_cid_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.base_company_cid_seq', 91, true);
+
+
+--
+-- TOC entry 3829 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: base_internship__id_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.base_internship__id_seq', 331, true);
+
+
+--
+-- TOC entry 3830 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: base_student_sid_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.base_student_sid_seq', 100, true);
+
+
+--
+-- TOC entry 3831 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: base_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.base_user_groups_id_seq', 1, false);
+
+
+--
+-- TOC entry 3832 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: base_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.base_user_id_seq', 285, true);
+
+
+--
+-- TOC entry 3833 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: base_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.base_user_user_permissions_id_seq', 1, false);
+
+
+--
+-- TOC entry 3834 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 1, false);
+
+
+--
+-- TOC entry 3835 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 26, true);
+
+
+--
+-- TOC entry 3836 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 25, true);
+
+
+--
+-- TOC entry 3837 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: internship_internship__id_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.internship_internship__id_seq', 1, false);
+
+
+--
+-- TOC entry 3838 (class 0 OID 0)
+-- Dependencies: 239
+-- Name: internship_internshiplike_id_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.internship_internshiplike_id_seq', 1, false);
+
+
+--
+-- TOC entry 3839 (class 0 OID 0)
+-- Dependencies: 235
+-- Name: student_student_sid_seq; Type: SEQUENCE SET; Schema: public; Owner: internbee
+--
+
+SELECT pg_catalog.setval('public.student_student_sid_seq', 1, false);
+
+
+-- Completed on 2022-04-10 15:58:48 +06
+
+--
+-- PostgreSQL database dump complete
+--
+

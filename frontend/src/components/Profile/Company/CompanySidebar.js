@@ -9,10 +9,9 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import styles from "../Profile.module.scss";
 import { styled } from "@mui/material/styles";
 import { Avatar } from "@mui/material";
-import Identicon from "identicon.js";
-import { Link } from "react-router-dom";
-// create a base64 encoded PNG
-var data = new Identicon("d3b07384d113edec49eaa6238ad5ff00", 420).toString();
+// import Identicon from "identicon.js";
+// // create a base64 encoded PNG
+// var data = new Identicon("d3b07384d113edec49eaa6238ad5ff00", 420).toString();
 
 // write to a data URI
 // document.write('<img width=420 height=420 src="data:image/png;base64,' + data + '">');
@@ -63,7 +62,7 @@ function CompanySidebar({ company }) {
         /> */}
         <Avatar
           alt="profile image"
-          src={`data:image/png;base64,${data}`}
+          // src={`data:image/png;base64,${data}`}
           style={{ marginBottom: "1rem", width: "120px", height: "120px" }}
         />
 
