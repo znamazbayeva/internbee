@@ -6,18 +6,23 @@ import { FilterProvider } from "./context/filter_context";
 import { InternshipsProvider } from "./context/internships_context";
 import "./index.css";
 import store from "./store";
-// import { CompanyProvider } from "./context/company_context";
+import { CompaniesProvider } from "./context/companies_context";
+import { CompanyFilterProvider } from "./context/companies_filter_context";
 
 ReactDOM.render(
-  <InternshipsProvider>
-    <FilterProvider>
-      <Provider store={store}>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </Provider>
-    </FilterProvider>
-  </InternshipsProvider>,
+  <Provider store={store}>
+    <CompaniesProvider>
+      <CompanyFilterProvider>
+        <InternshipsProvider>
+          <FilterProvider>
+            <React.StrictMode>
+              <App />
+            </React.StrictMode>
+          </FilterProvider>
+        </InternshipsProvider>
+      </CompanyFilterProvider>
+    </CompaniesProvider>
+  </Provider>,
   document.getElementById("root")
 );
 

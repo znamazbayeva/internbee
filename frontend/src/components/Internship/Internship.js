@@ -7,6 +7,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import VideoCameraFrontIcon from "@mui/icons-material/VideoCameraFront";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import axios from "axios";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
@@ -93,10 +94,12 @@ function Internship({ internship }) {
               {findFromDate(internship.created_at)} days
             </div>
             <FiberManualRecordIcon fontSize="small" style={{ color: "grey" }} />
-            <div className={styles.created_time}>{internship.duration}</div>
+            <div className={styles.created_time}>
+              {internship.category.toUpperCase()}
+            </div>
             <PlaceIcon fontSize="small" style={{ color: "grey" }} />
             <div className={styles.created_time}>{internship.location}</div>
-            <div className={styles.created_time}>{internship.location}</div>
+            <MonetizationOnIcon fontSize="small" style={{ color: "grey" }} />
             <div className={styles.created_time}>{internship.salary}</div>
           </div>
         </div>
@@ -109,12 +112,14 @@ function Internship({ internship }) {
               {like ? (
                 <FavoriteBorderIcon
                   fontSize="small"
+                  style={{ color: "#e32636" }}
                   className={styles.button_hi}
                   onClick={sendLike}
                 />
               ) : (
                 <FavoriteIcon
                   fontSize="small"
+                  style={{ color: "#e32636" }}
                   className={styles.button_hi}
                   onClick={removeLike}
                 />
@@ -130,7 +135,10 @@ function Internship({ internship }) {
               </button>
             ) : null}
           </div>
-          <Link to={`/internships/${internship._id}`}>
+          <Link
+            to={`/internships/${internship._id}`}
+            style={{ textDecoration: "none" }}
+          >
             <button className={styles.button}>
               See more <ArrowForwardIcon className="arrow" fontSize="small" />
             </button>

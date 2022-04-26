@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import CompanyInfo from "./CompanyInfo";
 import SideBar from "./SideBar";
-import { useCompanyContext } from "../../../context/company_context";
+import { useCompaniesContext } from "../../../context/companies_context";
 import { showCompany } from "../../../actions/company";
 
 function CompanyDashboard() {
