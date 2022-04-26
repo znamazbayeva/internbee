@@ -11,9 +11,26 @@ class ApplicationListView(generics.ListCreateAPIView):
   model = Application
   serializer_class = ApplicationSerializer
 
-class ApplicationAPIView(generics.CreateAPIView):
+class ApplicationDestroyAPIView(generics.DestroyAPIView):
     """
-    Students can apply or delete their applications
+    Students can  delete their applications
+    """
+  
+    serializer_class = ApplicationSerializer
+    permission_classes =[]
+
+    def delete(self, request):
+      internship = get_object_or_404(Internship, _id=self.request.data['internship'])
+      student = get_object_or_404(Student, user=request.user.id)
+      application = Application.objects.filter(student=student, internship=internship)
+      if application.exists():
+        application.delete()
+        return Response({"message": "You succesfully deleted this application"}, status=status.HTTP_200_OK)
+      return Response({"message": "You have already deleted this application"}, status=status.HTTP_400_BAD_REQUEST)
+
+class ApplicationCreateAPIView(generics.CreateAPIView):
+    """
+    Students can apply their applications
     """
   
     serializer_class = ApplicationSerializer
@@ -27,39 +44,50 @@ class ApplicationAPIView(generics.CreateAPIView):
           return Response({"message": "You have already applied to this internship"}, status=status.HTTP_302_FOUND)
         else:
           new_application, created = Application.objects.get_or_create(student=student, internship = internship, status='A')
+  
           if created:
             new_application.save()
+            print(new_application)
             return Response({"message": "You have successfully applied to internship"}, status=status.HTTP_201_CREATED)
           return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request):
-        internship = get_object_or_404(Internship, _id=self.request.data['internship'])
-        application = Application.objects.filter(student=request.user, internship=internship)
-        if application.exists():
-            application.delete()
-            return Response(status=status.HTTP_200_OK)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
-
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
       
 #Change status of application by companies
-class ApplicationUpdateAPIView(generics.UpdateAPIView):
+class ApplicationUpdateGetAPIView(generics.RetrieveUpdateAPIView):
+  queryset = Application.objects.all()
   serializer_class = ApplicationSerializer
   permission_classes = []
-  def put(self, request):
-    internship = get_object_or_404(Internship, _id=self.request.data['internship'])
-    student = get_object_or_404(Student, sid=self.request.data['student'])
-    application = Application.objects.filter(student=student, internship=internship)
-    print(internship, student, application)
-    if application.exists():
-      serializer = self.get_serializer(application.first(), data = request.data, partial = True)
-      print(serializer)
-      if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "status of internship updated successfully", "details": serializer.data})
-      else:
-        return Response({'message': "failed", "details": serializer.errors})
-    return Response({"message", "Such application does not exists"})
+  def get_object(self):
+    id = self.kwargs["pk"]
+    return get_object_or_404(Application, id=id)
+    
+  def put(self, request, *args, **kwargs):
+    return self.update(request, *args, **kwargs)
 
-#Students can rate the internship at the end 
+class ApplicationGetStudentAPIView(generics.RetrieveAPIView):
+  queryset = Application.objects.all()
+  serializer_class = ApplicationSerializer
+  permission_classes = []
+  def get(self, request):
+    student =get_object_or_404(Student, user=request.user.id)
+    applications = Application.objects.filter(student=student)
+    if applications:
+      return Response(ApplicationSerializer(applications, many=True).data)
+    else:
+      return Response({"message": "You have no applications"})
+
+
+class ApplicationGetCompanyAPIView(generics.RetrieveAPIView):
+  queryset = Application.objects.all()
+  serializer_class = ApplicationSerializer
+  permission_classes = []
+  def get(self, request):
+    company =get_object_or_404(Company, user=request.user.id)
+    internship = Internship.objects.filter(company=company)
+    applications = Application.objects.filter(internship__in=internship)
+    if applications:
+      return Response(ApplicationSerializer(applications, many=True).data)
+    else:
+      return Response({"message": "You have no applications"})
+
+
