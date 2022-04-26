@@ -40,7 +40,8 @@ class StudentSignupView(generics.GenericAPIView):
         return Response({
             "user":UserSerializer(user, context=self.get_serializer_context()).data,
             "token":Token.objects.get(user=user).key,
-            "message":"account created successfully"
+            "message":"account created successfully",
+            "student": StudentSerializer(Student.objects.get(user=user)).data
         })
 
 class StudentOnlyView(generics.RetrieveAPIView):
@@ -59,4 +60,8 @@ class StudentProfileAPIView(generics.RetrieveUpdateAPIView):
     permission_classes = (IsAuthenticated,)
 
     def get_object(self):
-        return self.request.user
+        sid = self.kwargs["pk"]
+        return get_object_or_404(Student, sid=sid)
+    
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
