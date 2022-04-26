@@ -2,6 +2,7 @@ import { FormGroup } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import FormControl from "@mui/material/FormControl";
 import Input from "@mui/material/Input";
+import Button from "@mui/material/Button";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
@@ -97,13 +98,11 @@ function SearchInternship() {
       <FormControl sx={{ marginBottom: "30px" }}>
         <InputLabel htmlFor="text">Title</InputLabel>
         <Input
-          id="my-input"
-          aria-describedby="my-helper-text"
           label="Search here"
           variant="standard"
           type="text"
           name="text"
-          placeholder="search"
+          placeholder="search by title"
           className="search-input"
           value={text}
           onChange={updateFilters}
@@ -161,6 +160,13 @@ function SearchInternship() {
           sx={{ overflow: "visible" }}
         />
       </FormControl>
+      <Button
+        onClick={clearFilters}
+        variant="contained"
+        style={{ marginTop: "2rem", backgroundColor: "#663399" }}
+      >
+        Clear Filters
+      </Button>
     </FormGroup>
   );
 }

@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
 const CompanyCard = ({ company }) => {
-  const name = company.user.email;
+  const name = company.company_name || company.user.email;
   const image = company.img;
   return (
     <Box sx={{ minWidth: 225 }}>

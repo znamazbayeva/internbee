@@ -4,7 +4,7 @@ import Identicon from "identicon.js";
 import { Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import styles from "../Profile.module.scss";
-import reducer from "../../../reducers/company_reducer";
+// import reducer from "../../../reducers/companies_reducer";
 import CompanyModal from "./CompanyModal";
 var data = new Identicon("d3b07384d113edec49eaa6238ad5ff00", 420).toString();
 
@@ -16,7 +16,7 @@ const initialState = {
 };
 
 function CompanyInfo({ company }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  // const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleEdit = (e) => {
     e.preventDefault();

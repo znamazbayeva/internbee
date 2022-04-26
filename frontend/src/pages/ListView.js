@@ -3,14 +3,18 @@ import Internship from "../components/Internship/Internship";
 import SearchInternship from "../components/Internship/SearchInternship";
 import styles from "../components/Internship/Internship.module.scss";
 import Sort from "../components/Sort";
+import { Typography } from "@mui/material";
 const ListView = ({ internships }) => {
   let content;
 
   if (internships.length < 1) {
     content = (
-      <h5 style={{ textTransform: "none" }}>
+      <Typography
+        variant="h6"
+        style={{ textTransform: "none", marginLeft: "1.2rem", height: "55vh" }}
+      >
         Sorry, no internships matched your search...
-      </h5>
+      </Typography>
     );
   } else {
     content = internships.map((internship) => {
@@ -18,11 +22,14 @@ const ListView = ({ internships }) => {
     });
   }
   return (
-    <div className={styles.general}>
+    <div
+      className={styles.general}
+      style={{ minHeight: "100vh", overflow: "hidden" }}
+    >
       <div style={{ flex: "0 0 10em" }}>
-        <SearchInternship style={{ marginTop: "30px" }} />
+        <SearchInternship />
       </div>
-      <div style={{ flex: "0 0 55em" }}>
+      <div style={{ flex: "0 0 55em", marginLeft: "30px" }}>
         <div
           style={{
             margin: "1rem",
@@ -32,7 +39,9 @@ const ListView = ({ internships }) => {
             alignItems: "center",
           }}
         >
-          <h3>All internships</h3>
+          <Typography variant="h4" style={{ marginTop: "-3rem" }}>
+            All internships
+          </Typography>
           <Sort />
         </div>
 

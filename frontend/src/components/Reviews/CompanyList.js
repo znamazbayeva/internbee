@@ -1,37 +1,12 @@
 import { Grid } from "@mui/material";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useCompanyFilterContext } from "../../context/companies_filter_context";
 import CompanyCard from "./CompanyCard";
-// import styles from "./Company.css";
-// import { makeStyles } from "@mui/styles";
-
-// const useStyles = makeStyles({
-//   outerContainer: {
-//     width: "100%",
-//     margin: "150px",
-//     maxWidth: "fit-content",
-//   },
-// });
 
 const CompanyList = () => {
-  // const classes = useStyles();
-  const [companies, setCompanies] = useState([]);
-  const fetchCompanies = async () => {
-    try {
-      const response = await axios.get(
-        "http://127.0.0.1:8000/v1/api/companys/"
-      );
-      const companies = response.data;
-      setCompanies(companies);
-    } catch (error) {
-      console.log("BIG FAT ERROR");
-    }
-  };
+  const { filtered_companies: companies } = useCompanyFilterContext();
 
-  useEffect(() => {
-    fetchCompanies();
-  }, []);
-
+  console.log(companies);
   return (
     <>
       <h3>Popular Companies</h3>

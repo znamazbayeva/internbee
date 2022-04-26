@@ -34,8 +34,6 @@ export const InternshipsProvider = ({ children }) => {
     try {
       const response = await axios.get(url);
       const internships = response.data;
-
-      console.log(internships);
       dispatch({ type: GET_INTERNSHIPS_SUCCESS, payload: internships });
     } catch (error) {
       dispatch({ type: GET_INTERNSHIPS_ERROR });

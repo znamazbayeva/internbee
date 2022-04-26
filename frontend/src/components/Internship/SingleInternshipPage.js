@@ -130,7 +130,7 @@ const SingleInternshipPage = () => {
                 <br />
               </Typography>
             </div>
-            <Link to={`/application/apply`}>
+            <Link to={`/application/apply`} style={{ textDecoration: "none" }}>
               <Button
                 variant="outlined"
                 sx={{

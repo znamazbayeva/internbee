@@ -90,6 +90,7 @@ const filter_reducer = (state, action) => {
         text: "",
         company: "all",
         category: "all",
+        location: "all",
         salary: state.filters.max_salary,
       },
     };
