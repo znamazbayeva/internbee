@@ -31,6 +31,8 @@ const FreelanceSignup = ({
       email,
       password,
     };
+    console.log("Create company");
+    console.log(newUser);
     create_freelanceuser(newUser);
   };
 

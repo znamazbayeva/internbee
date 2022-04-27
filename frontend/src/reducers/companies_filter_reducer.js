@@ -35,9 +35,8 @@ const companies_filter_reducer = (state, action) => {
         const location = company.cityName;
         if (location) {
           return location.toLowerCase().includes(text_location);
-        } else {
-          return;
         }
+        return;
       });
     }
     return { ...state, filtered_companies: tempCompanies };

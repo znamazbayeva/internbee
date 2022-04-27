@@ -8,21 +8,24 @@ import "./index.css";
 import store from "./store";
 import { CompaniesProvider } from "./context/companies_context";
 import { CompanyFilterProvider } from "./context/companies_filter_context";
+import { ToastProvider } from "react-toast-notifications";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <CompaniesProvider>
-      <CompanyFilterProvider>
-        <InternshipsProvider>
-          <FilterProvider>
-            <React.StrictMode>
-              <App />
-            </React.StrictMode>
-          </FilterProvider>
-        </InternshipsProvider>
-      </CompanyFilterProvider>
-    </CompaniesProvider>
-  </Provider>,
+  <ToastProvider>
+    <Provider store={store}>
+      <CompaniesProvider>
+        <CompanyFilterProvider>
+          <InternshipsProvider>
+            <FilterProvider>
+              <React.StrictMode>
+                <App />
+              </React.StrictMode>
+            </FilterProvider>
+          </InternshipsProvider>
+        </CompanyFilterProvider>
+      </CompaniesProvider>
+    </Provider>
+  </ToastProvider>,
   document.getElementById("root")
 );
 

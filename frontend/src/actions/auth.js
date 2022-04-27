@@ -107,7 +107,7 @@ export const create_freelanceuser =
     const body = JSON.stringify({ email, password });
     console.log(body);
     axios
-      .post("http://127.0.0.1:8000/v1/api/signup/company/", body, config)
+      .post("http://127.0.0.1:8000/v1/api/company/signup/", body, config)
       .then((res) => {
         dispatch({
           type: REGISTER_FUSER_SUCCESS,

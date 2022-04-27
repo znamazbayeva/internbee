@@ -1,11 +1,14 @@
 import React, { useState, useReducer, useEffect } from "react";
+import { getCompany } from "../../../actions/auth";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 import { Avatar } from "@mui/material";
 import Identicon from "identicon.js";
 import { Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import styles from "../Profile.module.scss";
-// import reducer from "../../../reducers/companies_reducer";
 import CompanyModal from "./CompanyModal";
+import { Link } from "react-router-dom";
 var data = new Identicon("d3b07384d113edec49eaa6238ad5ff00", 420).toString();
 
 const initialState = {
@@ -13,15 +16,33 @@ const initialState = {
   address: "Company Address",
   name: "Company Name",
   image: `data:image/png;base64,${data}`,
+  email: "email@email.com",
 };
 
-function CompanyInfo({ company }) {
-  // const [state, dispatch] = useReducer(reducer, initialState);
+function CompanyInfo() {
+  const state = useSelector((state) => state.auth);
+  const [company, setCompany] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:8000/v1/api/company/${state.user_id}/`)
+      .then((res) => {
+        setCompany(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCompany());
+  }, [dispatch]);
 
   const handleEdit = (e) => {
     e.preventDefault();
   };
-  console.log(company.user.email);
+
   return (
     <div style={{ display: "block", width: "100%" }}>
       <div
@@ -34,17 +55,19 @@ function CompanyInfo({ company }) {
       >
         <div className={styles.company_header}>
           <Typography gutterBottom variant="h5" component="div">
-            {/* {company.user.email && company.user.email} */}
+            {company ? company.user.email : initialState.email}
           </Typography>
           {/* <input type="text" /> */}
 
-          <Button
-            variant="contained"
-            className={styles.post_job_button}
-            sx={{ backgroundColor: "#663399" }}
-          >
-            + Post Job
-          </Button>
+          <Link to='/post-internship/'>
+            <Button
+              variant="contained"
+              className={styles.post_job_button}
+              sx={{ backgroundColor: "#663399" }}
+            >
+              + Post Job
+            </Button>
+          </Link>
         </div>
 
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -61,7 +84,7 @@ function CompanyInfo({ company }) {
               component="div"
               sx={{ marginLeft: 5 }}
             >
-              {initialState.description}
+              {company ? company.description : initialState.description}
             </Typography>
 
             <Typography
@@ -70,7 +93,7 @@ function CompanyInfo({ company }) {
               component="div"
               sx={{ marginLeft: 5, color: "blue" }}
             >
-              {initialState.address}
+              {company ? company.address : initialState.address}
             </Typography>
           </div>
           <div></div>
