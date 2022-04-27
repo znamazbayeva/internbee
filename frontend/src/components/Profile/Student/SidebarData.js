@@ -27,7 +27,7 @@ export const SidebarData = [
   },
   {
     title: "Saved Internships",
-    path: "/company/internship-listings",
+    path: "/student/saved",
     icon: <FavoriteBorderIcon />,
     cName: "nav-text",
   },

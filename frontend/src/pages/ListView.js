@@ -4,7 +4,9 @@ import SearchInternship from "../components/Internship/SearchInternship";
 import styles from "../components/Internship/Internship.module.scss";
 import Sort from "../components/Sort";
 import { Typography } from "@mui/material";
+
 const ListView = ({ internships }) => {
+  console.log(internships);
   let content;
 
   if (internships.length < 1) {

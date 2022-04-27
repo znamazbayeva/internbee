@@ -7,10 +7,12 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import beeImage from "../assets/img/Bee-Logo.png";
 
 const FeaturedInternshipCard = ({ internship }) => {
   const name = internship.name;
-  const image = internship.company.img;
+  // const image = internship.company.img;
+  const image = beeImage;
   return (
     <Box sx={{ width: 280, marginRight: "15px" }}>
       <Card variant="outlined" sx={{ display: "flex" }}>
@@ -47,7 +49,7 @@ const FeaturedInternshipCard = ({ internship }) => {
             <Typography variant="body2">0 reviews</Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Learn More</Button>
+            <Button size="small">Read More</Button>
           </CardActions>
         </Box>
       </Card>

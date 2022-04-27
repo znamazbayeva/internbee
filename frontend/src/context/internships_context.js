@@ -12,7 +12,7 @@ import {
 } from "../actions/types.js";
 
 const url = "http://127.0.0.1:8000/v1/api/internship/all/";
-// const url = "https://cheerful-halva-5ca4ca.netlify.app/db.json";
+//const url = "https://cheerful-halva-5ca4ca.netlify.app/db.json";
 
 const initialState = {
   internships_loading: false,

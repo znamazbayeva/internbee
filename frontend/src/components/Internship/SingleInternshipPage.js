@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import FeaturedInternships from "../FeaturedInternships";
 import Disqus from "disqus-react";
-
+import beeImage from "../../assets/img/Bee-Logo.png";
 const SingleInternshipPage = () => {
   const { id } = useParams();
   const disqusShortname = "internbee";
@@ -17,6 +17,7 @@ const SingleInternshipPage = () => {
     title: `internship${id}`,
   };
   const url = "http://127.0.0.1:8000/v1/api/internship/all/";
+  // const url = "https://cheerful-halva-5ca4ca.netlify.app/db.json";
   const [internship, setInternship] = useState(null);
 
   const fetchInternships = async () => {
@@ -37,54 +38,7 @@ const SingleInternshipPage = () => {
   if (internship) {
     console.log(internship);
     return (
-      //   <div style={{ display: "flex", justifyContent: "space-around" }}>
-      //     <Card
-      //       color="primary"
-      //       variant="outlined"
-      //       sx={{ display: "flex", width: 800 }}
-      //     >
-      //       <CardMedia
-      //         component="img"
-      //         sx={{
-      //           width: 100,
-      //           height: 100,
-      //           // display: "block",
-      //           margin: "auto",
-      //           maxWidth: "100%",
-      //           maxHeight: "100%",
-      //           borderRadius: "5px",
-      //         }}
-      //         image={internship.company.img}
-      //         alt={internship.name}
-      //       />
-      //       <Box sx={{ display: "flex", flexDirection: "column" }}>
-      //         <CardContent>
-      //           <Link
-      //             to={`/company/${internship.company.cid}`}
-      //             style={{
-      //               textDecoration: "none",
-      //               color: "#2d2d2d",
-      //               fontWeight: "700",
-      //             }}
-      //           >
-      //             <Typography variant="h6" component="div">
-      //               {internship.name}
-      //             </Typography>
-      //           </Link>
-      //           <Typography variant="body2">0 reviews</Typography>
-      //         </CardContent>
-      //         <CardActions>
-      //           <button
-      //             className={styles.applybutton}
-      //             style={{ backgroundColor: "#663399" }}
-      //           >
-      //             Apply
-      //           </button>
-      //         </CardActions>
-      //       </Box>
-      //     </Card>
-      //   </div>
-      <div style={{ margin: "80px 200px", padding: "5px" }}>
+      <div style={{ margin: "80px 200px", padding: "5px", height: "180vh" }}>
         <h5 style={{ color: "#888" }}>{internship.category.toUpperCase()}</h5>
         <h6
           style={{
@@ -114,7 +68,7 @@ const SingleInternshipPage = () => {
           >
             <div style={{ display: "flex", alignItems: "center" }}>
               <img
-                src={internship.company.img}
+                src={beeImage}
                 //   src=""
                 alt=""
                 style={{
@@ -172,17 +126,22 @@ const SingleInternshipPage = () => {
           </p>
 
           <p style={{ width: "25%" }}>
-            <h6>Job Overview</h6>
+            <Typography variant="h6">Internship Overview</Typography>
+            <hr></hr>
+            <Typography variant="h7">
+              <strong>Required Skills: </strong>
+              <br /> <br />
+            </Typography>
             {internship.skills}
           </p>
         </div>
         <div>
           <FeaturedInternships />
+          <Disqus.DiscussionEmbed
+            shortname={disqusShortname}
+            config={disqusConfig}
+          />
         </div>
-        <Disqus.DiscussionEmbed
-          shortname={disqusShortname}
-          config={disqusConfig}
-        />
       </div>
     );
   }

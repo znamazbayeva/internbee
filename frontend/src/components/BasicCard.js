@@ -10,8 +10,8 @@ export default function BasicCard({ title }) {
     <div style={{ display: "flex" }}>
       <Card sx={{ width: "200px", height: "120px" }}>
         <CardContent>
-          <Typography variant="h5" component="div">
-            {title}
+          <Typography variant="h7" component="div">
+            <strong>{title}</strong>
           </Typography>
         </CardContent>
         <CardActions>

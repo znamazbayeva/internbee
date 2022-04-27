@@ -9,6 +9,7 @@ import FeaturedInternships from "./FeaturedInternships";
 import { useFilterContext } from "../context/filter_context";
 import BasicCard from "./BasicCard";
 import Grid from "@mui/material/Grid";
+import Footer from "./Footer";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -130,19 +131,30 @@ const HomePage = () => {
       {redirect ? <Redirect push to="/internships/" /> : null}
 
       <div className="title">
-        <h6 style={{ textDecoration: "capitalize", letterSpacing: "2px" }}>
+        <h5
+          style={{
+            padding: "100px",
+            paddingBottom: "0px",
+            letterSpacing: "2px",
+          }}
+        >
           POPULAR CATEGORIES
-        </h6>
+        </h5>
       </div>
-      <Grid container spacing={4}>
+      <Grid
+        container
+        spacing={4}
+        style={{ padding: "100px", paddingTop: "50px" }}
+      >
         {categories.map((c, index) => {
           return (
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid item xs={12} sm={4} md={2}>
               <BasicCard title={c} key={index} />
             </Grid>
           );
         })}
       </Grid>
+      <Footer />
     </div>
   );
 };

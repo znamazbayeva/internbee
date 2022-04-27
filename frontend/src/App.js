@@ -15,6 +15,7 @@ import InternshipListing from "./components/Profile/Company/InternshipListing";
 import InternshipListings from "./components/Profile/Company/InternshipListings";
 import MyResume from "./components/Profile/Student/MyResume";
 import ProfileSettings from "./components/Profile/Student/ProfileSettings";
+import SavedInternships from "./components/Profile/Student/SavedInternships";
 import SubmitResume from "./components/Profile/Student/SubmitResume";
 import StudentDashboard from "./components/Profile/StudentDashboard";
 import Reviews from "./components/Reviews/Reviews";
@@ -52,6 +53,7 @@ function App() {
             path="/post-internship/"
             component={PostInternshipPage}
           />
+          <Route exact path="/student/saved/" component={SavedInternships} />
           <Route exact path="/verify/" component={VerifyEmail} />
           <Route exact path="/company/applicants" component={AllApplicants} />
           <Route exact path="/company/applicants/1" component={Applicant} />

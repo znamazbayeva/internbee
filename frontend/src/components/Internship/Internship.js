@@ -15,6 +15,7 @@ import beeImage from "../../assets/img/Bee-Logo.png";
 function Internship({ internship }) {
   const state = useSelector((state) => state.auth);
   const [like, setLike] = useState(false);
+  const [likeID, setLikeID] = useState("");
 
   function sendLike() {
     const token = state.token;
@@ -39,6 +40,7 @@ function Internship({ internship }) {
       .then((res) => {
         console.log(res.data);
         setLike(true);
+        setLikeID(res.data.internship_like.id);
       })
       .catch((err) => {
         console.log(err);
@@ -59,7 +61,7 @@ function Internship({ internship }) {
 
     axios
       .delete(
-        `http://127.0.0.1:8000/v1/api/internship/like/delete/${internship._id}/`,
+        `http://127.0.0.1:8000/v1/api/internship/like/delete/${likeID}/`,
         null,
         config
       )
@@ -78,25 +80,18 @@ function Internship({ internship }) {
     var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
     return Math.floor(Difference_In_Days).toString();
   };
-  const validImage = internship && internship.skills;
   const validName = internship && internship.name;
-  const validCompany = internship && internship.company;
+  // const validCompany = internship && internship.company.company_name;
   const validCategory = internship && internship.category;
   const validLocation = internship && internship.location;
-  const validSalary = internship && internship.salary;
 
   return (
     <div className={styles.container}>
-      {/* {validImage && (
-        <img src={internship.company} alt="" className={styles.imgLogo} />
-      )}
-      {!validImage && ( */}
       <img src={beeImage} alt="" className={styles.imgLogo} />
-      {/* )} */}
       <div className={styles.int__info}>
         <div className={styles.first__info}>
           <div className={styles.company_name}>
-            {validCompany && internship.company}
+            {/* {validCompany && internship.company.company_name} */}
           </div>
           <div className={styles.name}>{validName && internship.name}</div>
           <div className={styles.sub}>
