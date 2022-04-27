@@ -87,14 +87,11 @@ const SavedInternships = () => {
 
   return (
     <BaseLayout title={"Applicants"}>
-      <SideBar />
       <div
         className={styles.containter}
         style={{ display: "flex", height: "100vh" }}
       >
-        <div style={{ marginRight: "3rem" }}>
-          <SideBar />
-        </div>
+        <div style={{ marginRight: "3rem" }}></div>
         <div className={styles.container_plain}>
           <div
             style={{

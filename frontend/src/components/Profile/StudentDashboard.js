@@ -14,6 +14,7 @@ function StudentDashboard() {
 
   useEffect(() => {
     axios
+      // .get(`http://127.0.0.1:8000/v1/api/student/${state.student.sid}/`)
       .get(`http://127.0.0.1:8000/v1/api/student/${state.user_id}/`)
       .then((res) => {
         setStudent(res.data);

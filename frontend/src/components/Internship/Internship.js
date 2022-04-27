@@ -7,6 +7,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import VideoCameraFrontIcon from "@mui/icons-material/VideoCameraFront";
 import axios from "axios";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
@@ -130,6 +131,9 @@ function Internship({ internship }) {
                   onClick={sendLike}
                 />
               )}
+            </button>
+            <button>
+              <VideoCameraFrontIcon />
             </button>
           </div>
           <Link
