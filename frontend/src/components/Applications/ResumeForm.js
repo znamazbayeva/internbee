@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import * as React from "react";
+import { Link } from "react-router-dom";
 
 const Input = styled("input")({
   display: "none",
@@ -105,6 +106,15 @@ export default function ResumeForm() {
           label="Make information visible to employees"
         />
       </Grid>
+      <Link to="/student/my-resume" style={{ textDecoration: "none" }}>
+        <Button
+          variant="contained"
+          color="secondary"
+          style={{ marginTop: "2rem", marginLeft: "750px" }}
+        >
+          Submit Resume
+        </Button>
+      </Link>
     </Grid>
     // </Card>
   );

@@ -36,10 +36,10 @@ function createData(name, title, location, category, date_posted) {
 
 const rows = [
   createData(
-    "ayerikkyzy",
-    "Front-End Developer",
+    "Intern Bee",
+    "Software Engineer",
     "Almaty, KZ",
-    "Tech",
+    "",
     new Date().toLocaleString() + ""
   ),
 ];

@@ -22,7 +22,7 @@ const FeaturedInternships = () => {
     <div>
       <div className="title">
         <h6 style={{ textDecoration: "capitalize", letterSpacing: "2px" }}>
-          RELATED INTERNSHIPS
+          RECOMMENDED INTERNSHIPS
         </h6>
         <div className="underline"></div>
       </div>

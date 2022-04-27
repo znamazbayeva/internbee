@@ -132,9 +132,12 @@ function Internship({ internship }) {
                 />
               )}
             </button>
-            <button>
+            <Link
+              to="/student/video/url?=wiroewutbsndfbnzxnbhhwfafs"
+              style={{ color: "black" }}
+            >
               <VideoCameraFrontIcon />
-            </button>
+            </Link>
           </div>
           <Link
             to={`/internships/${internship._id}`}

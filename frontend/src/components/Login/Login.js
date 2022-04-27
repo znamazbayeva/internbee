@@ -24,7 +24,7 @@ function Login({ login, isAuthenticated, isStudent }) {
   };
 
   if (isAuthenticated && isStudent) {
-    return <Redirect to="/verify/" />;
+    return <Redirect to="/student/dashboard" />;
   } else if (isAuthenticated && !isStudent) {
     return <Redirect to="/company/dashboard" />;
   } else {

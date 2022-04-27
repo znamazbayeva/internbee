@@ -39,14 +39,6 @@ function SubmitResume() {
         <Card style={{ padding: "1.5rem" }}>
           <ResumeForm />
         </Card>
-
-        <Button
-          variant="contained"
-          color="secondary"
-          style={{ marginTop: "2rem" }}
-        >
-          Preview
-        </Button>
       </div>
     </div>
   );

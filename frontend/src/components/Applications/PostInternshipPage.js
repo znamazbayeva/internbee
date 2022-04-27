@@ -147,7 +147,7 @@ const PostInternshipPage = () => {
                 </div>
                 <form className="form-ad" onSubmit={handleSubmit}>
                   <Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} sm={6} style={{ display: "block" }}>
                       <label className={styles.control_label}>
                         Internship Title
                       </label>

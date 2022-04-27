@@ -30,7 +30,7 @@ function StudentDashboard() {
   return (
     <div
       className={styles.containter}
-      style={{ display: "flex", height: "100vh" }}
+      style={{ display: "flex", height: "150vh" }}
     >
       {/* {student != null ? <StudentSidebar student={student} /> : null} */}
       <div style={{ marginRight: "3rem" }}>
