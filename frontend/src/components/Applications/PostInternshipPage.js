@@ -12,8 +12,13 @@ import SideBar from "../Profile/Student/SideBar";
 import { data } from "../Profile/student_data";
 import styles from "../Profile/Profile.module.scss";
 import { Card, Grid, TextField } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { useToasts } from "react-toast-notifications";
 
 const PostInternshipPage = () => {
+  const state = useSelector((state) => state.auth);
+  const token = state.token;
+  console.log(token);
   const [tags, setTags] = useState([
     { value: "php", label: "PHP" },
     { value: "django", label: "Django" },
@@ -37,7 +42,7 @@ const PostInternshipPage = () => {
   ]);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [title, setTitle] = useState("");
+  const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [salary, setSalary] = useState(0);
   const [internship_tags, setInternshipTags] = useState([]);
@@ -50,7 +55,7 @@ const PostInternshipPage = () => {
   const [website, setWebsite] = useState("");
   // const authContext = useContext(AuthContext);
   // const { token, isAuthenticated } = authContext.state;
-  // const { addToast } = useToasts();
+  const { addToast } = useToasts();
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
@@ -62,37 +67,37 @@ const PostInternshipPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const new_internship_data = {
-      title: title,
-      description: description,
-      tags: internship_tags,
-      salary: salary,
-      location: location,
-      type: type,
-      category: category,
-      last_date: last_date,
-      company_name: company_name,
-      company_description: company_description,
-      website: website,
-    };
-
     const config = {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Token ${token}`,
+      },
     };
+    console.log(name, description, location);
+    const body = JSON.stringify({
+      name,
+      description,
+      // tags: internship_tags,
+      // salary: salary,
+      location,
+      // type: type,
+      // category: category,
+      // last_date: last_date,
+      // company_name: company_name,
+      // company_description: company_description,
+      // website: website,
+    });
 
-    // axios
-    //   .post(
-    //     `http://localhost:8000/api/employer/internships/create`,
-    //     newInternship_data,
-    //     config
-    //   )
-    //   .then((res) => {
-    //     addToast("internship were successfully posted", { appearance: "success" });
-    //     setRedirect(true);
-    //   })
-    //   .catch((err) =>
-    //     addToast("Something went wrong!", { appearance: "error" })
-    //   );
+    axios
+      .post(`http://127.0.0.1:8000/v1/api/internship/create/`, body, config)
+      .then((res) => {
+        addToast("Saved Successfully", { appearance: "success" });
+        console.log(res.data);
+      })
+      .catch((err) => {
+        addToast(err.message, { appearance: "error" });
+        // console.log(err.response.data);
+      });
   };
 
   // const handleSkillsChange = (selectedOptions: any) => {
@@ -151,8 +156,7 @@ const PostInternshipPage = () => {
                       <TextField
                         type="text"
                         className="form-control"
-                        onChange={(event) => setTitle(event.target.value)}
-                        required
+                        onChange={(event) => setName(event.target.value)}
                         placeholder=""
                         size="small"
                       />
@@ -165,7 +169,6 @@ const PostInternshipPage = () => {
                         className="form-control"
                         placeholder="Write internship description"
                         onChange={(event) => setDescription(event.target.value)}
-                        required
                         rows={4}
                       />
                     </Grid>
@@ -177,7 +180,6 @@ const PostInternshipPage = () => {
                             type="number"
                             className="form-control"
                             onChange={(e) => setSalary(e.target.value)}
-                            required
                             placeholder=""
                             size="small"
                           />
@@ -197,7 +199,6 @@ const PostInternshipPage = () => {
                             className="React"
                             classNamePrefix="select"
                             // onChange={handleSkillsChange}
-                            required
                           />
                         </Grid>
                       </div>
@@ -208,7 +209,6 @@ const PostInternshipPage = () => {
                         type="text"
                         className="form-control"
                         onChange={(event) => setLocation(event.target.value)}
-                        required
                         placeholder="e.g.Almaty"
                         size="small"
                       />
@@ -225,7 +225,6 @@ const PostInternshipPage = () => {
                             onChange={(event) =>
                               setCompanyName(event.target.value)
                             }
-                            required
                             placeholder="Write company name"
                             size="small"
                           />
@@ -238,7 +237,6 @@ const PostInternshipPage = () => {
                           classNamePrefix="select"
                           name="type"
                           onChange={(type) => setType(type.value)}
-                          required
                           options={types}
                         />
                       </div>
@@ -251,7 +249,6 @@ const PostInternshipPage = () => {
                           classNamePrefix="select"
                           name="category"
                           onChange={(category) => setCategory(category.value)}
-                          required
                           options={categories}
                         />
                       </div>
@@ -266,7 +263,6 @@ const PostInternshipPage = () => {
                             type="text"
                             className="form-control"
                             onChange={(event) => setWebsite(event.target.value)}
-                            required
                             placeholder="Apply URL"
                           />
                         </Grid>
@@ -279,7 +275,6 @@ const PostInternshipPage = () => {
                           className="form-control"
                           value={new Date()}
                           options={{ minDate: new Date() }}
-                          required
                           onChange={(date) => setLastDate(date[0])}
                         />
                       </div>
@@ -291,7 +286,6 @@ const PostInternshipPage = () => {
                       <TextField
                         type="text"
                         className="form-control"
-                        required
                         onChange={(event) => setCompanyName(event.target.value)}
                         placeholder="Company name"
                         size="small"
@@ -303,7 +297,6 @@ const PostInternshipPage = () => {
                       </label>
                       <textarea
                         className="form-control"
-                        required
                         rows={6}
                         onChange={(event) =>
                           setCompanyDescription(event.target.value)
