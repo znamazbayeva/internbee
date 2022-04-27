@@ -31,6 +31,7 @@ const FilterContext = React.createContext();
 
 export const FilterProvider = ({ children }) => {
   const { internships } = useInternshipsContext();
+  console.log(internships);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 

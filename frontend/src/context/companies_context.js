@@ -57,7 +57,7 @@ export const CompaniesProvider = ({ children }) => {
     dispatch({ type: GET_SINGLE_COMPANY_BEGIN });
     try {
       const response = await axios.get(
-        "https://127.0.0.1:8000/v1/api/company/${st.user_id}/"
+        `https://127.0.0.1:8000/v1/api/company/${st.user_id}/`
       );
       const singleCompany = response.data;
       dispatch({

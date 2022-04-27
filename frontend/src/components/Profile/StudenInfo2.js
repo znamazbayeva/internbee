@@ -1,7 +1,6 @@
 import { Avatar, Button, MenuItem, Select } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Container from "@mui/material/Container";
-import CssBaseline from "@mui/material/CssBaseline";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid from "@mui/material/Grid";
 import InputLabel from "@mui/material/InputLabel";

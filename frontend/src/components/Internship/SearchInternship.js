@@ -1,12 +1,10 @@
 import { FormGroup } from "@mui/material";
-import Accordion from "@mui/material/Accordion";
+import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
 import Input from "@mui/material/Input";
-import Button from "@mui/material/Button";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { styled } from "@mui/material/styles";
 import React from "react";
 import { useFilterContext } from "../../context/filter_context";
 
@@ -15,7 +13,6 @@ const getUniqueValues = (data, type) => {
   if (type == "colors") {
     unique = unique.flat();
   }
-
   return ["all", ...new Set(unique)];
 };
 
@@ -26,48 +23,7 @@ export const formatPrice = (number) => {
   }).format(number / 100);
 };
 
-const MyAccordion = styled(Accordion)(({ theme }) => ({
-  backgroundColor: "transparent",
-  boxShadow: "none",
-}));
 function SearchInternship() {
-  // const dispatch = useDispatch();
-  // const locat = useLocation();
-
-  // const [internship, setInternship] = useState({
-  // 	name: "",
-  // 	location: "",
-  // 	category: "",
-  // });
-
-  // const [type, setType] = useState({
-  // 	full_time: false,
-  // 	part_time: false,
-  // 	remote: false,
-  // });
-  // const [degree, setDegree] = useState({
-  // 	bachelor: false,
-  // 	master: false,
-  // 	phd: false,
-  // 	high_school: false,
-  // 	no_degree: false,
-  // });
-
-  // const { full_time, part_time, remote } = type;
-  // const { bachelor, master, phd, high_school, no_degree } = type;
-
-  // const { name, location, category } = internship;
-
-  // const inputChange = (e) => {
-  // 	setInternship({ ...internship, [e.target.name]: e.target.value });
-  // };
-
-  // const handleTypeChange = (event) => {
-  // 	setType({ ...type, [event.target.name]: event.target.checked });
-  // };
-  // const handleDegreeChange = (event) => {
-  // 	setDegree({ ...degree, [event.target.name]: event.target.checked });
-  // };
   const {
     filters: {
       text,

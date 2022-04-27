@@ -6,14 +6,16 @@ import PlaceIcon from "@mui/icons-material/Place";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import VideoCameraFrontIcon from "@mui/icons-material/VideoCameraFront";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import axios from "axios";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
+import beeImage from "../../assets/img/Bee-Logo.png";
+
 function Internship({ internship }) {
   const state = useSelector((state) => state.auth);
   const [like, setLike] = useState(false);
+
   function sendLike() {
     const token = state.token;
     console.log(token);
@@ -27,10 +29,10 @@ function Internship({ internship }) {
     if (token) {
       config.headers["Authorization"] = `Token ${token}`;
     }
-    console.log(internship._id);
+
     axios
       .post(
-        `http://127.0.0.1:8000/v1/api/internship/like/${internship._id}/`,
+        `http://127.0.0.1:8000/v1/api/internship/like/create/${internship._id}/`,
         null,
         config
       )
@@ -43,9 +45,7 @@ function Internship({ internship }) {
       });
   }
   function removeLike() {
-    console.log("TRYING TO REMOVE");
     const token = state.token;
-    console.log(token);
     const config = {
       headers: {
         "Content-type": "application/json",
@@ -54,24 +54,23 @@ function Internship({ internship }) {
     };
 
     if (token) {
-      console.log(token);
       config.headers["Authorization"] = `Token ${token}`;
     }
-    console.log(internship._id);
+
     axios
       .delete(
-        `http://127.0.0.1:8000/v1/api/internship/like/${internship._id}/`,
+        `http://127.0.0.1:8000/v1/api/internship/like/delete/${internship._id}/`,
         null,
         config
       )
       .then((res) => {
-        console.log(res.data);
         setLike(false);
       })
       .catch((err) => {
         console.log(err);
       });
   }
+
   const findFromDate = (e) => {
     var date = new Date(e);
     var now = new Date();
@@ -79,61 +78,64 @@ function Internship({ internship }) {
     var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
     return Math.floor(Difference_In_Days).toString();
   };
+  const validImage = internship && internship.skills;
+  const validName = internship && internship.name;
+  const validCompany = internship && internship.company;
+  const validCategory = internship && internship.category;
+  const validLocation = internship && internship.location;
+  const validSalary = internship && internship.salary;
+
   return (
     <div className={styles.container}>
-      <img src={internship.company.img} alt="" className={styles.imgLogo} />
+      {/* {validImage && (
+        <img src={internship.company} alt="" className={styles.imgLogo} />
+      )}
+      {!validImage && ( */}
+      <img src={beeImage} alt="" className={styles.imgLogo} />
+      {/* )} */}
       <div className={styles.int__info}>
         <div className={styles.first__info}>
           <div className={styles.company_name}>
-            {internship.company.company_name}
+            {validCompany && internship.company}
           </div>
-          <div className={styles.name}>{internship.name}</div>
+          <div className={styles.name}>{validName && internship.name}</div>
           <div className={styles.sub}>
             <AccessTimeIcon fontSize="small" style={{ color: "grey" }} />
             <div className={styles.created_time}>
-              {findFromDate(internship.created_at)} days
+              {findFromDate(internship.created_at)}
+              days
             </div>
             <FiberManualRecordIcon fontSize="small" style={{ color: "grey" }} />
             <div className={styles.created_time}>
-              {internship.category.toUpperCase()}
+              {validCategory && internship.category}
             </div>
             <PlaceIcon fontSize="small" style={{ color: "grey" }} />
-            <div className={styles.created_time}>{internship.location}</div>
+            <div className={styles.created_time}>
+              {validLocation && internship.location}
+            </div>
             <MonetizationOnIcon fontSize="small" style={{ color: "grey" }} />
             <div className={styles.created_time}>{internship.salary}</div>
           </div>
         </div>
         <div className={styles.detail}>
           <div className={styles.name}>
-            {
-              //KZT {internship.salary} / month
-            }
             <button onClick={sendLike}>
               {like ? (
-                <FavoriteBorderIcon
-                  fontSize="small"
-                  style={{ color: "#e32636" }}
-                  className={styles.button_hi}
-                  onClick={sendLike}
-                />
-              ) : (
                 <FavoriteIcon
                   fontSize="small"
                   style={{ color: "#e32636" }}
                   className={styles.button_hi}
                   onClick={removeLike}
                 />
+              ) : (
+                <FavoriteBorderIcon
+                  fontSize="small"
+                  style={{ color: "#e32636" }}
+                  className={styles.button_hi}
+                  onClick={sendLike}
+                />
               )}
             </button>
-            {internship.video ? (
-              <button>
-                {" "}
-                <VideoCameraFrontIcon
-                  fontSize="small"
-                  className={styles.button_hi}
-                />
-              </button>
-            ) : null}
           </div>
           <Link
             to={`/internships/${internship._id}`}
