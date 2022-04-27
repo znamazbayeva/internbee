@@ -3,9 +3,12 @@ import SideBar from "./SideBar";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import styles from "../Profile.module.scss";
+import CancelIcon from "@mui/icons-material/Cancel";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import React, { useContext, useEffect, useState } from "react";
 import Paper from "@mui/material/Paper";
 import BaseLayout from "../../Applications/BaseLayout";
+import UpdateIcon from "@mui/icons-material/Update";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import Table from "@mui/material/Table";
@@ -133,7 +136,7 @@ const AllApplicants = () => {
                     Total Candidates
                   </StyledTableCell>
                   <StyledTableCell align="left">Created at</StyledTableCell>
-                  <StyledTableCell align="left">View Listing</StyledTableCell>
+                  <StyledTableCell align="left">Actions</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -163,18 +166,36 @@ const AllApplicants = () => {
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
-                        {applicant.status === "pending" && (
-                          <>
-                            <Button
-                              variant="contained"
-                              color="secondary"
-                              size="small"
-                              style={{ marginRight: "0.7rem" }}
-                            >
-                              <ArrowCircleRight />
-                            </Button>
-                          </>
-                        )}
+                        <Button
+                          variant="text"
+                          color="success"
+                          size="small"
+                          style={{ marginRight: "0.7rem" }}
+                        >
+                          <UpdateIcon />
+                          Update
+                        </Button>
+                        <Button
+                          variant="text"
+                          color="error"
+                          size="small"
+                          style={{ marginRight: "0.7rem" }}
+                        >
+                          <CancelIcon />
+                          Delete
+                        </Button>
+                        <Button
+                          variant="outlined"
+                          size="small"
+                          style={{
+                            marginRight: "0.7rem",
+                            color: "#663399",
+                            border: "#663399",
+                          }}
+                        >
+                          <VisibilityIcon />
+                          View
+                        </Button>
                       </StyledTableCell>
                     </StyledTableRow>
                   );

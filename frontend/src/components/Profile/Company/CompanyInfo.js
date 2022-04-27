@@ -2,18 +2,20 @@ import React, { useState, useReducer, useEffect } from "react";
 import { getCompany } from "../../../actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { Avatar } from "@mui/material";
+import { Avatar, InputLabel } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Modal from "@mui/material/Modal";
+import BadgeIcon from "@mui/icons-material/Badge";
 import Identicon from "identicon.js";
 import { Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import styles from "../Profile.module.scss";
-import CompanyModal from "./CompanyModal";
 import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { Box } from "@mui/system";
-
+import PlaceIcon from "@mui/icons-material/Place";
+import LocationCityIcon from "@mui/icons-material/LocationCity";
+import EmailIcon from "@mui/icons-material/Email";
 var data = new Identicon("d3b07384d113edec49eaa6238ad5ff00", 420).toString();
 
 const initialState = {
@@ -27,10 +29,10 @@ const initialState = {
 function CompanyInfo() {
   const styleBox = {
     position: "absolute",
-    top: "50%",
-    left: "50%",
+    top: "70%",
+    left: "56%",
     transform: "translate(-50%, -100%)",
-    width: 800,
+    width: 820,
     bgcolor: "white",
     color: "black",
     borderRadius: "5px",
@@ -40,13 +42,14 @@ function CompanyInfo() {
 
   const { addToast } = useToasts();
   const state = useSelector((state) => state.auth);
-  console.log(state);
   const token = state.token;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [company, setCompany] = useState(null);
   const [address, setAddress] = useState(null);
+  const [cityName, setCityName] = useState(null);
+  const [company_name, setCompanyName] = useState(null);
   const [description, setDescription] = useState(null);
 
   useEffect(() => {
@@ -55,6 +58,9 @@ function CompanyInfo() {
       .then((res) => {
         setCompany(res.data);
         setAddress(res.data.address);
+        setCompanyName(res.data.company_name);
+        setCityName(res.data.cityName);
+        setDescription(res.data.description);
         console.log(res.data);
       })
       .catch((err) => {
@@ -76,6 +82,8 @@ function CompanyInfo() {
     };
     const body = JSON.stringify({
       address,
+      company_name,
+      cityName,
       description,
     });
 
@@ -89,11 +97,13 @@ function CompanyInfo() {
         setCompany(res.data);
         setAddress(res.data.address);
         setDescription(res.data.description);
+        setCompanyName(res.data.company_name);
+        setCityName(res.data.cityName);
+
         addToast("Saved Successfully", { appearance: "success" });
       })
       .catch((err) => {
         addToast(err.message, { appearance: "error" });
-        // console.log(err.response.data);
       });
   };
 
@@ -108,10 +118,14 @@ function CompanyInfo() {
         }}
       >
         <div className={styles.company_header}>
-          <Typography gutterBottom variant="h5" component="div">
-            {company ? company.user.email : initialState.email}
+          <Typography
+            gutterBottom
+            variant="h6"
+            component="div"
+            style={{ fontFamily: "Arial" }}
+          >
+            Company Logo
           </Typography>
-          {/* <input type="text" /> */}
 
           <Link to="/post-internship/" style={{ textDecoration: "none" }}>
             <Button
@@ -119,7 +133,7 @@ function CompanyInfo() {
               className={styles.post_job_button}
               sx={{ backgroundColor: "#663399" }}
             >
-              + Post Job
+              + Post Internship
             </Button>
           </Link>
         </div>
@@ -129,7 +143,6 @@ function CompanyInfo() {
             size="medium"
             sx={{
               bgcolor: "#9DAAD3",
-
               width: 100,
               height: 100,
             }}
@@ -145,16 +158,50 @@ function CompanyInfo() {
               component="div"
               sx={{ marginLeft: 5 }}
             >
-              {company ? company.description : initialState.description}
+              <span style={{ marginRight: "30px" }}>
+                <BadgeIcon style={{ color: "grey" }} />
+                <strong>Company Name: </strong>
+              </span>
+
+              {company ? company.company_name : initialState.address}
+            </Typography>
+            <Typography
+              gutterBottom
+              variant="h7"
+              component="div"
+              sx={{ marginLeft: 5 }}
+            >
+              <span style={{ marginRight: "30px" }}>
+                <LocationCityIcon style={{ color: "grey" }} />
+
+                <strong>Company Location:</strong>
+              </span>
+              {company ? company.cityName : initialState.address}
             </Typography>
 
             <Typography
               gutterBottom
               variant="h7"
               component="div"
-              sx={{ marginLeft: 5, color: "blue" }}
+              sx={{ marginLeft: 5, color: "grey" }}
             >
+              <span style={{ marginRight: "30px" }}>
+                <PlaceIcon style={{ color: "grey" }} />
+                <strong>Company Address:</strong>
+              </span>
               {company ? company.address : initialState.address}
+            </Typography>
+            <Typography
+              gutterBottom
+              variant="h7"
+              component="div"
+              sx={{ marginLeft: 5, color: "grey" }}
+            >
+              <span style={{ marginRight: "30px" }}>
+                <EmailIcon style={{ color: "grey" }} />
+                <strong>Company Email:</strong>
+              </span>
+              {company ? company.user.email : initialState.email}
             </Typography>
           </div>
           <div></div>
@@ -189,21 +236,71 @@ function CompanyInfo() {
             <Modal open={open} onClose={handleClose}>
               <Box sx={styleBox}>
                 <form onSubmit={handleFormSubmit}>
-                  <Grid container>
+                  <Grid container spacing={2}>
                     <Grid item xs={6}>
-                      <label>Address</label>
+                      <InputLabel>Company Name</InputLabel>
+                      <input
+                        label="Company"
+                        value={company_name}
+                        onChange={(e) => setCompanyName(e.target.value)}
+                        style={{ width: "300px" }}
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <InputLabel>Address</InputLabel>
                       <input
                         label="Address"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
+                        style={{ width: "300px" }}
                       />
                     </Grid>
                     <Grid item xs={6}>
-                      <div>
-                        <Button onClick={handleFormSubmit}>Submit</Button>
-                      </div>
+                      <InputLabel>City Name</InputLabel>
+                      <input
+                        label="city"
+                        value={cityName}
+                        onChange={(e) => setCityName(e.target.value)}
+                        style={{ width: "300px" }}
+                      />
+                    </Grid>
+
+                    <Grid item xs={6}>
+                      <InputLabel>Company Description Text</InputLabel>
+                      <input
+                        label="description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        style={{ width: "300px" }}
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <InputLabel>Category</InputLabel>
+                      <input label="city" style={{ width: "300px" }} />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <InputLabel>Website URL</InputLabel>
+                      <input label="city" style={{ width: "300px" }} />
                     </Grid>
                   </Grid>
+                  <div>
+                    <Button
+                      sx={{
+                        backgroundColor: "#663399",
+                        color: "#fcfaff",
+                        float: "right",
+                        marginRight: "67px",
+                        marginTop: "30px",
+                        "&:hover": {
+                          backgroundColor: "#black",
+                          color: "#3c52b2",
+                        },
+                      }}
+                      onClick={handleFormSubmit}
+                    >
+                      Submit Changes
+                    </Button>
+                  </div>
                 </form>
               </Box>
             </Modal>
@@ -214,10 +311,6 @@ function CompanyInfo() {
         <div style={{ display: "flex", alignItems: "center" }}>
           <div style={{ display: "block" }}>
             <Typography gutterBottom variant="h7" component="div">
-              Address: {company ? company.address : initialState.address}
-            </Typography>
-            <Typography gutterBottom variant="h7" component="div">
-              Description:{" "}
               {company ? company.description : initialState.description}
             </Typography>
           </div>

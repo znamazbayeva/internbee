@@ -2,23 +2,23 @@
 // import { DataGrid } from "@mui/x-data-grid";
 // import * as React from "react";
 // import { Link } from "react-router-dom";
-import SideBar from "../Profile/Company/SideBar";
-import Button from "@mui/material/Button";
 import CancelIcon from "@mui/icons-material/Cancel";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import { styled } from "@mui/material/styles";
-import styles from "../Profile/Profile.module.scss";
-import React, { useContext, useEffect, useState } from "react";
+import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
-import BaseLayout from "../Applications/BaseLayout";
-import { Link } from "react-router-dom";
-import moment from "moment";
+import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import moment from "moment";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import BaseLayout from "../Applications/BaseLayout";
+import SideBar from "../Profile/Company/SideBar";
+import styles from "../Profile/Profile.module.scss";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -43,15 +43,15 @@ const applicants_arr = [
   {
     id: 0,
 
-    first_name: "John",
-    last_name: "Doe",
+    first_name: "Sample",
+    last_name: "Applicant",
 
     status: "pending",
     created_at: new Date(),
     job: {
       id: 1,
-      title: "Web Dev",
-      location: "London",
+      title: "Sample Job",
+      location: "Sample City",
     },
   },
 ];
@@ -125,6 +125,20 @@ const AllApplicants = () => {
           >
             <h3>Manage Applicants</h3>
           </div>
+          <div
+            style={{
+              backgroundColor: "#B8C9E0",
+              display: "inline-block",
+              padding: "1.2rem",
+              borderRadius: "5px",
+              marginBottom: "2rem",
+              color: "#663399",
+            }}
+          >
+            You can accept or reject applications from candidates here.
+            <br />
+            You can delete the Sample Applicant, it is for demonstration only.
+          </div>
           {/* <div
             style={{
               backgroundColor: "#B8C9E0",
@@ -156,13 +170,13 @@ const AllApplicants = () => {
                   return (
                     <StyledTableRow key={applicant.id}>
                       <StyledTableCell component="th" scope="row">
-                        <Link to={`/jobs/${applicant.job.id}`}>
+                        <Link to={`/student/${applicant.job.id}`}>
                           {/* {getFullname(applicant.applied_user)} */}
                           {`${applicant.first_name} ${applicant.last_name}`}
                         </Link>
                       </StyledTableCell>
                       <StyledTableCell align="left">
-                        <Link to={`/jobs/${applicant.job.id}`}>
+                        <Link to={`/intenrships/${applicant.job.id}`}>
                           {applicant.job.title}
                         </Link>
                       </StyledTableCell>

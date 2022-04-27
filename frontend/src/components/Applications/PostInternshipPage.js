@@ -5,7 +5,7 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/light.css";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { InfinitySpin } from "react-loader-spinner";
 import axios from "axios";
 import SideBar from "../Profile/Student/SideBar";
@@ -53,8 +53,7 @@ const PostInternshipPage = () => {
   const [company_name, setCompanyName] = useState("");
   const [company_description, setCompanyDescription] = useState("");
   const [website, setWebsite] = useState("");
-  // const authContext = useContext(AuthContext);
-  // const { token, isAuthenticated } = authContext.state;
+  const [internshipID, setInternshipID] = useState("");
   const { addToast } = useToasts();
   const [redirect, setRedirect] = useState(false);
 
@@ -77,13 +76,11 @@ const PostInternshipPage = () => {
     const body = JSON.stringify({
       name,
       description,
-      // tags: internship_tags,
-      // salary: salary,
+      salary,
       location,
-      // type: type,
-      // category: category,
+      category,
       // last_date: last_date,
-      // company_name: company_name,
+      company_name,
       // company_description: company_description,
       // website: website,
     });
@@ -93,6 +90,7 @@ const PostInternshipPage = () => {
       .then((res) => {
         addToast("Saved Successfully", { appearance: "success" });
         console.log(res.data);
+        setInternshipID(res.data._id);
       })
       .catch((err) => {
         addToast(err.message, { appearance: "error" });
@@ -273,7 +271,7 @@ const PostInternshipPage = () => {
                         </label>
                         <Flatpickr
                           className="form-control"
-                          value={new Date()}
+                          value={last_date}
                           options={{ minDate: new Date() }}
                           onChange={(date) => setLastDate(date[0])}
                         />
@@ -304,26 +302,31 @@ const PostInternshipPage = () => {
                         placeholder="Company description"
                       />
                     </div>
+
                     <button
                       type="submit"
                       hidden={submitted}
                       className={styles.savechanges}
-                      style={{ float: "right", marginTop: "1rem" }}
+                      style={{
+                        float: "right",
+                        marginTop: "1rem",
+                        marginLeft: "15px",
+                      }}
                     >
                       Submit your internship
                     </button>
-                    <button
-                      type="submit"
-                      hidden={!submitted}
-                      className="btn btn-primary log-btn"
+                    <Link
+                      to={`/internships/${internshipID}`}
+                      className={styles.savechanges}
+                      style={{
+                        backgroundColor: "#8286C5",
+                        float: "right",
+                        marginTop: "1rem",
+                        textDecoration: "none",
+                      }}
                     >
-                      <span
-                        className="spinner-border spinner-border-sm"
-                        role="status"
-                        aria-hidden="true"
-                      />
-                      Submitting...
-                    </button>
+                      Go to Internship's Page
+                    </Link>
                   </Grid>
                 </form>
               </div>

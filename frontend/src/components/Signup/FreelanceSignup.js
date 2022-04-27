@@ -37,7 +37,7 @@ const FreelanceSignup = ({
   };
 
   if (isAuthenticated && !isClient) {
-    return <Redirect to="/company/dashboard" />;
+    return <Redirect to="/verify" />;
   }
   return (
     <div className="signup container">

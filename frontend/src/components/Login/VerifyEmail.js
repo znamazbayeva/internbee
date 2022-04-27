@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, Redirect, useLocation } from "react-router-dom";
-
-function VerifyEmail() {
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { create_clientuser } from "../../actions/auth";
+function VerifyEmail({ isAuthenticated, isStudent }) {
   const [verify, setVerify] = useState("");
   const [redirect, setRedirect] = useState(false);
   const state = useSelector((state) => state.auth);
-  // let is_stud = false;
-  // if (state) {
-  //   is_stud = state.auth.is_student;
-  // }
+  console.log("hello  ");
 
   const loginChange = (e) => {
     setVerify(e.target.value);
@@ -18,6 +17,7 @@ function VerifyEmail() {
     e.preventDefault();
     setRedirect(true);
   };
+
   return (
     <div className="LoginMain">
       <div>
@@ -34,14 +34,32 @@ function VerifyEmail() {
                 value={verify}
               />
             </div>
-            <button className="login__btn">Verify</button>
+            {isStudent && (
+              <Link to="/student/dashboard" style={{ textDecoration: "none" }}>
+                <button className="login__btn">Verify</button>
+              </Link>
+            )}
+            {!isStudent && (
+              <Link to="/company/dashboard" style={{ textDecoration: "none" }}>
+                <button className="login__btn">Verify</button>
+              </Link>
+            )}
           </form>
         </div>
-        {/* {redirect && is_stud && <Redirect push to="/student/dashboard/" />}
-        {redirect && !is_stud && <Redirect push to="/company/dashboard/" />} */}
       </div>
     </div>
   );
 }
 
-export default VerifyEmail;
+VerifyEmail.propTypes = {
+  create_clientuser: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+  isClient: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  isStudent: state.auth.isStudent,
+});
+
+export default connect(mapStateToProps, { create_clientuser })(VerifyEmail);

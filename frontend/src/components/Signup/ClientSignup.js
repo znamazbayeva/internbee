@@ -26,12 +26,11 @@ const ClientSignup = ({ create_clientuser, isAuthenticated, isStudent }) => {
       email,
       password,
     };
-    console.log(newClient);
     create_clientuser(newClient);
   };
 
   if (isAuthenticated && isStudent) {
-    return <Redirect to="/student/dashboard" />;
+    return <Redirect to="/verify" />;
   }
   return (
     <div className="singup container">
